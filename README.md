@@ -52,10 +52,10 @@ Build documentation
 To initially build or rebuild your html documentation, change into the documentation's root folder (folder where this `README.md` file is located) and run:
 
 ```
-./make html 
+./documentation/make html 
 ```
  
-The generated documentation can be found in `build\html`
+The generated documentation can be found in `documentation/build/html`
  
 
 Use vscode and LIVE preview in your local browser
@@ -73,7 +73,7 @@ Use vscode and LIVE preview in your local browser
 
 **Live-preview**
 
-When you change ANY doc resource in the `./source` folder, the doc preview in your browser will automatically reload after a view seconds!
+When you change ANY doc resource in the `./documentation/source` folder, the doc preview in your browser will automatically reload after a view seconds!
 
 Why? The File watcher plugin will detect the file changes and automatically call the `make html` script.
 
