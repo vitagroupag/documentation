@@ -1,5 +1,5 @@
 // Define library branch/tag to load
-@Library(['jenkins-libraries@main', 'developer-jenkins-libraries@feature/PLAT-559_sphinx_pipeline']) _
+@Library(['jenkins-libraries@main', 'developer-jenkins-libraries@main']) _
 
 penSphinxDocPipeline(
     gitlabspace: 'pen',
