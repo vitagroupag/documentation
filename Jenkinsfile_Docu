@@ -3,8 +3,8 @@
 
 penSphinxDocPipeline(
     gitlabspace: 'pen',
-    module: 'cdr-umbrella',
-    project: 'hip-cdr-docs',
+    module: 'hip-cdr-documentation',
+    project: 'hip-cdr-documentation',
     helmChartName: 'hip-cdr-docs',
     umbrellaChartJob: 'PLAT/CDR-UUC-AutoUpdate',
     projectTeamsWebhook: ''
