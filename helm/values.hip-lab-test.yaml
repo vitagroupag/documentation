@@ -1,0 +1,6 @@
+global:
+  baseDomain: vitasystems.dev
+  internalImagePullSecrets:
+    vitagroupImagePullSecret: registryvitasystemsdev
+  tlsSecrets:
+    cdrDocs: vitasystems-dev

@@ -1,0 +1,108 @@
+global:
+  baseDomain: someBaseDomain
+  internalImagePullSecrets:
+    vitagroupImagePullSecret: someImagePullSecret
+  certManagerClusterIssuerName: ''
+  whitelistSourceRange: ''
+
+  hosts:
+    cdrDocs: hip-cdr-docs-{{ .Release.Namespace }}.{{ .Values.global.baseDomain }}
+
+  tlsSecrets:
+    cdrDocs: someBaseTlsSecretName
+
+# Default values for helm.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: registry.vitasystems.dev/docker-registry/hip-cdr-docs
+  pullPolicy: Always
+  tag: ""  # Overrides the image tag whose default is the chart appVersion.
+
+nameOverride: ""
+fullnameOverride: hip-cdr-docs # Make sure it matches ur internal dns name !!
+
+#===========================================#
+## ENVIRONMENT CONFIGURATION
+#===========================================#
+
+serviceAccount:
+  create: false   # Specifies whether a service account should be created
+  annotations: {} # Annotations to add to the service account
+  name: ""        # If not set and create is true, a name is generated using the fullname template
+
+labels: {}
+
+#===========================================#
+## HIP CDR SERVICE LABEL CONFIGURATION
+#===========================================#
+
+podAnnotations: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 80
+  protocol: TCP
+  name: http
+
+#===========================================#
+## INGRESS CONFIGURATION
+#===========================================#
+# This config is necessary in order to expose the explorer ui features, specifically
+# the organization and tenant management, to the statically available hip-studio-ui
+ingress:
+  enabled: true
+  className: nginx
+  hosts:
+    - host: "{{ .Values.global.hosts.cdrDocs }}"
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls:
+    - secretName: "{{ .Values.global.tlsSecrets.cdrDocs }}"
+      hosts:
+        - "{{ .Values.global.hosts.cdrDocs }}"
+
+#===========================================#
+## RESSOURCES CONFIGURATION
+#===========================================#
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+#   cpu: 100m
+#   memory: 128Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
