@@ -73,7 +73,7 @@ Use vscode and LIVE preview in your local browser
 
 **Live-preview**
 
-When you change ANY doc resource in the `./documentation/source` folder, the doc preview in your browser will automatically reload after a view seconds!
+When you change ANY doc resource in the `./documentation/source` folder, the doc will be automatically generated to the `./documentation/build` folder and the preview in your browser will automatically reload after a view seconds.
 
 Why? The File watcher plugin will detect the file changes and automatically call the `make html` script.
 
