@@ -1,13 +1,10 @@
 {
-    "files.exclude": {
-        "build/": true,
-    },
-    "liveServer.settings.root": "./build/html",
+    "liveServer.settings.root": "./documentation/build/html",
     "liveServer.settings.port": 5858,
     "filewatcher.commands": [
 
         {
-            "match": "source\\.*",
+            "match": "./documentation/source/.*",
             "isAsync": true,
             "vscodeTask": ["workbench.action.tasks.runTask", "makeDocs"],
             "event": "onFolderChange"
