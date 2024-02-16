@@ -10,6 +10,7 @@
 - [ ] Setup Build pipeline for build, translate
 - [ ] Switch the dockerfile from sphinx to docusaurus
 - [ ] Think about how to make different versions (ehrbase, hip ehrbase & hip cdr) work together
+- [ ] Freeze (Version)[https://docusaurus.io/docs/versioning] before Realase
 
 ### Deployment
 
