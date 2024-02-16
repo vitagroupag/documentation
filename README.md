@@ -1,88 +1,41 @@
-Linux prerequisites
---------------------
+# Website
 
-- Sphinx needs python 3.6+ installed on your linux system
-- if you have python 2 installed, it won't work.
+This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
 
-Windows prerequisites
-----------------------
-
-Sphinx needs Python 3.6+ to operate on windows.
-
-To setup Python:
-
-- download & install Python 3 for windows here: https://www.python.org/downloads/
-- activate "[x] add python.exe into PATH" in setup dialog
-
-Installation should be straight forward. Please note that you might need to replace 'pip' with 'pip3' depending on your already installed python version.
-
-After installation, open windows command shell and check if python can be called:
+### Installation
 
 ```
-python --version
+$ yarn
 ```
 
-Output should report the installed Python version, e.g.
+### Local Development
 
 ```
-Python 3.12.0
+$ yarn start
 ```
 
-Installing Sphinx
------------------------
+This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
 
-Open windows/linux command shell and install sphinx by typing
-
-```
-pip install -U sphinx
-```
-
-In addition install the following python modules (if not already installed) that are required by Sphinx for document generation:
+### Build
 
 ```
-pip install sphinx_rtd_theme
-pip install sphinxcontrib-httpdomain
-pip install --upgrade myst-parser
+$ yarn build
 ```
 
+This command generates static content into the `build` directory and can be served using any static contents hosting service.
 
-Build documentation
--------------------
+### Deployment
 
-To initially build or rebuild your html documentation, change into the documentation's root folder (folder where this `README.md` file is located) and run:
-
-```
-./documentation/make html 
-```
- 
-The generated documentation can be found in `documentation/build/html`
- 
-
-Use vscode and LIVE preview in your local browser
---------------------------------------------------
-**Installation & setup**
-
-- Download latest version of **vscode** here: https://code.visualstudio.com/download
-- After installation, run vscode and install 2 plugins
-  - **Live Server** plugin
-  - **File Watcher** plugin
-- Open documentation root folder (folder where this `README.md` is located) in vscode workspace via `File|Open Folder`
-- After opening the workspace in vscode, start the live preview server by clicking the bottom right status bar icon `((i)) Go Live`
-- Your browser should start automatically. If not, the live preview should be available under `http://127.0.0.1:5858`
-
-
-**Live-preview**
-
-When you change ANY doc resource in the `./documentation/source` folder, the doc will be automatically generated to the `./documentation/build` folder and the preview in your browser will automatically reload after a view seconds.
-
-Why? The File watcher plugin will detect the file changes and automatically call the `make html` script.
-
-Troubleshooting
----------------
-
-If you encounter  problems using Sphinx, try to install a newer version of Python or Sphinx. To check, which Sphinx version is currently installed, type
-
+Using SSH:
 
 ```
-$ python -m pip list | grep sphinx
+$ USE_SSH=true yarn deploy
 ```
+
+Not using SSH:
+
+```
+$ GIT_USER=<Your GitHub username> yarn deploy
+```
+
+If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
