@@ -81,6 +81,11 @@ const config: Config = {
             spec: "api/mapping.json",
             route: "/api/cdr-bridge/mappings",
           },
+          {
+            id: "cdr-bridge-demographics",
+            spec: "api/demographics.yml",
+            route: "/api/cdr-bridge/demographics",
+          },
         ],
         theme: {
           // Change with your site colors
@@ -137,6 +142,10 @@ const config: Config = {
             {
               label: "CDR Bridge",
               to: "/api/cdr-bridge/mappings",
+            },
+            {
+              label: "Demographics",
+              to: "/api/cdr-bridge/demographics",
             },
           ],
         },

@@ -140,44 +140,6 @@
         }
       }
     },
-    "/api/v1/templates": {
-      "post": {
-        "tags": ["openEHR Templates"],
-        "operationId": "uploadTemplateForTenant",
-        "parameters": [
-          {
-            "name": "Authorization",
-            "in": "header",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/xml": {
-              "schema": {
-                "type": "string"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "201": {
-            "description": "Created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/api/v1/mappings/product": {
       "get": {
         "tags": ["Product Mappings"],
