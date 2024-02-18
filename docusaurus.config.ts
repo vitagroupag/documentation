@@ -57,19 +57,19 @@ const config: Config = {
       {
         specs: [
           {
-            id: "hip-ehrbase",
-            spec: "api/mapping.json",
-            route: "/api/hip-ehrbase",
+            id: "hip-ehrbase-ehr",
+            spec: "api/ehr-codegen.openapi.yaml",
+            route: "/api/hip-ehrbase/ehr",
           },
           {
-            id: "hip-cdr",
-            spec: "api/openapi.yaml",
-            route: "/api/hip-cdr",
+            id: "hip-ehrbase-query",
+            spec: "api/query-codegen.openapi.yaml",
+            route: "/api/hip-ehrbase/query",
           },
           {
             id: "cdr-bridge",
             spec: "api/mapping.json",
-            route: "/api/cdr-bridge",
+            route: "/api/cdr-bridge/mappings",
           },
         ],
         theme: {
@@ -98,20 +98,27 @@ const config: Config = {
         },
         {
           type: "dropdown",
-          label: "API",
+          label: "EHRbase API",
           position: "left",
           items: [
             {
-              label: "HIP EHRbase",
-              to: "/api/hip-ehrbase",
+              label: "HIP EHRbase Query API",
+              to: "/api/hip-ehrbase/query",
             },
             {
-              label: "HIP CDR",
-              to: "/api/hip-cdr",
-            },
+              label: "HIP EHRbase EHR API",
+              to: "/api/hip-ehrbase/ehr",
+            }
+          ],
+        },
+        {
+          type: "dropdown",
+          label: "CDR Bridge API",
+          position: "left",
+          items: [
             {
               label: "CDR Bridge",
-              to: "/api/cdr-bridge",
+              to: "/api/cdr-bridge/mappings",
             },
           ],
         },
