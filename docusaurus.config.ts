@@ -40,6 +40,8 @@ const config: Config = {
           editUrl: "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
         },
         blog: {
+          path: "releases",
+          routeBasePath: "releases",
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
@@ -49,6 +51,32 @@ const config: Config = {
           customCss: "./src/css/custom.css",
         },
       } satisfies Preset.Options,
+    ],
+    [
+      "redocusaurus",
+      {
+        specs: [
+          {
+            id: "hip-ehrbase",
+            spec: "api/mapping.json",
+            route: "/api/hip-ehrbase",
+          },
+          {
+            id: "hip-cdr",
+            spec: "api/openapi.yaml",
+            route: "/api/hip-cdr",
+          },
+          {
+            id: "cdr-bridge",
+            spec: "api/mapping.json",
+            route: "/api/cdr-bridge",
+          },
+        ],
+        theme: {
+          // Change with your site colors
+          primaryColor: "#720035",
+        },
+      },
     ],
   ],
 
@@ -68,7 +96,26 @@ const config: Config = {
           position: "left",
           label: "Docs",
         },
-        { to: "/blog", label: "Blog", position: "left" },
+        {
+          type: "dropdown",
+          label: "API",
+          position: "left",
+          items: [
+            {
+              label: "HIP EHRbase",
+              to: "/api/hip-ehrbase",
+            },
+            {
+              label: "HIP CDR",
+              to: "/api/hip-cdr",
+            },
+            {
+              label: "CDR Bridge",
+              to: "/api/cdr-bridge",
+            },
+          ],
+        },
+        { to: "/releases", label: "Releases", position: "left" },
         {
           href: "https://github.com/ehrbase/ehrbase",
           label: "GitHub",
