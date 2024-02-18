@@ -80,14 +80,28 @@ Users are not administered directly in the ID provider, but in the HIP CDR Suite
 
 ![](./img//hip_cdr_roles.svg)
 
-# Scopes & Permissions matrix
+Translating the provided rST content, including the table and notes, into Markdown:
+
+## Scopes & Permissions matrix
 
 As a default configuration, HIP CDR provides roles and permissions.
 
-In a project environment, these roles and permissions will normally be adjusted to seamlessly integrate with local roles & permissions. the default roles can be understood as the minimum configuration to boostrap HIP CDR :::
+> **Note:** In a project environment, these roles and permissions will normally be adjusted to seamlessly integrate with local roles & permissions. The default roles can be understood as the minimum configuration to bootstrap HIP CDR.
 
 **Abbreviations**: **C**= Create, **R**=Read, **U**=Update, **D**=Delete
 
-+-----------+-----------+--------+--------+--------+--------+--------+ | Scope | P | S | Or | Tenant | M | Heal | | | ermission | uper-A | ganiza | A | edical | thcare | | | | dminis | tion-A | dminis | Domain | Profes | | | | trator | dminis | trator | Expert | sional | | | | | trator | | | | +===========+===========+========+========+========+========+========+ | Orga | Org | CRUD | - | - | - | - | | nisations | anization | | | | | | +-----------+-----------+--------+--------+--------+--------+--------+ | Tenants | Tenant | - | CRUD | - | - | - | +-----------+-----------+--------+--------+--------+--------+--------+ | Users | Org | CRUD | CRUD | - | - | - | | | anization | | | | | | | | Admi | | | | | | | | nistrator | | | | | | +-----------+-----------+--------+--------+--------+--------+--------+ | | Tenant | - | CRUD | CRUD | - | - | | | Admi | | | | | | | | nistrator | | | | | | +-----------+-----------+--------+--------+--------+--------+--------+ | | Medical | - | CRUD | CRUD | - | - | | | Domain | | | | | | | | Expert | | | | | | +-----------+-----------+--------+--------+--------+--------+--------+ | | H | - | CRUD | CRUD | - | - | | | ealthcare | | | | | | | | Pro | | | | | | | | fessional | | | | | | +-----------+-----------+--------+--------+--------+--------+--------+ | Apps | Admin | - | - | R | - | - | | | istration | | | | | | | | Dashboard | | | | | | +-----------+-----------+--------+--------+--------+--------+--------+ | | Show CDR | - | - | CRD + | - | - | | | Explorer | | | re | | | | | | | | nder + | | | | | | | | me | | | | | | | | tadata | | | +-----------+-----------+--------+--------+--------+--------+--------+ | | Patient | - | - | x | - | R | | | Viewer | | | | | | +-----------+-----------+--------+--------+--------+--------+--------+ | | Template | - | - | x | CRUD | - | | | M | | | | | | | | anagement | | | | | | +-----------+-----------+--------+--------+--------+--------+--------+
+| Scope                | Permission               | Super-Administrator | Organization-Administrator | Tenant Administrator | Medical Domain Expert | Healthcare Professional |
+|----------------------|--------------------------|---------------------|----------------------------|----------------------|-----------------------|-------------------------|
+| Organisations        | Organization             | CRUD                | -                          | -                    | -                     | -                       |
+| Tenants              | Tenant                   | -                   | CRUD                       | -                    | -                     | -                       |
+| Users                | Organization Administrator | CRUD             | CRUD                       | -                    | -                     | -                       |
+|                      | Tenant Administrator     | -                   | CRUD                       | CRUD                 | -                     | -                       |
+|                      | Medical Domain Expert    | -                   | CRUD                       | CRUD                 | -                     | -                       |
+|                      | Healthcare Professional  | -                   | CRUD                       | CRUD                 | -                     | -                       |
+| Apps                 | Administration Dashboard | -                   | -                          | R                    | -                     | -                       |
+|                      | Show CDR Explorer        | -                   | -                          | CRD + render + metadata | -                 | -                       |
+|                      | Patient Viewer           | -                   | -                          | x                    | -                     | R                       |
+|                      | Template Management      | -                   | -                          | x                    | CRUD                 | -                       |
+
 
 After purchasing a product license, your organization and one of your employees will be created as the first organization administrator.

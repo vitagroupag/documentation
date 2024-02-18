@@ -1,0 +1,8 @@
+{
+  "label": "Plugin System",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "description": "Overview over the EHRbase Plugin System"
+  }
+}
