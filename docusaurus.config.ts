@@ -57,14 +57,24 @@ const config: Config = {
       {
         specs: [
           {
-            id: "hip-ehrbase-ehr",
-            spec: "api/ehr-codegen.openapi.yaml",
-            route: "/api/hip-ehrbase/ehr",
+            id: "hip-ehrbase-definition",
+            spec: "api/definition-validation.openapi.yaml",
+            route: "/api/hip-ehrbase/definition",
+          },
+          {
+            id: "hip-ehrbase-admin",
+            spec: "api/ehrbase_admin_api.yml",
+            route: "/api/hip-ehrbase/admin",
           },
           {
             id: "hip-ehrbase-query",
             spec: "api/query-codegen.openapi.yaml",
             route: "/api/hip-ehrbase/query",
+          },
+          {
+            id: "hip-ehrbase-enterprise",
+            spec: "api/enterprise_api.yml",
+            route: "/api/hip-ehrbase/enterprise",
           },
           {
             id: "cdr-bridge",
@@ -102,12 +112,20 @@ const config: Config = {
           position: "left",
           items: [
             {
-              label: "HIP EHRbase Query API",
+              label: "Query API",
               to: "/api/hip-ehrbase/query",
             },
             {
-              label: "HIP EHRbase EHR API",
-              to: "/api/hip-ehrbase/ehr",
+              label: "Definition API",
+              to: "/api/hip-ehrbase/definition",
+            },
+            {
+              label: "Admin API",
+              to: "/api/hip-ehrbase/admin",
+            },
+            {
+              label: "Enterprise APIs",
+              to: "/api/hip-ehrbase/enterprise",
             }
           ],
         },
