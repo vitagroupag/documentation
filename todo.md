@@ -11,6 +11,9 @@
 - [ ] Switch the dockerfile from sphinx to docusaurus
 - [ ] Think about how to make different versions (ehrbase, hip ehrbase & hip cdr) work together
 - [ ] Freeze (Version)[https://docusaurus.io/docs/versioning] before Realase
+- [ ] Move Images to docs folder, use static images only for general purpose
+- [ ] EHR API from openEHR freezes
+- [ ] Theme with example payload in redocusaurus to light/gray
 
 ### Deployment
 
