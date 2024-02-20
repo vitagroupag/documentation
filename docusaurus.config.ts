@@ -77,6 +77,11 @@ const config: Config = {
             route: "/api/hip-ehrbase/enterprise",
           },
           {
+            id: "hip-ehrbase-ehr",
+            spec: "api/ehr-codegen.openapi.yaml",
+            route: "/api/hip-ehrbase/ehr",
+          },
+          {
             id: "cdr-bridge",
             spec: "api/mapping.json",
             route: "/api/cdr-bridge/mappings",
@@ -119,6 +124,10 @@ const config: Config = {
             {
               label: "Query API",
               to: "/api/hip-ehrbase/query",
+            },
+            {
+              label: "EHR APIs",
+              to: "/api/hip-ehrbase/ehr",
             },
             {
               label: "Definition API",
