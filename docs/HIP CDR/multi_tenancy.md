@@ -17,10 +17,6 @@ Note that users are associated with exactly one tenant and you will need differe
 
 For detailled information about how to create organizations, tenants and users, please see the CDR Suite documentation.
 
-:::tip
-After purchasing a product license, your organization and one of your employees will be created as the first organization administrator.
-:::
-
 Following table provides a detailled view on the scopes and permission of the default roles:
 
 **Abbreviations**: **C**= Create, **R**=Read, **U**=Update, **D**=Delete

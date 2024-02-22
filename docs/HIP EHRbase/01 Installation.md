@@ -1,3 +1,8 @@
+---
+sidebar_position: 2
+title: Installation
+---
+
 # HIP EHRbase Installation
 
 Typically, HIP EHRbase will be packed along with HIP CDR and should be installed as part of the overall installation process. For the case that CDR Base should be operated as a stand-alone application, you can follow the instructions below.

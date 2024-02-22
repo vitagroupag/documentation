@@ -1,3 +1,8 @@
+---
+sidebar_position: 5
+title: Mapping Worker Service
+---
+
 # Mapping Worker Service
 
 The Mapping Worker Service is resposible to execute mappings for specific tenants. It analyzes the payload that is being send to the connectors and checks for conditions defined in mapping files.

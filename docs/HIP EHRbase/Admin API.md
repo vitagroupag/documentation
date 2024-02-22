@@ -1,9 +1,10 @@
 ---
-sidebar_position: 6
+sidebar_position: 5
+title: Admin API
 ---
 
 
-# openEHR REST API
+# HIP EHRbase Admin API
 
 HIP EHRbase implements version 1.0.2 of the official openEHR REST API.
 

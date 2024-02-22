@@ -12,6 +12,8 @@ HIP CDR secures data by implementing the [Extensible Access Control Markup Langu
 For now, configuration of access control for roles needs to be done by vitagroup or an authorized partner. The CDR Suite will support this task for tenant-admins in one of the upcoming releases.
 :::
 
+### Overview of Scopes and Permissions
+
 The following list provides an extensive overview of available scopes and permissions in HIP CDR. These can be used as foundation to define individual role definitions:
 
 | Category    | Scope            | Permissions                                                     |
@@ -43,6 +45,8 @@ The following list provides an extensive overview of available scopes and permis
 | orgservice  | tenant-user      | create<br/>delete<br/>read<br/>update                           |
 | tenant      |                  | read                                                            |
 
+
+### Representation in XACML
 
 Within XACML, scopes and permissions are formalized the following way. The example shows the policy for healthcare professionals.
 
