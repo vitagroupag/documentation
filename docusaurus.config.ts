@@ -4,7 +4,7 @@ import type * as Preset from "@docusaurus/preset-classic";
 
 const config: Config = {
   title: "HIP Documentation",
-  tagline: "EHRbase, HIP EHRbase and HIP CDR Documentation",
+  tagline: "HIP EHRbase and HIP CDR Documentation",
   favicon: "img/favicon.ico",
 
   // Set the production url of your site here
@@ -15,8 +15,8 @@ const config: Config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: "facebook", // Usually your GitHub org/user name.
-  projectName: "docusaurus", // Usually your repo name.
+  organizationName: "vitagroup", // Usually your GitHub org/user name.
+  projectName: "HIP CDRs", // Usually your repo name.
 
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
@@ -158,7 +158,7 @@ const config: Config = {
             },
           ],
         },
-        { to: "/releases", label: "Releases", position: "left" },
+       /* { to: "/releases", label: "Releases", position: "left" }, Excluded until ready*/
         {
           href: "https://github.com/ehrbase/ehrbase",
           label: "GitHub",
@@ -169,7 +169,7 @@ const config: Config = {
     footer: {
       style: "dark",
       links: [
-        {
+    /*    {
           title: "Docs",
           items: [
             {
@@ -177,21 +177,21 @@ const config: Config = {
               to: "/docs/intro",
             },
           ],
-        },
+        },*/
         {
           title: "Community",
           items: [
             {
-              label: "Stack Overflow",
-              href: "https://stackoverflow.com/questions/tagged/docusaurus",
+              label: "openEHR Discourse Forum",
+              href: "https://discourse.openehr.org/tag/ehrbase",
             },
             {
-              label: "Discord",
-              href: "https://discordapp.com/invite/docusaurus",
+              label: "HIP CDR Website",
+              href: "https://hip.vitagroup.ag",
             },
             {
-              label: "Twitter",
-              href: "https://twitter.com/docusaurus",
+              label: "X / Twitter",
+              href: "https://twitter.com/vitagroup_ag",
             },
           ],
         },
@@ -200,7 +200,7 @@ const config: Config = {
           items: [
             {
               label: "GitHub",
-              href: "https://github.com/facebook/docusaurus",
+              href: "https://github.com/vitagroupag",
             },
           ],
         },

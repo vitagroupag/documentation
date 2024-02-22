@@ -10,12 +10,11 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: "Open Source",
+    title: "Vendor Neutral",
     Svg: require("@site/static/img/open.svg").default,
     description: (
       <>
-        Discover the power of open-source with HIP EHRbase. A flexible and extendable solution designed for robust, future-proof, and sustainable digital healthcare
-        projects."
+        Through international open standards such as FHIR, openEHR. Plus: data stored in open source licensed system components."
       </>
     ),
   },
@@ -24,16 +23,16 @@ const FeatureList: FeatureItem[] = [
     Svg: require("@site/static/img/server.svg").default,
     description: (
       <>
-        Scale your e-health infrastructure effortlessly with HIP EHRbase. Experience unparalleled scalability from applications to extensive e-health systems, powered
+        Scale your e-health infrastructure effortlessly with HIP CDR. Experience unparalleled scalability from applications to extensive e-health systems, powered
         by next-generation databases
       </>
     ),
   },
   {
-    title: "Deploy anywhere",
+    title: "Built to Build",
     Svg: require("@site/static/img/code.svg").default,
     description: (
-      <>Deploy your digital healthcare solutions anywhere with HIP EHRbase.Compatible with servers, VMs or Kubernetes. HIP EHRbase is also certified for OpenShift</>
+      <>Comprehensive options for effective implementation of your project requirements thanks to the expandable data model and powerful developer tools.</>
     ),
   },
 ];
@@ -57,12 +56,10 @@ export default function HomepageFeatures(): JSX.Element {
     <section className={styles.features}>
       <div className="container">
         <div className="text--center margin-bottom--lg">
-          <Heading as="h2" className="features__title">
-            Discover HIP EHRbase
-          </Heading>
+          <img src="/img/HIP_CDR_Logo_no_claim.png" alt="HIP CDR Logo" className="logo" />
         </div>
         <div className="text--center margin-bottom--lg">
-          <p className="features__subtitle">The reliable and powerful openEHR server</p>
+          <p className="features__subtitle">The open SaaS platform for your healthcare data</p>
         </div>
         <div className="row">
           {FeatureList.map((props, idx) => (

@@ -9,12 +9,14 @@ The HIP CDR is used to store medical information independent of the system and a
 
 ## Disclaimer of Use
 
-The HIP CDR is not a primary system in the sense of mapping application logic and workflows in everyday care/care, but does focus on the integration and standardized provision of the medical data recorded in the respective primary systems. The HIP CDR is not a medical product and may not be used as such.
+HIP CDR is not a medical product and may not be used as such.
 
 ## Who is allowed to use HIP CDR?
 
-Operation may only be carried out by trained personnel that was educated directly from the manufacturer vitagroup AG or its partners.
+Operation may only be carried out by trained personnel that was educated directly from the manufacturer vitagroup AG or its authorized partners.
 
-## Notes on reading the operating instructions
+## Contact
 
-HIP CDR Suite supports the browsers listed in the system requirements. Google Chrome is used as the default browser in this user manual.The names of options, windows, buttons, or other controls are shown in bold.
+| vitagroup health intelligence GmbH                  |                                        |
+|-----------------------------------------------------|----------------------------------------|
+| vitagroup health intelligence GmbH    <br/>     Hamburger Straße 273b <br/> 38114 Braunschweig, Germany | Phone: +49 153 7022 0160  <br/>  E-Mail: info.vhi@vitagroup. <br/>  Website: [vitagroup.ag](https://vitagroup.ag)            |
