@@ -182,3 +182,4 @@ VALIDATION_EXTERNALTERMINOLOGY_PROVIDER_FHIRTERMINOLOGYSERVER_URL=http://fhir.lo
 :::info
 Currently EHRbase supports only one authentication method to be configured that will be applied to all FHIR Terminology Servers.
 :::
+

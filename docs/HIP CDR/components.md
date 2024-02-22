@@ -19,7 +19,7 @@ The data models can be annotated with standardized terminologies to ensure seman
 
 The data stored in EHRbase has a comprehensive (ATNA) audit trail and strict versioning. Clinical information is therefore not deleted during an update, but is supplemented with a new version. Old versions of clinical data are retained so that only new data sets can be written ("append only"); overwriting updates and deletions are not possible. The information about technical and human users who have made changes to data is also permanently stored.
 
-As one of the important features, EHRbase implements the official [openEHR REST API](/api/) and the Archetype Query Language.
+As one of the important features, EHRbase implements the official [openEHR REST API](/HIP EHRbase/openehr_rest) and the Archetype Query Language.
 
 When transmitting data to EHRbase, various validation steps are carried out, such as the correct coding of data using terminologies, the presence of data elements, the use of standardized physical units and data types.
 
@@ -39,7 +39,7 @@ In order to integrate into the hospitals\' infrastructures, user data must be in
 
 Keycloak enables federation of user authentication from Active Directory and other common services and mapping to OAuth2 and OpenID Connect (OIDC). HIP CDR uses this approach for authentication and authorization in all services and allows the implementation of a cross-system single sign-on (SSO) using OIDC.
 
-# Data Integration Engine (CDR Bridge)
+# Configurable Facade (CDR Bridge)
 
 HIP CDR provides an extensible data integration component, the CDR Bridge. The connection to the data-supplying systems takes place via so-called data connectors for various data formats and protocols (currently available: HL7 v2 and HL7 FHIR).
 
@@ -76,7 +76,6 @@ HIP CDR Suite uses a central ID provider (Keycloak) to authenticate and authoriz
 
 Users are not administered directly in the ID provider, but in the HIP CDR Suite user interface.
 
-# Role management
 
 
 
