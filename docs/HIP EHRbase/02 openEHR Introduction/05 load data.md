@@ -16,7 +16,7 @@ java -jar client-library-0.2.0.jar -opt "C:\Users\MyUser\Desktop\HiGHmed_Cardio_
 
 You should find a file named *HiGHmed_Cardio_Monitoring_v1.java* inside your project structure that should look like this:
 
-```Java
+```
 ...
 @Entity
 @Archetype("openEHR-EHR-COMPOSITION.self_monitoring.v0")
