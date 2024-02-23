@@ -14,7 +14,7 @@ const FeatureList: FeatureItem[] = [
     Svg: require("@site/static/img/open.svg").default,
     description: (
       <>
-        Through international open standards such as FHIR, openEHR. Plus: data stored in open source licensed system components."
+        Through international open standards such as FHIR, openEHR. Plus: data stored in open source licensed system components.
       </>
     ),
   },
@@ -24,7 +24,7 @@ const FeatureList: FeatureItem[] = [
     description: (
       <>
         Scale your e-health infrastructure effortlessly with HIP CDR. Experience unparalleled scalability from applications to extensive e-health systems, powered
-        by next-generation databases
+        by next-generation databases.
       </>
     ),
   },

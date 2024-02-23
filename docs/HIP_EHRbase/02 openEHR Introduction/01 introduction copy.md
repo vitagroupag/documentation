@@ -1,10 +1,5 @@
 # openEHR Introduction
 
-:::warning
-This section is work in progress
-:::
-
-
 ## What is openEHR?  
 openEHR is an open platform specification. From a practical perspective, you can think about it as an electronic health record that consists of a database wrapped with a service layer. The database itself provides only a basic architecture and does not define the clinical content. This is done in a separate modeling layer. Hence, from a developer's perspective, openEHR can be understood as a model-driven software development approach based on an adaptive database that can consume new data definitions at runtime. This allows managing the high complexity of the medical domain.
 
