@@ -1,8 +1,9 @@
 ---
 sidebar_position: 3
+title: FROM ... CONTAINS
 ---
 
-# AQL CONTAINS
+# AQL FROM ... CONTAINS
 
 The CONTAINS operator allows filtering compositions based on the openEHR Reference Model objects (and archetype_IDs) present inside the particular data instance.
 
@@ -10,34 +11,34 @@ The CONTAINS operator allows filtering compositions based on the openEHR Referen
 
 The following openEHR RM classes can be used in CONTAINS. Note that HIP EHRbase also supports the use of abstract classes from the openEHR RM.
 
-- ENTRY_CLASS
-  - EVALUATION
-  - OBSERVATION
-  - INSTRUCTION
-  - ACTION
-- CLUSTER
-- FEEDER_AUDIT
-- ELEMENT
-- EHR_STATUS
-- HISTORY
-- EVENT
-  - POINT_EVENT
-  - INTERVAL_EVENT
-- ITEM_SINGLE
-- ITEM_LIST
-- ITEM_TABLE
-- ITEM_TREE
-- ITEM
-- ISM_TRANSITION
-- ACTIVITY
-- SECTION
-- EVENT_CONTEXT
+- `ENTRY_CLASS`
+  - `EVALUATION`
+  - `OBSERVATION`
+  - `INSTRUCTION`
+  - `ACTION`
+- `CLUSTER`
+- `FEEDER_AUDIT`
+- `ELEMENT`
+- `EHR_STATUS`
+- `HISTORY`
+- `EVENT`
+  - `POINT_EVENT`
+  - `INTERVAL_EVENT`
+- `ITEM_SINGLE`
+- `ITEM_LIST`
+- `ITEM_TABLE`
+- `ITEM_TREE`
+- `ITEM`
+- `ISM_TRANSITION`
+- `ACTIVITY`
+- `SECTION`
+- `EVENT_CONTEXT`
 
 ## CONTAINS operators
 
-CONTAINS statements can be chained and nested using parenthesis and operators AND and OR.
+CONTAINS statements can be chained and nested using parenthesis and operators AND and OR. You can also use parentheses to control the order of bindings. 
 
-The NOT operator is currently not implemented.
+The NOT operator is currently not supported.
 
 ## Examples
 
@@ -86,23 +87,8 @@ WHERE
     f/name/value = 'Blood Pressure'
 ```
 
-### Example 4: CONTAINS on FEEDER_AUDIT
 
-For data integration scenarios, the Feeder_Audit object can be used to store metadata about the provenance of a reference model object. This example retrieves a composition based only on the identifier of the message that was received by HIP CDR, mapped to an openEHR Templates and stored in CDR Base.
-
-```sql
-SELECT
-     e/ehr_id/value,
-     c,
-     c/feeder_audit as Feeder_Audit
-FROM EHR e[ehr_id/value='118194d5-1efe-42fc-8ee8-2e11b74782a2'] CONTAINS
-    FEEDER_AUDIT f
-WHERE
-    f/feeder_audit/originating_system_item_ids/id='Observation/6115aed3-8b17-42ce-97d5-67e25b02a702/_history/1' AND
-    f/feeder_audit/originating_system_item_ids/type='fhir_logical_id'
-```
-
-### Example 5: CONTAINS on abstract classes
+### Example 4: CONTAINS on abstract classes
 
 This example demonstrates the use of abstract classes within the CONTAINS statement. Within the openEHR Reference Model, care entry classes (OBSERVATION, EVALUATION, ACTION, INSTRUCTION) inherit from the CARE_ENTRY class. Incorporating the CARE_ENTRY class in AQL retrieves data from all these entry classes, allowing selection of shared attributes like 'name' and 'archetype_details'.
 
