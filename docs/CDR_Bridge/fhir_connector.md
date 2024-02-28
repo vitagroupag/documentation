@@ -130,6 +130,18 @@ All supported operations require a mapping for the resource involved (see above)
   - Versioning not supported (`ETag`, `Last-Modified`)
   - Conditional create not supported
 
+### `delete`
+
+- **Status**: Supported
+- **HTTP Method**: `DELETE`
+- **Example**: `/fhir/R4/Patient/123`
+- **Response codes**: `200`, `401`, `403`, `404`, `409`, `410`
+- **Constraints**:
+  - `ETag` header not supported
+  - Conditional delete not supported
+  - Cascading delete not supported
+  - Expunge delete not supported
+
 ### `search`
 
 - **Status**: Supported
@@ -157,7 +169,6 @@ Following FHIR operations are currently not supported by the FHIR API:
 
 - `vread`
 - `patch`
-- `delete`
 - `search-all`
 - `capabilities`
 - `batch/transaction`
