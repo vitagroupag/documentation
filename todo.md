@@ -14,6 +14,7 @@
 - [ ] Move Images to docs folder, use static images only for general purpose
 - [ ] EHR API from openEHR freezes
 - [ ] Theme with example payload in redocusaurus to light/gray
+- [ ] MD to PDF [Docusaurus PDF](https://nuxnik.com/docusaurus-pdf-generator/)
 
 ### Deployment
 
