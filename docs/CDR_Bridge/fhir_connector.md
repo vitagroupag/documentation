@@ -141,6 +141,8 @@ All supported operations require a mapping for the resource involved (see above)
   - Conditional delete not supported
   - Cascading delete not supported
   - Expunge delete not supported
+  - `Patient` Resource can only be deleted, if no Compositions exist for the associated EHR
+  - `Encounter` Resource can only be deleted, if no Compositions exist for the associated Folder
 
 ### `search`
 
