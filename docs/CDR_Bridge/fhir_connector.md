@@ -164,6 +164,10 @@ All supported operations require a mapping for the resource involved (see above)
   - Not supported common parameters: `_text`, `_content`, `_list`, `_type`
   - Not supported search result parameters: `_contained`, `_containedType`
   - Advanced querying (`_query` and `_filter`) not supported
+  - FHIR Search on resources stored in the EHRbase store is limited to the following parameter
+    - `_lastUpdated` for querying and sorting
+    - `subject` as a reference to the `Patient` resource for querying
+- **Hint**: Adding a `_sort` parameter is highly recommended, when pagination functionality is used.
 
 ### Not Supported Operations
 
