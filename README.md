@@ -1,41 +1,44 @@
 # HIP Documentation
 
-This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
+This website is built using [Docusaurus](https://docusaurus.io/). It will serve as the integrated documentation, shipped together with HIP CDR and HIP EHRbase for customers and integration partners.
 
-### Installation
+**Docusaurus** Learn about the most important Docusaurus concepts here: [Docusaurus Docs](https://docusaurus.io/docs/category/guides)
 
-```
-$ yarn
-```
+**Markown Cheatsheet** Markdown is a method for writing formatted text using a simple plain text format, to see all the possible formats, check out this: [Cheatsheet](https://github.com/lifeparticle/Markdown-Cheatsheet)
+
+**MDX** MDX lets you use JSX in your markdown content. You can import components, such as interactive charts or alerts, and embed them within your content. To see what it can do: [MDX](https://mdxjs.com/)
 
 ### Local Development
 
-```
-$ yarn start
-```
-
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
-
-### Build
+To add content first clone and install the project:
 
 ```
-$ yarn build
+cd docs
+npm install
 ```
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
-
-### Deployment
-
-Using SSH:
+To run the project with:
 
 ```
-$ USE_SSH=true yarn deploy
+npm run start
 ```
 
-Not using SSH:
+_Important notice_ Before committing your changes, please run the `build` to make sure all links and changes are working
 
 ```
-$ GIT_USER=<Your GitHub username> yarn deploy
+npm run build
 ```
 
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+### Docker for developement
+
+```
+docker build --target development -t docs:dev .
+docker run -p 3000:3000 docs:dev
+```
+
+### Docker for production
+
+```
+docker build -t docusaurus:latest .
+docker run --rm -p 3000:80 docusaurus:latest
+```
