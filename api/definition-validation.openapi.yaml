@@ -66,6 +66,9 @@ tags:
 
       Operational templates simplify the creation of openEHR-based input or storage implementations by, for a specific COMPOSITION template (use case), collecting all labels, requirements and constraints from all contained archetypes and sub-templates into a single easily parsed file. 
       This file can be a basis for UI-generation/creation and for data validation.
+  - name: ADL2
+    x-displayName: ADL2 TEMPLATE
+    description: empty
 
   - name: TemplateList_schema
     x-displayName: Template list
@@ -100,14 +103,14 @@ paths:
       tags:
         - ADL1.4
       parameters:
-        - $ref: '#/components/parameters/Prefer'
+        - $ref: "#/components/parameters/Prefer"
       requestBody:
-        description: ''
+        description: ""
         content:
           application/xml:
             schema:
               oneOf:
-                - $ref: '#/components/schemas/OperationalTemplate'
+                - $ref: "#/components/schemas/OperationalTemplate"
                 - type: string
             example: |-
               <template xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.openehr.org/v1">
@@ -163,12 +166,12 @@ paths:
                       ...
         required: true
       responses:
-        '201':
-          $ref: '#/components/responses/201_Template_adl1_4_upload'
-        '400':
-          $ref: '#/components/responses/400_invalid_template_content'
-        '409':
-          $ref: '#/components/responses/409_template_already_exists'
+        "201":
+          $ref: "#/components/responses/201_Template_adl1_4_upload"
+        "400":
+          $ref: "#/components/responses/400_invalid_template_content"
+        "409":
+          $ref: "#/components/responses/409_template_already_exists"
     get:
       operationId: definition_template_adl1.4_list
       summary: List templates
@@ -177,8 +180,8 @@ paths:
       tags:
         - ADL1.4
       responses:
-        '200':
-          $ref: '#/components/responses/200_TemplateList_adl1_4'
+        "200":
+          $ref: "#/components/responses/200_TemplateList_adl1_4"
   /definition/template/adl1.4/{template_id}:
     get:
       operationId: definition_template_adl1.4_get
@@ -190,17 +193,17 @@ paths:
       tags:
         - ADL1.4
       parameters:
-        - $ref: '#/components/parameters/template_id'
-        - $ref: '#/components/parameters/Accept_template'
+        - $ref: "#/components/parameters/template_id"
+        - $ref: "#/components/parameters/Accept_template"
       responses:
-        '200':
-          $ref: '#/components/responses/200_Template_adl1_4_retrieved'
-        '400':
-          $ref: '#/components/responses/400_invalid_template_id'
-        '404':
-          $ref: '#/components/responses/404_unknown_template_id'
-        '406':
-          $ref: '#/components/responses/406'
+        "200":
+          $ref: "#/components/responses/200_Template_adl1_4_retrieved"
+        "400":
+          $ref: "#/components/responses/400_invalid_template_id"
+        "404":
+          $ref: "#/components/responses/404_unknown_template_id"
+        "406":
+          $ref: "#/components/responses/406"
   /definition/query/{qualified_query_name}:
     get:
       operationId: definition_query_list
@@ -216,10 +219,10 @@ paths:
       tags:
         - Query
       parameters:
-        - $ref: '#/components/parameters/qualified_query_name'
+        - $ref: "#/components/parameters/qualified_query_name"
       responses:
-        '200':
-          $ref: '#/components/responses/200_QueryList'
+        "200":
+          $ref: "#/components/responses/200_QueryList"
     put:
       operationId: definition_query_store.yaml
       summary: Store a query
@@ -228,13 +231,13 @@ paths:
       tags:
         - Query
       parameters:
-        - $ref: '#/components/parameters/qualified_query_name'
-        - $ref: '#/components/parameters/query_type'
+        - $ref: "#/components/parameters/qualified_query_name"
+        - $ref: "#/components/parameters/query_type"
       requestBody:
         content:
           text/plain:
             schema:
-              $ref: '#/components/schemas/AQL'
+              $ref: "#/components/schemas/AQL"
             example: |-
               SELECT c FROM
                 EHR e
@@ -244,10 +247,10 @@ paths:
                 obs/data[at0001]/events[at0006]/data[at0003]/items[at0004]/value/magnitude >= $systolic_bp
         required: true
       responses:
-        '200':
-          $ref: '#/components/responses/200_StoredQuery_stored'
-        '400':
-          $ref: '#/components/responses/400_StoredQuery'
+        "200":
+          $ref: "#/components/responses/200_StoredQuery_stored"
+        "400":
+          $ref: "#/components/responses/400_StoredQuery"
   /definition/query/{qualified_query_name}/{version}:
     put:
       operationId: definition_query_version_store.yaml
@@ -257,14 +260,14 @@ paths:
       tags:
         - Query
       parameters:
-        - $ref: '#/components/parameters/qualified_query_name'
-        - $ref: '#/components/parameters/version'
-        - $ref: '#/components/parameters/query_type'
+        - $ref: "#/components/parameters/qualified_query_name"
+        - $ref: "#/components/parameters/version"
+        - $ref: "#/components/parameters/query_type"
       requestBody:
         content:
           text/plain:
             schema:
-              $ref: '#/components/schemas/AQL'
+              $ref: "#/components/schemas/AQL"
             example: |-
               SELECT c FROM
                 EHR e
@@ -274,12 +277,12 @@ paths:
                 obs/data[at0001]/events[at0006]/data[at0003]/items[at0004]/value/magnitude >= $systolic_bp
         required: true
       responses:
-        '200':
-          $ref: '#/components/responses/200_StoredQuery_stored'
-        '400':
-          $ref: '#/components/responses/400_StoredQuery'
-        '409':
-          $ref: '#/components/responses/409_StoredQuery_version'
+        "200":
+          $ref: "#/components/responses/200_StoredQuery_stored"
+        "400":
+          $ref: "#/components/responses/400_StoredQuery"
+        "409":
+          $ref: "#/components/responses/409_StoredQuery_version"
     get:
       operationId: definition_query_version_get
       summary: Get stored query at version
@@ -288,13 +291,13 @@ paths:
       tags:
         - Query
       parameters:
-        - $ref: '#/components/parameters/qualified_query_name'
-        - $ref: '#/components/parameters/version'
+        - $ref: "#/components/parameters/qualified_query_name"
+        - $ref: "#/components/parameters/version"
       responses:
-        '200':
-          $ref: '#/components/responses/200_StoredQuery_get'
-        '404':
-          $ref: '#/components/responses/404_Query_version'
+        "200":
+          $ref: "#/components/responses/200_StoredQuery_get"
+        "404":
+          $ref: "#/components/responses/404_Query_version"
 components:
   schemas:
     TemplateMetadata:
@@ -322,12 +325,12 @@ components:
         version: 1.0.1
         concept: Vital Signs
         archetype_id: openEHR-EHR-COMPOSITION.encounter.v1
-        created_timestamp: '2017-08-14T19:24:56.639Z'
+        created_timestamp: "2017-08-14T19:24:56.639Z"
     TemplateList:
       title: TemplateList
       type: array
       items:
-        $ref: '#/components/schemas/TemplateMetadata'
+        $ref: "#/components/schemas/TemplateMetadata"
       description: |
         List of uploaded TEMPLATE resources.
     OperationalTemplate:
@@ -407,7 +410,7 @@ components:
           type: integer
           format: int32
       example:
-        minOp: '>='
+        minOp: ">="
         min: 1
         maxOp: <=
         max: 1
@@ -429,7 +432,7 @@ components:
           type: integer
           format: int32
       example:
-        minOp: '>='
+        minOp: ">="
         min: 0
         maxOp: <
         max: 1000
@@ -438,12 +441,12 @@ components:
       type: object
       properties:
         precision:
-          $ref: '#/components/schemas/Precision'
+          $ref: "#/components/schemas/Precision"
         range:
-          $ref: '#/components/schemas/Range'
+          $ref: "#/components/schemas/Range"
       example:
         precision:
-          minOp: '>='
+          minOp: ">="
           min: 1
           maxOp: <=
           max: 1
@@ -469,17 +472,17 @@ components:
         label:
           type: string
         validation:
-          $ref: '#/components/schemas/Validation'
+          $ref: "#/components/schemas/Validation"
         localizedLabels:
-          $ref: '#/components/schemas/LocalizedLabels'
+          $ref: "#/components/schemas/LocalizedLabels"
         localizedDescriptions:
-          $ref: '#/components/schemas/LocalizedDescriptions'
+          $ref: "#/components/schemas/LocalizedDescriptions"
       example:
         value: °C
         label: °C
         validation:
           precision:
-            minOp: '>='
+            minOp: ">="
             min: 1
             maxOp: <=
             max: 1
@@ -490,17 +493,17 @@ components:
       type: object
       properties:
         range:
-          $ref: '#/components/schemas/Range'
+          $ref: "#/components/schemas/Range"
         precision:
-          $ref: '#/components/schemas/Precision'
+          $ref: "#/components/schemas/Precision"
       example:
         range:
-          minOp: '>='
+          minOp: ">="
           min: 0
           maxOp: <
           max: 1000
         precision:
-          minOp: '>='
+          minOp: ">="
           min: 0
           maxOp: <=
           max: 0
@@ -517,12 +520,12 @@ components:
         list:
           type: array
           items:
-            $ref: '#/components/schemas/List'
-          description: ''
+            $ref: "#/components/schemas/List"
+          description: ""
         defaultValue:
           type: string
         validation:
-          $ref: '#/components/schemas/Validation1'
+          $ref: "#/components/schemas/Validation1"
       example:
         type: TEXT
     SNOMEDCT:
@@ -537,7 +540,7 @@ components:
         terminologyId:
           type: string
       example:
-        value: '163030003'
+        value: "163030003"
         terminologyId: SNOMED-CT(2003)
     TermBindings:
       title: TermBindings
@@ -546,10 +549,10 @@ components:
       type: object
       properties:
         SNOMED-CT:
-          $ref: '#/components/schemas/SNOMEDCT'
+          $ref: "#/components/schemas/SNOMEDCT"
       example:
         SNOMED-CT:
-          value: '163030003'
+          value: "163030003"
           terminologyId: SNOMED-CT(2003)
     Input1:
       title: Input1
@@ -593,23 +596,23 @@ components:
           type: integer
           format: int32
         localizedNames:
-          $ref: '#/components/schemas/LocalizedNames1'
+          $ref: "#/components/schemas/LocalizedNames1"
         localizedDescriptions:
-          $ref: '#/components/schemas/LocalizedDescriptions'
+          $ref: "#/components/schemas/LocalizedDescriptions"
         aqlPath:
           type: string
         inputs:
           type: array
           items:
-            $ref: '#/components/schemas/Input1'
-          description: ''
+            $ref: "#/components/schemas/Input1"
+          description: ""
         name:
           type: string
       example:
         id: count_value
         localizedName: Size
         rmType: DV_COUNT
-        nodeId: ''
+        nodeId: ""
         min: 0
         max: 1
         localizedNames:
@@ -652,32 +655,32 @@ components:
           type: integer
           format: int32
         localizedNames:
-          $ref: '#/components/schemas/LocalizedNames2'
+          $ref: "#/components/schemas/LocalizedNames2"
         localizedDescriptions:
-          $ref: '#/components/schemas/LocalizedDescriptions'
+          $ref: "#/components/schemas/LocalizedDescriptions"
         annotations:
-          $ref: '#/components/schemas/Annotations'
+          $ref: "#/components/schemas/Annotations"
         aqlPath:
           type: string
         inputs:
           type: array
           items:
-            $ref: '#/components/schemas/Input'
-          description: ''
+            $ref: "#/components/schemas/Input"
+          description: ""
         dependsOn:
           type: array
           items:
             type: string
-          description: ''
+          description: ""
         inContext:
           type: boolean
         termBindings:
-          $ref: '#/components/schemas/TermBindings'
+          $ref: "#/components/schemas/TermBindings"
         children:
           type: array
           items:
-            $ref: '#/components/schemas/Child3'
-          description: ''
+            $ref: "#/components/schemas/Child3"
+          description: ""
       example:
         id: tags
         name: Tags
@@ -689,7 +692,7 @@ components:
         localizedNames:
           sl: Tagi
         localizedDescriptions:
-          sl: '*'
+          sl: "*"
         annotations:
           comment: Tags applied to the composition. They can contain various ids, such as episode id, central case id or other types of information forming composition meta-data.
         aqlPath: /context/other_context[at0001]/items[openEHR-EHR-CLUSTER.context_detail.v1]/items[at0008]/value
@@ -709,16 +712,16 @@ components:
         label:
           type: string
         localizedLabels:
-          $ref: '#/components/schemas/LocalizedLabels'
+          $ref: "#/components/schemas/LocalizedLabels"
         localizedDescriptions:
-          $ref: '#/components/schemas/LocalizedDescriptions'
+          $ref: "#/components/schemas/LocalizedDescriptions"
       example:
         value: at0022
         label: Mouth
         localizedLabels:
           sl: Usta
         localizedDescriptions:
-          sl: '*Temperature is measured within the mouth(en)'
+          sl: "*Temperature is measured within the mouth(en)"
     Input2:
       title: Input2
       required:
@@ -732,8 +735,8 @@ components:
         list:
           type: array
           items:
-            $ref: '#/components/schemas/List1'
-          description: ''
+            $ref: "#/components/schemas/List1"
+          description: ""
       example:
         type: DATETIME
     Annotations1:
@@ -745,7 +748,7 @@ components:
         view:pass_through:
           type: string
       example:
-        comment: 'Perloff D, Grim C, Flack J, Frohlich ED, Hill M, McDonald M, Morgenstern BZ. Human blood pressure determination by sphygmomanometry. Circulation 1993;88;2460-2470. '
+        comment: "Perloff D, Grim C, Flack J, Frohlich ED, Hill M, McDonald M, Morgenstern BZ. Human blood pressure determination by sphygmomanometry. Circulation 1993;88;2460-2470. "
     Child1:
       title: Child1
       required:
@@ -774,37 +777,37 @@ components:
           type: integer
           format: int32
         localizedNames:
-          $ref: '#/components/schemas/LocalizedNames1'
+          $ref: "#/components/schemas/LocalizedNames1"
         localizedDescriptions:
-          $ref: '#/components/schemas/LocalizedDescriptions'
+          $ref: "#/components/schemas/LocalizedDescriptions"
         aqlPath:
           type: string
         children:
           type: array
           items:
-            $ref: '#/components/schemas/Child2'
-          description: ''
+            $ref: "#/components/schemas/Child2"
+          description: ""
         inputs:
           type: array
           items:
-            $ref: '#/components/schemas/Input2'
-          description: ''
+            $ref: "#/components/schemas/Input2"
+          description: ""
         inContext:
           type: boolean
         dependsOn:
           type: array
           items:
             type: string
-          description: ''
+          description: ""
         annotations:
-          $ref: '#/components/schemas/Annotations1'
+          $ref: "#/components/schemas/Annotations1"
         termBindings:
-          $ref: '#/components/schemas/TermBindings'
+          $ref: "#/components/schemas/TermBindings"
         proportionTypes:
           type: array
           items:
             type: string
-          description: ''
+          description: ""
       example:
         id: context_detail
         name: Context detail
@@ -829,7 +832,7 @@ components:
             localizedNames:
               sl: Tagi
             localizedDescriptions:
-              sl: '*'
+              sl: "*"
             annotations:
               comment: Tags applied to the composition. They can contain various ids, such as episode id, central case id or other types of information forming composition meta-data.
             aqlPath: /context/other_context[at0001]/items[openEHR-EHR-CLUSTER.context_detail.v1]/items[at0008]/value
@@ -848,12 +851,12 @@ components:
         label:
           type: string
         localizedLabels:
-          $ref: '#/components/schemas/LocalizedLabels'
+          $ref: "#/components/schemas/LocalizedLabels"
       example:
-        value: '433'
+        value: "433"
         label: event
         localizedLabels:
-          sl: ''
+          sl: ""
     Input3:
       title: Input3
       required:
@@ -868,18 +871,18 @@ components:
         list:
           type: array
           items:
-            $ref: '#/components/schemas/List2'
-          description: ''
+            $ref: "#/components/schemas/List2"
+          description: ""
         terminology:
           type: string
       example:
         suffix: code
         type: CODED_TEXT
         list:
-          - value: '433'
+          - value: "433"
             label: event
             localizedLabels:
-              sl: ''
+              sl: ""
         terminology: openehr
     Child:
       title: Child
@@ -908,29 +911,29 @@ components:
         children:
           type: array
           items:
-            $ref: '#/components/schemas/Child1'
-          description: ''
+            $ref: "#/components/schemas/Child1"
+          description: ""
         name:
           type: string
         localizedName:
           type: string
         localizedNames:
-          $ref: '#/components/schemas/LocalizedNames1'
+          $ref: "#/components/schemas/LocalizedNames1"
         localizedDescriptions:
-          $ref: '#/components/schemas/LocalizedDescriptions'
+          $ref: "#/components/schemas/LocalizedDescriptions"
         termBindings:
-          $ref: '#/components/schemas/TermBindings'
+          $ref: "#/components/schemas/TermBindings"
         inputs:
           type: array
           items:
-            $ref: '#/components/schemas/Input3'
-          description: ''
+            $ref: "#/components/schemas/Input3"
+          description: ""
         inContext:
           type: boolean
       example:
         id: context
         rmType: EVENT_CONTEXT
-        nodeId: ''
+        nodeId: ""
         min: 1
         max: 1
         aqlPath: /context
@@ -958,7 +961,7 @@ components:
                 localizedNames:
                   sl: Tagi
                 localizedDescriptions:
-                  sl: '*'
+                  sl: "*"
                 annotations:
                   comment: Tags applied to the composition. They can contain various ids, such as episode id, central case id or other types of information forming composition meta-data.
                 aqlPath: /context/other_context[at0001]/items[openEHR-EHR-CLUSTER.context_detail.v1]/items[at0008]/value
@@ -1018,15 +1021,15 @@ components:
           type: integer
           format: int32
         localizedNames:
-          $ref: '#/components/schemas/LocalizedNames'
+          $ref: "#/components/schemas/LocalizedNames"
         localizedDescriptions:
-          $ref: '#/components/schemas/LocalizedDescriptions'
+          $ref: "#/components/schemas/LocalizedDescriptions"
         aqlPath:
           type: string
         children:
           type: array
           items:
-            $ref: '#/components/schemas/Child'
+            $ref: "#/components/schemas/Child"
     WebTemplate:
       title: WebTemplate
       required:
@@ -1048,7 +1051,7 @@ components:
           items:
             type: string
         tree:
-          $ref: '#/components/schemas/Tree'
+          $ref: "#/components/schemas/Tree"
     OperationalTemplateV2:
       title: OPERATIONAL_TEMPLATE_V2
       type: object
@@ -1089,36 +1092,36 @@ components:
       type: object
       properties:
         name:
-          $ref: '#/components/schemas/QueryName'
+          $ref: "#/components/schemas/QueryName"
         type:
-          $ref: '#/components/schemas/QueryType'
+          $ref: "#/components/schemas/QueryType"
         version:
-          $ref: '#/components/schemas/QueryVersion'
+          $ref: "#/components/schemas/QueryVersion"
         saved:
           type: string
           format: date-time
         q:
-          $ref: '#/components/schemas/AQL'
+          $ref: "#/components/schemas/AQL"
       description: |
         Stored Query content meta information.
       example:
         name: org.openehr::compositions
         type: aql
         version: 1.0.1
-        saved: '2017-07-16T19:20:30.450+01:00'
+        saved: "2017-07-16T19:20:30.450+01:00"
         q: SELECT c FROM EHR e[ehr_id/value=$ehr_id] CONTAINS COMPOSITION c[$compositionid] WHERE c/name/value = 'Vitals'
     QueryList:
       title: QueryList
       type: array
       items:
-        $ref: '#/components/schemas/StoredQuery'
+        $ref: "#/components/schemas/StoredQuery"
       description: |
         List of Stored Query resources.
       example:
         - name: org.openehr::compositions
           type: aql
           version: 1.0.1
-          saved: '2017-07-16T19:20:30.450+01:00'
+          saved: "2017-07-16T19:20:30.450+01:00"
           q: |-
             SELECT c  FROM EHR e[ehr_id/value=$ehr_id] 
               CONTAINS COMPOSITION c[$compositionid] 
@@ -1126,13 +1129,13 @@ components:
         - name: org.openehr::compositions
           type: aql
           version: 1.1.7
-          saved: '2018-06-13T09:37:20.530+01:00'
+          saved: "2018-06-13T09:37:20.530+01:00"
           q: |-
             SELECT c  FROM EHR e[ehr_id/value=$ehr_id] 
               CONTAINS COMPOSITION c[$uid] 
             WHERE c/name/value = 'Vitals'
   responses:
-    '406':
+    "406":
       description: |
         `406 Not Acceptable` is returned when the service cannot produce a response matching `Accept` request header, i.e. content type or format is not supported.
     200_TemplateList_adl1_4:
@@ -1141,12 +1144,12 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/TemplateList'
+            $ref: "#/components/schemas/TemplateList"
           example:
             - template_id: Vital Signs
               concept: Vital Signs
               archetype_id: openEHR-EHR-COMPOSITION.encounter.v1
-              created_timestamp: '2017-08-14T19:24:56.639Z'
+              created_timestamp: "2017-08-14T19:24:56.639Z"
     201_Template_adl1_4_upload:
       description: |
         `201 Created` is returned when the template has been successfully uploaded.
@@ -1158,13 +1161,13 @@ components:
         An `ETag` response header MAY be present and contain the unique identifier of the template instance.
       headers:
         Location:
-          $ref: '#/components/headers/Location_Template_adl1_4'
+          $ref: "#/components/headers/Location_Template_adl1_4"
         ETag:
-          $ref: '#/components/headers/ETag_Template_adl1_4'
+          $ref: "#/components/headers/ETag_Template_adl1_4"
       content:
         application/xml:
           schema:
-            $ref: '#/components/schemas/OperationalTemplate'
+            $ref: "#/components/schemas/OperationalTemplate"
     400_invalid_template_content:
       description: |
         `400 Bad Request` is returned when unable to upload a template, because of invalid content.
@@ -1178,7 +1181,7 @@ components:
         application/xml:
           schema:
             oneOf:
-              - $ref: '#/components/schemas/OperationalTemplate'
+              - $ref: "#/components/schemas/OperationalTemplate"
               - type: string
           example: |
             <template xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.openehr.org/v1">
@@ -1234,7 +1237,7 @@ components:
                     ...
         application/openehr.wt+json:
           schema:
-            $ref: '#/components/schemas/WebTemplate'
+            $ref: "#/components/schemas/WebTemplate"
     400_invalid_template_id:
       description: |
         `400 Bad Request` is returned when the request has invalid `template_id` (i.e. an incorrectly formatted `template_id`).
@@ -1250,13 +1253,13 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/QueryList'
+            $ref: "#/components/schemas/QueryList"
     200_StoredQuery_stored:
       description: |
         `200 OK` is returned when the query was successfully stored.
       headers:
         Location:
-          $ref: '#/components/headers/Location_Query'
+          $ref: "#/components/headers/Location_Query"
     400_StoredQuery:
       description: |
         `400 Bad Request` is returned when the server was unable to store the query. 
@@ -1267,7 +1270,7 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/StoredQuery'
+            $ref: "#/components/schemas/StoredQuery"
     404_Query_version:
       description: |
         `404 Not Found` is returned when a stored query with `qualified_query_name` and `version` does not exist.
@@ -1335,7 +1338,7 @@ components:
       style: simple
       schema:
         type: string
-        example: '1.0'
+        example: "1.0"
     qualified_query_name:
       name: qualified_query_name
       in: path
@@ -1344,7 +1347,7 @@ components:
       required: true
       style: simple
       schema:
-        $ref: '#/components/schemas/QueryName'
+        $ref: "#/components/schemas/QueryName"
     query_type:
       name: query_type
       in: query
