@@ -24,7 +24,7 @@ RUN apk add --no-cache --virtual .gettext gettext \
 ## COPY BUILD FILES
 #===========================================#
 
-COPY build/html /usr/share/nginx/html
+COPY build /usr/share/nginx/html
 
 #===========================================#
 ## LAUNCH APP
