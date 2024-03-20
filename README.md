@@ -1,88 +1,44 @@
-Linux prerequisites
---------------------
+# HIP Documentation
 
-- Sphinx needs python 3.6+ installed on your linux system
-- if you have python 2 installed, it won't work.
+This website is built using [Docusaurus](https://docusaurus.io/). It will serve as the integrated documentation, shipped together with HIP CDR and HIP EHRbase for customers and integration partners.
 
-Windows prerequisites
-----------------------
+**Docusaurus** Learn about the most important Docusaurus concepts here: [Docusaurus Docs](https://docusaurus.io/docs/category/guides)
 
-Sphinx needs Python 3.6+ to operate on windows.
+**Markown Cheatsheet** Markdown is a method for writing formatted text using a simple plain text format, to see all the possible formats, check out this: [Cheatsheet](https://github.com/lifeparticle/Markdown-Cheatsheet)
 
-To setup Python:
+**MDX** MDX lets you use JSX in your markdown content. You can import components, such as interactive charts or alerts, and embed them within your content. To see what it can do: [MDX](https://mdxjs.com/)
 
-- download & install Python 3 for windows here: https://www.python.org/downloads/
-- activate "[x] add python.exe into PATH" in setup dialog
+### Local Development
 
-Installation should be straight forward. Please note that you might need to replace 'pip' with 'pip3' depending on your already installed python version.
-
-After installation, open windows command shell and check if python can be called:
+To add content first clone and install the project:
 
 ```
-python --version
+cd docs
+npm install
 ```
 
-Output should report the installed Python version, e.g.
+To run the project with:
 
 ```
-Python 3.12.0
+npm run start
 ```
 
-Installing Sphinx
------------------------
-
-Open windows/linux command shell and install sphinx by typing
+_Important notice_ Before committing your changes, please run the `build` to make sure all links and changes are working
 
 ```
-pip install -U sphinx
+npm run build
 ```
 
-In addition install the following python modules (if not already installed) that are required by Sphinx for document generation:
+### Docker for developement
 
 ```
-pip install sphinx_rtd_theme
-pip install sphinxcontrib-httpdomain
-pip install --upgrade myst-parser
+docker build --target development -t docs:dev .
+docker run -p 3000:3000 docs:dev
 ```
 
-
-Build documentation
--------------------
-
-To initially build or rebuild your html documentation, change into the documentation's root folder (folder where this `README.md` file is located) and run:
+### Docker for production
 
 ```
-./documentation/make html 
-```
- 
-The generated documentation can be found in `documentation/build/html`
- 
-
-Use vscode and LIVE preview in your local browser
---------------------------------------------------
-**Installation & setup**
-
-- Download latest version of **vscode** here: https://code.visualstudio.com/download
-- After installation, run vscode and install 2 plugins
-  - **Live Server** plugin
-  - **File Watcher** plugin
-- Open documentation root folder (folder where this `README.md` is located) in vscode workspace via `File|Open Folder`
-- After opening the workspace in vscode, start the live preview server by clicking the bottom right status bar icon `((i)) Go Live`
-- Your browser should start automatically. If not, the live preview should be available under `http://127.0.0.1:5858`
-
-
-**Live-preview**
-
-When you change ANY doc resource in the `./documentation/source` folder, the doc will be automatically generated to the `./documentation/build` folder and the preview in your browser will automatically reload after a view seconds.
-
-Why? The File watcher plugin will detect the file changes and automatically call the `make html` script.
-
-Troubleshooting
----------------
-
-If you encounter  problems using Sphinx, try to install a newer version of Python or Sphinx. To check, which Sphinx version is currently installed, type
-
-
-```
-$ python -m pip list | grep sphinx
+docker build -t docusaurus:latest .
+docker run --rm -p 3000:80 docusaurus:latest
 ```
