@@ -1,7 +1,7 @@
 // Define library branch/tag to load
-@Library(['jenkins-libraries@main', 'developer-jenkins-libraries@main']) _
+@Library(['jenkins-libraries@main', 'developer-jenkins-libraries@feature/PLAT-618_docusaurus_pipeline']) _
 
-penSphinxDocPipeline(
+penDocusaurusDocPipeline(
     gitlabspace: 'pen',
     module: 'hip-cdr-documentation',
     project: 'hip-cdr-documentation',
