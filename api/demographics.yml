@@ -1,0 +1,199 @@
+﻿openapi: 3.0.3
+info:
+  title: Demographics
+  version: 1.0.0
+  contact: {}
+servers:
+  - url: '{{fhir-connector-url}}'
+  - url: '{{hl7-mock-service-url}}'
+paths:
+  /fhir/R4/Patient:
+    post:
+      summary: CREATE Patient (FHIR)
+      description: CREATE Patient (FHIR)
+      operationId: createPatientFhir
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                active:
+                  type: boolean
+                  example: true
+                address:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      city:
+                        type: string
+                        example: PleasantVille
+                      district:
+                        type: string
+                        example: Rainbow
+                      line:
+                        type: array
+                        items:
+                          type: string
+                          example: 534 Erewhon St
+                        example:
+                          - 534 Erewhon St
+                      period:
+                        type: object
+                        properties:
+                          start:
+                            type: string
+                            example: '1974-12-25'
+                      postalCode:
+                        type: string
+                        example: '3999'
+                      state:
+                        type: string
+                        example: Vic
+                      text:
+                        type: string
+                        example: 534 Erewhon St PeasantVille, Rainbow, Vic  3999
+                      type:
+                        type: string
+                        example: both
+                      use:
+                        type: string
+                        example: home
+                  example:
+                    - city: PleasantVille
+                      district: Rainbow
+                      line:
+                        - 534 Erewhon St
+                      period:
+                        start: '1974-12-25'
+                      postalCode: '3999'
+                      state: Vic
+                      text: 534 Erewhon St PeasantVille, Rainbow, Vic  3999
+                      type: both
+                      use: home
+                birthDate:
+                  type: string
+                  example: '1990-12-25'
+                deceasedBoolean:
+                  type: boolean
+                  example: false
+                gender:
+                  type: string
+                  example: female
+                identifier:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      system:
+                        type: string
+                        example: urn:oid:1.2.36.146.595.217.0.1
+                      value:
+                        type: string
+                        example: 111-111-3
+                  example:
+                    - system: urn:oid:1.2.36.146.595.217.0.1
+                      value: 111-111-3
+                name:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      family:
+                        type: string
+                        example: Engels
+                  example:
+                    - family: Engels
+                resourceType:
+                  type: string
+                  example: Patient
+                telecom:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      system:
+                        type: string
+                        example: phone
+                      use:
+                        type: string
+                        example: work
+                      value:
+                        type: string
+                        example: (03) 5555 6473
+                  example:
+                    - system: phone
+                      use: work
+                      value: (03) 5555 6473
+            examples:
+              CREATE Patient (FHIR):
+                value:
+                  active: true
+                  address:
+                    - city: PleasantVille
+                      district: Rainbow
+                      line:
+                        - 534 Erewhon St
+                      period:
+                        start: '1974-12-25'
+                      postalCode: '3999'
+                      state: Vic
+                      text: 534 Erewhon St PeasantVille, Rainbow, Vic  3999
+                      type: both
+                      use: home
+                  birthDate: '1990-12-25'
+                  deceasedBoolean: false
+                  gender: female
+                  identifier:
+                    - system: urn:oid:1.2.36.146.595.217.0.1
+                      value: 111-111-3
+                  name:
+                    - family: Engels
+                  resourceType: Patient
+                  telecom:
+                    - system: phone
+                      use: work
+                      value: (03) 5555 6473
+      responses:
+        '200':
+          description: ''
+    get:
+      summary: GET Patient
+      description: GET Patient
+      operationId: getPatient
+      parameters:
+        - name: identifier
+          in: query
+          schema:
+            type: string
+            example: '123456789'
+      responses:
+        '200':
+          description: ''    
+  /sender:
+    post:
+      summary: Create Patient (ADT)
+      description: Create Patient (ADT)
+      operationId: createPatientAdt
+      requestBody:
+        content:
+          text/plain:
+            examples:
+              Create Patient (ADT):
+                value: >+
+                  MSH|^~\&|ISHMED|MIRTH_CONNECT|HIS001|MIRTH_CONNECT|20231010095328||ADT^A01|MSG0000001|P|2.3|||NE|NE|CO|8859/1|ES-CO
+                  PID|||123456789^^^systemID||JIMINEZ^FERNANDEZ
+                  CORTES||19860705|M
+                  PV1|||||||||||||||||||12343456^^^2344566789
+      responses:
+        '200':
+          description: ''
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+security:
+  - bearerAuth: []
+tags: []

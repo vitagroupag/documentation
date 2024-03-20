@@ -1,0 +1,8 @@
+{
+  "label": "CDR Bridge Tutorial",
+  "position": 7,
+  "link": {
+    "type": "generated-index",
+    "description": "A small tutorial to define Mappings using the CDR Bridge"
+  }
+}

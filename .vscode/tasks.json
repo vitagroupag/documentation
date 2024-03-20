@@ -6,12 +6,14 @@
         {
             "label": "makeDocs",
             "type": "shell",
-            "command": "sphinx-build source build html",
-            "": "./documentation",
+            "command": "./make html",
             "problemMatcher": [],
             "group": {
                 "kind": "build",
                 "isDefault": true
+            },
+            "options": {
+                "cwd": "./documentation"
             }
         }
     ]
