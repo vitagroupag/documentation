@@ -81,16 +81,6 @@ const config: Config = {
             spec: "api/ehr-codegen.openapi.yaml",
             route: "/api/hip-ehrbase/ehr",
           },
-          {
-            id: "cdr-bridge",
-            spec: "api/mapping.json",
-            route: "/api/cdr-bridge/mappings",
-          },
-          {
-            id: "cdr-bridge-demographics",
-            spec: "api/demographics.yml",
-            route: "/api/cdr-bridge/demographics",
-          },
         ],
         theme: {
           // Change with your site colors
@@ -141,21 +131,6 @@ const config: Config = {
               label: "Enterprise APIs",
               to: "/api/hip-ehrbase/enterprise",
             }
-          ],
-        },
-        {
-          type: "dropdown",
-          label: "CDR Bridge API",
-          position: "left",
-          items: [
-            {
-              label: "CDR Bridge",
-              to: "/api/cdr-bridge/mappings",
-            },
-            {
-              label: "Demographics",
-              to: "/api/cdr-bridge/demographics",
-            },
           ],
         },
        /* { to: "/releases", label: "Releases", position: "left" }, Excluded until ready*/
@@ -209,7 +184,6 @@ const config: Config = {
     },
     // See available themes on prismThemes object
     prism: {
-      theme: prismThemes.nightOwlLight,
       darkTheme: prismThemes.dracula,
       additionalLanguages: ["bash", "json", "yaml"],
     },
