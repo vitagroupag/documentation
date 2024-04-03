@@ -48,7 +48,7 @@ This will start ehrbase without any Authentication mechanism configured. See the
 
 #### Parameters
 
-EHRbase supports a wide range of configurations. Some of them you can find in the Explore section, and for others, you can check out the [configuration](https://github.com/ehrbase/ehrbase/tree/develop/configuration) module in GitHub.
+EHRbase supports a wide range of configurations. Some of them you can find in the [Explore](/docs/category/explore) section, and for others, you can check out the [configuration](https://github.com/ehrbase/ehrbase/tree/develop/configuration) module in GitHub.
 
 ## HIP EHRbase with Yugabyte
 
