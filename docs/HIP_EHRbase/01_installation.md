@@ -1,13 +1,67 @@
 ---
-sidebar_position: 2
+sidebar_position: 1
 title: Installation
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs groupId="database-provider">
+<TabItem value="postgres" label="Postgres">
+
+# EHRbase Installation
+
+EHRbase by default is built with Postgres support.
+
+The easiest way to get started with it is by spaning an ehrbase-postgres database and an ehrbase instance using Docker.
+
+## Setup PostgresDB
+
+A preconfigured Postgres DB can be set spaned using the https://hub.docker.com/r/ehrbase/ehrbase-postgres image.
+
+```bash
+docker run --network ehrbase-net --name ehrbase-postgres \
+-e POSTGRES_USER=postgres \
+-e PASSWORD=postgres \
+-e EHRBASE_USER=ehrbase_restricted \
+-e EHRBASE_PASSWORD=ehrbase_restricted \
+-e EHRBASE_USER_ADMIN=ehrbase \
+-e EHRBASE_PASSWORD_ADMIN=ehrbase \
+-d -p 5432:5432 \
+ehrbase/ehrbase-postgres:16.2
+```
+
+## Start EHRbase
+
+To start EHRbase you can simply use the Docker image provided at https://hub.docker.com/r/ehrbase/ehrbase
+
+```bash
+docker run --network ehrbase-net --name ehrbase \
+-e DB_URL=jdbc:postgresql://ehrbase-postgres:5432/ehrbase \
+-e DB_USER=ehrbase_restricted \
+-e DB_PASS=ehrbase_restricted \
+-e DB_USER_ADMIN=ehrbase \
+-e DB_PASS_ADMIN=ehrbase \
+-e SERVER_NODENAME=local.ehrbase.org \
+-e SPRING_PROFILES_ACTIVE=local \
+-d -p 8080:8080 \
+ehrbase/ehrbase
+```
+
+This will start ehrbase without any Authentication mechanism configured. See the [Security](03_explore/04_security.md) section for details on how to configure security.
+
+## Parameters
+
+EHRbase supports a wide range of configurations. Some of them you can find in the Explore section, and for others, you can check out the [configuration](https://github.com/ehrbase/ehrbase/tree/develop/configuration) module in GitHub.
+
+</TabItem>
+<TabItem value="yugabyte" label="Yugabyte">
+
 # HIP EHRbase Installation
 
-Typically, HIP EHRbase will be packed along with HIP CDR and should be installed as part of the overall installation process. For the case that CDR Base should be operated as a stand-alone application, you can follow the instructions below.
+Typically, HIP EHRbase will be packed along with HIP CDR and should be installed as part of the overall installation process. For the case that HIP EHRbase should be operated as a stand-alone application, you can follow the instructions below.
 
-HIP EHRbase is provided as a Docker container or via HELM chart configuration. Please ensure that credentials for the artifact repository (vitagroup Harbor) have been provided as part of the contract agreements.
+HIP EHRbase is provided as a Docker container or via HELM chart configuration.
 
 ## Setup YugabyteDB
 
@@ -15,15 +69,9 @@ Before HIP EHRbase can be run, a YugabyteDB database needs to be set up and conf
 
 You are provided with a database installation script `createdb.sql`. This script needs to be run as a role `superuser` in order to create the database.
 
-Extensions are installed in a separate schema called 'ext'.
+Extensions are installed in a separate schema called `ext`.
 
 For production servers, these operations should be performed by a configuration management system.
-
-On NIX run this using:
-
-```bash
-sudo -u postgres psql < createdb.sql
-```
 
 You only have to run this script once. It only contains those operations which require superuser privileges. The actual database schema is managed by flyway, which will automatically be executed the first time CDR Base is connected to YugabyteDB.
 
@@ -41,20 +89,18 @@ EHRbase is delivered as a single Docker container including all plugins (Please 
 To set parameters of HIP EHRbase and the plugins, the default environment variables can be overwritten. Check the next example (which assumes you pulled or created an image named ehrbase/ehrbase):
 
 ```bash
-docker run -e DB_URL=jdbc:postgresql://ehrdb:5432/ehrbase \
-       -e DB_USER=foouser \
-       -e DB_PASS=foopass \
-       -e SERVER_NODENAME=what.ever.org \
-       ehrbase/ehrbase
+docker run --network ehrbase-net --name ehrbase \
+-e EHRBASE_DBMSPROVIDER=YUGABYTE \
+-e DB_URL=jdbc:postgresql://ehrdb:5433/ehrbase \
+-e DB_USER=ehrbase_restricted \
+-e DB_PASS=ehrbase_restricted \
+-e DB_USER_ADMIN=ehrbase \
+-e DB_PASS_ADMIN=ehrbase \
+-e SERVER_NODENAME=local.ehrbase.org \
+-e SPRING_PROFILES_ACTIVE=local \
+-d -p 8080:8080 \
+ehrbase/ehrbase
 ```
-
-Note that while there are parameters for the plugin system, these are rarely of use for the installation as these are set as default values of the docker image provided.
-
-| Parameter                        | Env Variable                      | Use                                                                    | Example            |
-|----------------------------------|-----------------------------------|------------------------------------------------------------------------|--------------------|
-| plugin-manager.enable            | PLUGIN_MANAGER_ENABLE             | Enable and disable plugins                                             | "true"             |
-| manager.plugin-dir               | PLUGIN_MANAGER_PLUGIN_DIR         | Directory of the plugins                                               | "/plugin_dir"      |
-| plugin-manager.plugin-config-dir | PLUGIN_MANAGER_PLUGIN_CONFIG_DIR  | Directory of the plugin configuration file (containing default values) | /plugin_config_dir |
 
 Here you can find some example settings for common use cases for the usage of EHRbase Docker containers. You can also use the environment variables with the normal .jar execution by setting the variables according to your operating system.
 
@@ -63,51 +109,61 @@ Here you can find some example settings for common use cases for the usage of EH
 Run the docker image with this setting:
 
 ```bash
-docker run --network ehrbase-net --name ehrbase -e SECURITY_AUTHTYPE=BASIC \
--e SECURITY_AUTHUSER=myuser -e SECURITY_AUTHPASSWORD=ThePasswordForUser \
--e SECURITY_AUTHADMINUSER=myadmin -e SECURITY_AUTHADMINPASSWORD=SecretAdminPassword \
--d -p 8080:8080 ehrbase/ehrbase:latest
+docker run --network ehrbase-net --name ehrbase \
+-e EHRBASE_DBMSPROVIDER=YUGABYTE \
+-e DB_URL=jdbc:postgresql://ehrdb:5433/ehrbase \
+-e DB_USER=ehrbase_restricted \
+-e DB_PASS=ehrbase_restricted \
+-e DB_USER_ADMIN=ehrbase \
+-e DB_PASS_ADMIN=ehrbase \
+-e SERVER_NODENAME=local.ehrbase.org \
+-e SPRING_PROFILES_ACTIVE=local \
+-e SECURITY_AUTHTYPE=BASIC \
+-e SECURITY_AUTHUSER=myuser \
+-e SECURITY_AUTHPASSWORD=ThePasswordForUser \
+-e SECURITY_AUTHADMINUSER=myadmin \
+-e SECURITY_AUTHADMINPASSWORD=SecretAdminPassword \
+-d -p 8080:8080 \
+ehrbase/ehrbase
 ```
 
 This will set the used authentication method to BASIC auth, and all requests against the EHRbase must be provided with the Authorization header set to `Basic %username%:%password%` whereas the username and password must be encoded with base64.
 
-> **Note:**
-> 
-> Ensure you use an encrypted connection over https; otherwise, the username and password can be decrypted easily.
+> **Note:** Ensure you use an encrypted connection over https; otherwise, the username and password can be decrypted easily.
 
 ### Use OAuth2
 
 Run the docker image with this setting:
 
 ```bash
-docker run --network ehrbase-net --name ehrbase -e SECURITY_AUTHTYPE=OAUTH \
+docker run --network ehrbase-net --name ehrbase \
+-e EHRBASE_DBMSPROVIDER=YUGABYTE \
+-e DB_URL=jdbc:postgresql://ehrdb:5433/ehrbase \
+-e DB_USER=ehrbase_restricted \
+-e DB_PASS=ehrbase_restricted \
+-e DB_USER_ADMIN=ehrbase \
+-e DB_PASS_ADMIN=ehrbase \
+-e SERVER_NODENAME=local.ehrbase.org \
+-e SPRING_PROFILES_ACTIVE=local \
+-e SECURITY_AUTHTYPE=OAUTH \
 -e SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUERURI=https://keycloak.example.com/auth/realms/ehrbase \
--d -p 8080:8080 ehrbase/ehrbase:latest
+-d -p 8080:8080 \
+ehrbase/ehrbase
 ```
 
 You have to prepare the authentication server, including a valid client at the target server to get this setup run.
 
+> **NOTE:** For more information regarding authentication checkout the [Security](03_explore/04_security.md) section.
+
 ## HELM Chart
 
-A Helm chart can be used to install CDR Base in a Kubernetes or OpenShift cluster.
-
-### Latest Version
-
-- Helm: 0.28.0-early-access-v2
-- Docker: 0.28.0-
-
-early-access-v2
+A Helm chart can be used to install HIP EHRbase in a Kubernetes or OpenShift cluster.
 
 ### Prerequisites
 
 - A YugabyteDB is available and is pre-configured in accordance with the steps described above.
 - Kubernetes 1.20+
 - Helm 3.2.0+
-
-### Access
-
-- Docker image: `registry.vitasystems.dev/ibm-docker/ehrbase-enterprise-openshift`
-- Helm chart: `registry.vitasystems.dev/ibm-helm/ehrbase-openshift`
 
 ### Installing the Chart
 
@@ -117,19 +173,19 @@ Adding the needed chart repository:
 $ helm repo add ... <<< TODO: which repo has to be added for an external user?
 ```
 
-Install the EHRbase helm chart with a Yugabyte database with a release name `ehrbase-openshift` in the Kubernetes context `mykubecontext` and the namespace `myinstallnamespace`:
+Install the EHRbase helm chart with a Yugabyte database with a release name `ehrbase-kube` in the Kubernetes context `mykubecontext` and the namespace `myinstallnamespace`:
 Update `values.yaml` and mark `yugabyte.enabled: true`
 
 ```bash
-$ helm install --kube-context mykubecontext -n myinstallnamespace -f values.yaml ehrbase-openshift .
+$ helm install --kube-context mykubecontext -n myinstallnamespace -f values.yaml ehrbase-kube .
 ```
 
 ### Uninstalling the Chart
 
-To uninstall the deployment with a release name `ehrbase-openshift` in the Kubernetes context `mykubecontext` and the namespace `myinstallnamespace`:
+To uninstall the deployment with a release name `ehrbase-kube` in the Kubernetes context `mykubecontext` and the namespace `myinstallnamespace`:
 
 ```bash
-$ helm uninstall --kube-context mykubecontext -n myinstallnamespace ehrbase-openshift
+$ helm uninstall --kube-context mykubecontext -n myinstallnamespace ehrbase-kube
 ```
 
 ### Running Against an Existing YugabyteDB Instance
@@ -143,9 +199,9 @@ Open `config/db_setup.sql` and change the `GO` placeholders with concrete values
 
 Execute the updated script against YugabyteDB.
 
-## Parameters
+### Parameters
 
-### Global Parameters
+#### Global Parameters
 
 | Name                                           | Description                                                   | Value                           |
 |------------------------------------------------|---------------------------------------------------------------|---------------------------------|
@@ -155,7 +211,7 @@ Execute the updated script against YugabyteDB.
 | `global.tlsSecrets.ehrbase`                    | Secret name for the the host certificate                      | `vitasystems-dev`               |
 | `global.initContainer.enabled`                 | Toggle the init container of the DB. To be set to `false` if the DB init is done manually. | `true`                          |
 
-### CDR Base Application Parameters
+#### Application Parameters
 
 This general overview of available CDR Base parameters is complemented by additional parameters within dedicated chapters of this documentation (for example, for configuration with an external terminology service).
 
@@ -173,48 +229,46 @@ This general overview of available CDR Base parameters is complemented by additi
 | `appConfig.serviceUrl`                     | External EHRbase URL used for ingress setup                         | `"hip-cdr-core-ehrbase-enterprise-{{ .Release.Namespace }}.{{ .Values.domain }}"` |
 | `appConfig.commonFullnameOverride`         | EHRbase service name (also used for naming of EHRbase database service) | `hip-cdr-core-ehrbase-enterprise`      |
 | `appConfig.atna.enabled`                   | Enables ATNA logs                                                   | `false`                                    |
-| `appConfig.at
-
-na.host`                      | Host of the ATNA logs registry                                      | `hip-logging`                              |
+| `appConfig.atna.host`                      | Host of the ATNA logs registry                                      | `hip-logging`                              |
 | `appConfig.atna.port`                      | Port of the ATNA logs registry                                      | `514`                                      |
 | `appConfig.restApiDoc.enabled`             | Enables the built-in REST API documentation like swagger ui and api doc | `false`                              |
 | `appConfig.restApiDoc.swaggerUi.enabled`   | Enables the Swagger ui for the EHRbase REST API                     | `false`                                    |
 | `appConfig.restApiDoc.apiDocs.enabled`     | Enables the OpenAPI documentation                                   | `false`                                    |
 | `replicaCount`                             | Number of EHRbase replicas to deploy                                | `1`                                        |
 
-### Image Parameters
+#### Image Parameters
 
-| Name             | Description                | Value                              |
-|------------------|----------------------------|------------------------------------|
-| `image.repository` | EHRbase image repository   | `ehrbase/ehrbasemvp`               |
-| `image.pullPolicy` | EHRbase image pull policy  | `Always`                           |
-| `image.tag`        | EHRbase image tag          | `early-access-openshift-2`         |
+| Name               | Description                | Value                    |
+|--------------------|----------------------------|--------------------------|
+| `image.repository` | EHRbase image repository   | `ehrbase/ehrbase`        |
+| `image.pullPolicy` | EHRbase image pull policy  | `Always`                 |
+| `image.tag`        | EHRbase image tag          | `latest`                 |
 
-### Service Parameters
+#### Service Parameters
 
-| Name              | Description                | Value       |
-|-------------------|----------------------------|-------------|
-| `service.type`    | EHRbase service type       | `ClusterIP` |
-| `service.port`    | EHRbase service port       | `8080`      |
-| `service.targetPort` | EHRbase service target port | `8080`    |
-| `service.protocol` | EHRbase service protocol   | `TCP`       |
-| `service.name`    | EHRbase service name       | `http`      |
+| Name                 | Description                 | Value       |
+|----------------------|-----------------------------|-------------|
+| `service.type`       | EHRbase service type        | `ClusterIP` |
+| `service.port`       | EHRbase service port        | `8080`      |
+| `service.targetPort` | EHRbase service target port | `8080`      |
+| `service.protocol`   | EHRbase service protocol    | `TCP`       |
+| `service.name`       | EHRbase service name        | `http`      |
 
-### YugabyteDB Parameters
+#### YugabyteDB Parameters
 
-| Name                                 | Description                                      | Value     |
-|--------------------------------------|--------------------------------------------------|-----------|
-| `yugabyte.enabled`                   | Toggle for choosing database deployment          | `false`   |
-| `yugabyte.storage.master.size`       | Storage size of the Yugabyte master database     | `5Gi`     |
-| `yugabyte.storage.master.storageClass` | Storage class of the Yugabyte master database   | `""`      |
-| `yugabyte.storage.tserver.size`      | Storage size of the Yugabyte tserver database    | `5Gi`     |
-| `yugabyte.storage.tserver.storageClass` | Storage class of the Yugabyte tserver database | `""`      |
-| `yugabyte.enableLoadBalancer`        | Toggle to activate/deactivate the Yugabyte load balancer | `false` |
-| `yugabyte.gflags.master.minloglevel` | Configure log level for Yugabyte master node     | `2`       |
-| `yugabyte.gflags.tserver.minloglevel` | Configure log level for Yugabyte tserver nodes  | `2`       |
-| `yugabyte.authCredentials.ysql.user` | User name of the main Yugabyte YSQL user         | `yugabyte`|
-| `yugabyte.authCredentials.ysql.password` | Password of the main Yugabyte YSQL user       | `yugabyte`|
-
+| Name                                     | Description                                              | Value     |
+|------------------------------------------|----------------------------------------------------------|-----------|
+| `yugabyte.enabled`                       | Toggle for choosing database deployment                  | `false`   |
+| `yugabyte.storage.master.size`           | Storage size of the Yugabyte master database             | `5Gi`     |
+| `yugabyte.storage.master.storageClass`   | Storage class of the Yugabyte master database            | `""`      |
+| `yugabyte.storage.tserver.size`          | Storage size of the Yugabyte tserver database            | `5Gi`     |
+| `yugabyte.storage.tserver.storageClass`  | Storage class of the Yugabyte tserver database           | `""`      |
+| `yugabyte.enableLoadBalancer`            | Toggle to activate/deactivate the Yugabyte load balancer | `false`   |
+| `yugabyte.gflags.master.minloglevel`     | Configure log level for Yugabyte master node             | `2`       |
+| `yugabyte.gflags.tserver.minloglevel`    | Configure log level for Yugabyte tserver nodes           | `2`       |
+| `yugabyte.authCredentials.ysql.user`     | User name of the main Yugabyte YSQL user                 | `yugabyte`|
+| `yugabyte.authCredentials.ysql.password` | Password of the main Yugabyte YSQL user                  | `yugabyte`|
 --- 
 
-This translation maintains the structure and content of the original RST document, adapting it to Markdown syntax.
+</TabItem>
+</Tabs>

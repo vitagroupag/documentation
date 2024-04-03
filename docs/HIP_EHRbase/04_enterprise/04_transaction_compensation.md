@@ -1,14 +1,21 @@
-# Transaction Plugin
+---
+sidebar_position: 4
+title: Transaction Compensation
+---
 
-As HIP CDR follows a service-oriented architecture, distributed transactions across services are required. The Transaction Compensation Plugin allows rolling back transactions in accordance with the Saga Pattern.
+# Transaction Compensation
+
+As HIP CDR follows a service-oriented architecture, distributed transactions across services are required. The Transaction Compensation feature allows rolling back transactions in accordance with the Saga Pattern.
 
 For this purpose, a REST API can be used by external services to invoke the transaction compensation functions.
 
 The transaction compensation uses the openEHR Contribution objects for the rollback.
 
+> **NOTE:** in combination with [multi-tenancy](05_multi_tenancy.md), the transaction compensations are tenant bound.
+
 ## Parameters / Environment Variables
 
-The Transaction Compensation Plugin does not need any parameters to be provided.
+The Transaction Compensation feature does not need any parameters to be provided.
 
 ## REST API
 

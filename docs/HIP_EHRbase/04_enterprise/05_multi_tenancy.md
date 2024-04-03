@@ -1,14 +1,23 @@
-# Multi-Tenancy Plugin
+---
+sidebar_position: 5
+title: Multi-Tenancy
+---
 
-HIP CDR is built as a multi-tenant capable system. Multi-tenancy is promoted across nearly all services including EHRbase, CDR Bridge, CDR Suite, and other components. The logical separation of data is achieved using Row-Level-Security (RLS) on the database level, complemented by OAuth2 authentication workflows in Keycloak.
+# Multi-Tenancy
 
-Please note that the Multi-Tenancy Plugin has been developed with the integration into the HIP CDR platform in mind. This means that there are dependencies towards Keycloak and its multi-tenancy concept, which is based on the concept of realms in Keycloak (in which realms are used to represent a tenant).
+HIP CDR is built as a multi-tenant capable system. Multi-tenancy is promoted across nearly all services including EHRbase, CDR Bridge, CDR Suite, and other components. The logical separation of data is achieved using dedicated schemas for each tenant on the database level, complemented by OAuth2 authentication workflows in Keycloak.
+
+Please note that the Multi-Tenancy feature has been developed with the integration into the HIP CDR platform in mind. This means that there are dependencies towards Keycloak and its multi-tenancy concept, which is based on the concept of realms in Keycloak (in which realms are used to represent a tenant).
 
 For the case you want to use multi-tenancy in EHRbase outside the context of HIP CDR, please be aware of these dependencies.
 
 ## Parameters / Environment Variables
 
-The Transaction Compensation Plugin does not need any parameters to be provided.
+| Parameter                         | Env Variable                    | Usage                         | Example          |
+|-----------------------------------|---------------------------------|-------------------------------|------------------|
+| `multitenancy.enabled`            | `MULTITENANCY_ENABLED`          | Enables multi-tenancy         | `true`           |
+
+> **Attention:** Enabling multi-tenancy will create additional schemas for each new tenant. Enabling it for an already running system should be done after carefuly considering migrating of the existing data.
 
 ## REST API
 
