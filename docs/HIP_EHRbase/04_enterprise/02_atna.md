@@ -1,10 +1,13 @@
-# ATNA Plugin
+---
+sidebar_position: 2
+title: ATNA Logs
+---
+
+# ATNA Logs
 
 EHRbase provides capabilities to log all accesses to its services based on the ATNA (Audit Trail and Node Authentication) specification.
 
-![ATNA Diagram](/img/atna_diagram.png)
-
-The ATNA logging functionality is implemented using the EHRbase Plugin mechanism. The following services are covered by the ATNA Logging Plugin:
+The following services are covered by ATNA Logging:
 
 - **Definition**
   - **Stored query**
@@ -62,14 +65,14 @@ The ATNA logging functionality is implemented using the EHRbase Plugin mechanism
   - **Contribution**
     - Delete Contribution
 
-| Parameter                       | Env Variable                  | Use                                                  | Example                                      |
-|---------------------------------|-------------------------------|------------------------------------------------------|----------------------------------------------|
-| ipf.atna.audit-enabled          | IPF_ATNA_AUDITENABLED         | Whether to enable ATNA audit feature                 | "true"                                       |
-| ipf.atna.audit-enterprise-site-id | IPF_ATNA_AUDITENTERPRISESITEID | Enterprise Site ID (CDR Base Tenant ID is used)      | 1f332a66-0e57-11ed-861d-0242ac120002      |
-| ipf.atna.audit-repository-host  | IPF_ATNA_AUDITREPOSITORYHOST  | Audit repository host                                | localhost                                    |
-| ipf.atna.audit-repository-port  | IPF_ATNA_AUDITREPOSITORYPORT  | Audit repository port                                | 514                                          |
-| ipf.atna.audit-source-id        | IPF_ATNA_AUDITSOURCEID        | Audit source ID                                      |                |
-| ipf.atna.audit-value-if-missing | IPF_ATNA_AUDITVALUEIFMISSING  | Value used for mandatory elements that are empty.    | UNKNOWN                                      |
+| Parameter                           | Env Variable                     | Use                                                  | Example                                   |
+|-------------------------------------|----------------------------------|------------------------------------------------------|-------------------------------------------|
+| `ipf.atna.audit-enabled`            | `IPF_ATNA_AUDITENABLED`          | Whether to enable ATNA audit feature                 | `"true"`                                  |
+| `ipf.atna.audit-enterprise-site-id` | `IPF_ATNA_AUDITENTERPRISESITEID` | Enterprise Site ID (CDR Base Tenant ID is used)      | `1f332a66-0e57-11ed-861d-0242ac120002`    |
+| `ipf.atna.audit-repository-host`    | `IPF_ATNA_AUDITREPOSITORYHOST`   | Audit repository host                                | `localhost `                              |
+| `ipf.atna.audit-repository-port`    | `IPF_ATNA_AUDITREPOSITORYPORT`   | Audit repository port                                | `514 `                                    |
+| `ipf.atna.audit-source-id`          | `IPF_ATNA_AUDITSOURCEID`         | Audit source ID                                      |                                           |
+| `ipf.atna.audit-value-if-missing`   | `IPF_ATNA_AUDITVALUEIFMISSING`   | Value used for mandatory elements that are empty.    | `UNKNOWN`                                 |
 
 
 

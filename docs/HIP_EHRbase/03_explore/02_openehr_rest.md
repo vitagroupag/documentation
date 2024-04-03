@@ -1,7 +1,7 @@
 ---
-sidebar_position: 6
+sidebar_position: 2
+title: openEHR REST API
 ---
-
 
 # openEHR REST API
 
