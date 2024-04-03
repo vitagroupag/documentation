@@ -15,7 +15,9 @@ Several mechanisms are supported to propagate an event-trigger message:
 - Kafka
 - Java Logging
 
-> **NOTE:** in combination with [multi-tenancy](05_multi_tenancy.md), the event triggers are tenant bound.
+:::note
+In combination with [multi-tenancy](05_multi_tenancy.md), the event triggers are tenant bound.
+:::
 
 ## Parameters / Environment Variables
 

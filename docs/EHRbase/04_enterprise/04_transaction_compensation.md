@@ -11,7 +11,9 @@ For this purpose, a REST API can be used by external services to invoke the tran
 
 The transaction compensation uses the openEHR Contribution objects for the rollback.
 
-> **NOTE:** in combination with [multi-tenancy](05_multi_tenancy.md), the transaction compensations are tenant bound.
+:::note
+In combination with [multi-tenancy](05_multi_tenancy.md), the transaction compensations are tenant bound.
+:::
 
 ## Parameters / Environment Variables
 

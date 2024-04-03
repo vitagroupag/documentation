@@ -122,7 +122,9 @@ ehrbase/ehrbase
 
 This will set the used authentication method to BASIC auth, and all requests against the EHRbase must be provided with the Authorization header set to `Basic %username%:%password%` whereas the username and password must be encoded with base64.
 
-> **Note:** Ensure you use an encrypted connection over https; otherwise, the username and password can be decrypted easily.
+:::note
+Ensure you use an encrypted connection over https; otherwise, the username and password can be decrypted easily.
+::::
 
 #### Use OAuth2
 
@@ -146,7 +148,9 @@ ehrbase/ehrbase
 
 You have to prepare the authentication server, including a valid client at the target server to get this setup run.
 
-> **NOTE:** For more information regarding authentication checkout the [Security](03_explore/04_security.md) section.
+:::note
+For more information regarding authentication checkout the [Security](03_explore/04_security.md) section.
+:::
 
 ### HELM Chart
 

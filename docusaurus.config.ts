@@ -3,8 +3,8 @@ import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
 
 const config: Config = {
-  title: "HIP Documentation",
-  tagline: "HIP EHRbase and HIP CDR Documentation",
+  title: "EHRbase Docs",
+  tagline: "EHRbase Open-source and HIP EHRbase",
   favicon: "img/favicon.ico",
 
   // Set the production url of your site here
@@ -140,6 +140,11 @@ const config: Config = {
           position: "right",
         },
       ],
+    },
+    colorMode: {
+      defaultMode: "dark",
+      disableSwitch: false,
+      respectPrefersColorScheme: false
     },
     footer: {
       style: "dark",
