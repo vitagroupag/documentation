@@ -1,8 +1,8 @@
 {
-  "label": "HIP EHRbase",
+  "label": "EHRbase",
   "position": 4,
   "link": {
     "type": "generated-index",
-    "description": "Learn everything about HIP EHRbase"
+    "description": "Learn everything about EHRbase Opensource and HIP EHRbase"
   }
 }

@@ -17,7 +17,7 @@ function HomepageHeader() {
         </Heading>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
         <div className={styles.buttons}>
-          <Link className="button button--secondary button--lg" to="/docs/category/hip-ehrbase">
+          <Link className="button button--secondary button--lg" to="/docs/category/ehrbase">
             Get started with EHRbase 🏥
           </Link>
         </div>
