@@ -3,19 +3,15 @@ sidebar_position: 1
 title: Installation
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
-<Tabs groupId="database-provider">
-<TabItem value="postgres" label="Postgres">
-
 # EHRbase Installation
 
-EHRbase by default is built with Postgres support.
+EHRbase by default is built against Postgres, however HIP EHRbase extends this, by incorporating support for Yugabyte, as detailed in the [HIP EHRbase with Yugabyte](#hip-ehrbase-with-yugabyte) section.
+
+## EHRbase with Postgres
 
 The easiest way to get started with it is by spaning an ehrbase-postgres database and an ehrbase instance using Docker.
 
-## Setup PostgresDB
+### Start PostgresDB
 
 A preconfigured Postgres DB can be set spaned using the https://hub.docker.com/r/ehrbase/ehrbase-postgres image.
 
@@ -31,7 +27,7 @@ docker run --network ehrbase-net --name ehrbase-postgres \
 ehrbase/ehrbase-postgres:16.2
 ```
 
-## Start EHRbase
+### Start EHRbase
 
 To start EHRbase you can simply use the Docker image provided at https://hub.docker.com/r/ehrbase/ehrbase
 
@@ -50,20 +46,17 @@ ehrbase/ehrbase
 
 This will start ehrbase without any Authentication mechanism configured. See the [Security](03_explore/04_security.md) section for details on how to configure security.
 
-## Parameters
+#### Parameters
 
 EHRbase supports a wide range of configurations. Some of them you can find in the Explore section, and for others, you can check out the [configuration](https://github.com/ehrbase/ehrbase/tree/develop/configuration) module in GitHub.
 
-</TabItem>
-<TabItem value="yugabyte" label="Yugabyte">
-
-# HIP EHRbase Installation
+## HIP EHRbase with Yugabyte
 
 Typically, HIP EHRbase will be packed along with HIP CDR and should be installed as part of the overall installation process. For the case that HIP EHRbase should be operated as a stand-alone application, you can follow the instructions below.
 
 HIP EHRbase is provided as a Docker container or via HELM chart configuration.
 
-## Setup YugabyteDB
+### Setup YugabyteDB
 
 Before HIP EHRbase can be run, a YugabyteDB database needs to be set up and configured. Follow the instructions for [YugabyteDB](https://docs.yugabyte.com) installation. Please note that the YugabyteDB configuration will highly depend on your project and system requirements.
 
@@ -75,16 +68,16 @@ For production servers, these operations should be performed by a configuration 
 
 You only have to run this script once. It only contains those operations which require superuser privileges. The actual database schema is managed by flyway, which will automatically be executed the first time CDR Base is connected to YugabyteDB.
 
-## Docker
+### Docker
 
 EHRbase is delivered as a single Docker container including all plugins (Please note that for the current release of EHRbase running on YugabyteDB, only ATNA Logging and Event Trigger Plugins are packaged).
 
-### Prerequisites
+#### Prerequisites
 
 - A YugabyteDB is available and is pre-configured in accordance with the steps described above.
 - A recent version of a Docker runtime environment (e.g., Docker, Rancher, Colima, etc.)
 
-### Parameters
+#### Parameters
 
 To set parameters of HIP EHRbase and the plugins, the default environment variables can be overwritten. Check the next example (which assumes you pulled or created an image named ehrbase/ehrbase):
 
@@ -104,7 +97,7 @@ ehrbase/ehrbase
 
 Here you can find some example settings for common use cases for the usage of EHRbase Docker containers. You can also use the environment variables with the normal .jar execution by setting the variables according to your operating system.
 
-### Use BASIC auth
+#### Use BASIC auth
 
 Run the docker image with this setting:
 
@@ -131,7 +124,7 @@ This will set the used authentication method to BASIC auth, and all requests aga
 
 > **Note:** Ensure you use an encrypted connection over https; otherwise, the username and password can be decrypted easily.
 
-### Use OAuth2
+#### Use OAuth2
 
 Run the docker image with this setting:
 
@@ -155,17 +148,17 @@ You have to prepare the authentication server, including a valid client at the t
 
 > **NOTE:** For more information regarding authentication checkout the [Security](03_explore/04_security.md) section.
 
-## HELM Chart
+### HELM Chart
 
 A Helm chart can be used to install HIP EHRbase in a Kubernetes or OpenShift cluster.
 
-### Prerequisites
+#### Prerequisites
 
 - A YugabyteDB is available and is pre-configured in accordance with the steps described above.
 - Kubernetes 1.20+
 - Helm 3.2.0+
 
-### Installing the Chart
+#### Installing the Chart
 
 Adding the needed chart repository:
 
@@ -180,7 +173,7 @@ Update `values.yaml` and mark `yugabyte.enabled: true`
 $ helm install --kube-context mykubecontext -n myinstallnamespace -f values.yaml ehrbase-kube .
 ```
 
-### Uninstalling the Chart
+#### Uninstalling the Chart
 
 To uninstall the deployment with a release name `ehrbase-kube` in the Kubernetes context `mykubecontext` and the namespace `myinstallnamespace`:
 
@@ -188,7 +181,7 @@ To uninstall the deployment with a release name `ehrbase-kube` in the Kubernetes
 $ helm uninstall --kube-context mykubecontext -n myinstallnamespace ehrbase-kube
 ```
 
-### Running Against an Existing YugabyteDB Instance
+#### Running Against an Existing YugabyteDB Instance
 
 When disabling Yugabyte from this helm chart and running against an existing YugabyteDB instance, the init DB script that creates the users and DB has to be executed manually against YugabyteDB.
 
@@ -199,9 +192,9 @@ Open `config/db_setup.sql` and change the `GO` placeholders with concrete values
 
 Execute the updated script against YugabyteDB.
 
-### Parameters
+#### Parameters
 
-#### Global Parameters
+##### Global Parameters
 
 | Name                                           | Description                                                   | Value                           |
 |------------------------------------------------|---------------------------------------------------------------|---------------------------------|
@@ -211,7 +204,7 @@ Execute the updated script against YugabyteDB.
 | `global.tlsSecrets.ehrbase`                    | Secret name for the the host certificate                      | `vitasystems-dev`               |
 | `global.initContainer.enabled`                 | Toggle the init container of the DB. To be set to `false` if the DB init is done manually. | `true`                          |
 
-#### Application Parameters
+##### Application Parameters
 
 This general overview of available CDR Base parameters is complemented by additional parameters within dedicated chapters of this documentation (for example, for configuration with an external terminology service).
 
@@ -236,7 +229,7 @@ This general overview of available CDR Base parameters is complemented by additi
 | `appConfig.restApiDoc.apiDocs.enabled`     | Enables the OpenAPI documentation                                   | `false`                                    |
 | `replicaCount`                             | Number of EHRbase replicas to deploy                                | `1`                                        |
 
-#### Image Parameters
+##### Image Parameters
 
 | Name               | Description                | Value                    |
 |--------------------|----------------------------|--------------------------|
@@ -244,7 +237,7 @@ This general overview of available CDR Base parameters is complemented by additi
 | `image.pullPolicy` | EHRbase image pull policy  | `Always`                 |
 | `image.tag`        | EHRbase image tag          | `latest`                 |
 
-#### Service Parameters
+##### Service Parameters
 
 | Name                 | Description                 | Value       |
 |----------------------|-----------------------------|-------------|
@@ -254,7 +247,7 @@ This general overview of available CDR Base parameters is complemented by additi
 | `service.protocol`   | EHRbase service protocol    | `TCP`       |
 | `service.name`       | EHRbase service name        | `http`      |
 
-#### YugabyteDB Parameters
+##### YugabyteDB Parameters
 
 | Name                                     | Description                                              | Value     |
 |------------------------------------------|----------------------------------------------------------|-----------|
@@ -269,6 +262,3 @@ This general overview of available CDR Base parameters is complemented by additi
 | `yugabyte.authCredentials.ysql.user`     | User name of the main Yugabyte YSQL user                 | `yugabyte`|
 | `yugabyte.authCredentials.ysql.password` | Password of the main Yugabyte YSQL user                  | `yugabyte`|
 --- 
-
-</TabItem>
-</Tabs>

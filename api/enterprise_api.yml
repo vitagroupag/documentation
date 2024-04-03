@@ -2,21 +2,11 @@
 info:
   title: EHRbase Enterprise
   description: >-
-    EHRbase Enterprise operations that are not part of the OSS, but are part of
-    enterprise plugins.
-
+    HIP EHRbase Enterprise operations that are not part of the OSS, but are part of
+    enterprise feature.
 
     Requires authorization with a tenant user upfront.
 
-
-    Works with the following enviornmnents:
-
-
-    - cdr-core-dev
-
-    - cdr-core-integration
-
-    - HIP.lab integration
   version: 1.0.0
   contact: {}
 servers:
