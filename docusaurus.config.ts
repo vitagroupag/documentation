@@ -16,7 +16,7 @@ const config: Config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: "vitagroup", // Usually your GitHub org/user name.
-  projectName: "HIP CDRs", // Usually your repo name.
+  projectName: "EHRbase", // Usually your repo name.
 
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
@@ -94,7 +94,7 @@ const config: Config = {
     // Replace with your project's social card
     image: "img/docusaurus-social-card.jpg",
     navbar: {
-      title: "HIP CDR",
+      title: "EHRbase",
       logo: {
         alt: "My Site Logo",
         src: "img/signet.png",
@@ -130,10 +130,10 @@ const config: Config = {
             {
               label: "Enterprise APIs",
               to: "/api/hip-ehrbase/enterprise",
-            }
+            },
           ],
         },
-       /* { to: "/releases", label: "Releases", position: "left" }, Excluded until ready*/
+        /* { to: "/releases", label: "Releases", position: "left" }, Excluded until ready*/
         {
           href: "https://github.com/ehrbase/ehrbase",
           label: "GitHub",
@@ -144,12 +144,12 @@ const config: Config = {
     colorMode: {
       defaultMode: "dark",
       disableSwitch: true,
-      respectPrefersColorScheme: false
+      respectPrefersColorScheme: false,
     },
     footer: {
       style: "dark",
       links: [
-    /*    {
+        /*    {
           title: "Docs",
           items: [
             {
