@@ -25,4 +25,7 @@
   --ifm-color-primary-lighter: #f5a5b6;
   --ifm-color-primary-lightest: #fbd6dd;
   --ifm-background-color: #333338;
+  --ifm-link-color: #E62249;
+  --ifm-menu-color-active: #E62249;
+  --ifm-breadcrumb-color-active: #E62249;
 }
