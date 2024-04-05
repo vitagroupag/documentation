@@ -1,7 +1,3 @@
----
-sidebar_position: 4
----
-
 # WHERE
 
 A `WHERE` clause is used to represent further criteria applied to the data items within the objects declared in the FROM (and CONTAINS) clause. A WHERE clause expresses the query criteria that cannot be represented in other AQL clauses, such as criteria on archetype id, composition committal date/time, and the criteria on in which order the returned results should be listed.

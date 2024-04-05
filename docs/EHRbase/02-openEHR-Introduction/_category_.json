@@ -1,6 +1,5 @@
 {
   "label": "openEHR Introduction",
-  "position": 1,
   "link": {
     "type": "generated-index",
     "description": "A small tutorial for openEHR"

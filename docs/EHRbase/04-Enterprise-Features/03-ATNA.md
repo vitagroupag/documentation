@@ -1,6 +1,6 @@
 ---
-sidebar_position: 2
 title: ATNA Logs
+description: The IHE ATNA (Audit Trail and Node Authentication) Profile defines various measures on system security. The EHRbase ATNA Logging Plugin implements the logging specification of the profile which uses the Syslog protocol over TLS.
 ---
 
 # ATNA Logs
@@ -81,8 +81,7 @@ The following services are covered by ATNA Logging:
 
 The code listing shows an example ATNA message that is created whenever a user creates an electronic health record object (EHR) in EHRbase. The user information is either extracted from the Basic Auth credentials or from the OAuth2 JWT Token.
 
-```xml
-<!-- EHR creation successful -->
+```xml title="EHR creation successful"
 <?xml version="1.0" encoding="UTF-8"?>
 <AuditMessage>
     <EventIdentification EventActionCode="C" EventDateTime="2023-09-21T10:13:50.289269153Z" EventOutcomeIndicator="0">
@@ -109,21 +108,19 @@ The code listing shows an example ATNA message that is created whenever a user c
 </AuditMessage>
 ```
 
-
-
-| Field                                          | Explanation                                           | Mapping                                                                                                                                                         |
-|------------------------------------------------|-------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| EventActionCode                                | Represents the action performed                       | "Create("C"), Read("R"), Update("U"), Delete("D"), Execute("E")"                                                                                               |
-| EventDateTime                                  | The Date of the Message                               | Use current datetime                                                                                                                                            |
-| EventOutcomeIndicator                          | status of the operation                               | "Success(0), MinorFailure(4), SeriousFailure(8), MajorFailure(12)"                                                                                             |
-| EventID.csd-code and EventID.originalText      | type of the entity                                    | "a) In case of an EHR: csd-code="110110" and originalText="Patient Record"; b) for the rest: always the string composition, contribution, query, or directory" |
-| AuditEnterpriseSiteID                          | ID of the audit producing system                      | Tenant-ID of EHRbase                                                                                                                                            |
-| ActiveParticipant.UserID                        | The user identifier                                   | "a) Basic Auth: username; b) OAuth2: sub claim from the token"                                                                                                 |
-| ParticipantObjectID [EHR]                      | The EHR was affected by the transaction               | EHR and EHR Status: 1 x ParticipantObjectIdentification with ParticipantObjectTypeCode=1, ParticipantObjectIDTypeCode.originalText=URI, and ParticipantObjectID as the Patient Subject ID of the HER                  |
+| Field                                                      | Explanation                                                                   | Mapping                                                                                                                                                                                                                                                                            |
+|------------------------------------------------------------|-------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| EventActionCode                                            | Represents the action performed                                               | "Create("C"), Read("R"), Update("U"), Delete("D"), Execute("E")"                                                                                                                                                                                                                   |
+| EventDateTime                                              | The Date of the Message                                                       | Use current datetime                                                                                                                                                                                                                                                               |
+| EventOutcomeIndicator                                      | status of the operation                                                       | "Success(0), MinorFailure(4), SeriousFailure(8), MajorFailure(12)"                                                                                                                                                                                                                 |
+| EventID.csd-code and EventID.originalText                  | type of the entity                                                            | "a) In case of an EHR: csd-code="110110" and originalText="Patient Record"; b) for the rest: always the string composition, contribution, query, or directory"                                                                                                                     |
+| AuditEnterpriseSiteID                                      | ID of the audit producing system                                              | Tenant-ID of EHRbase                                                                                                                                                                                                                                                               |
+| ActiveParticipant.UserID                                   | The user identifier                                                           | "a) Basic Auth: username; b) OAuth2: sub claim from the token"                                                                                                                                                                                                                     |
+| ParticipantObjectID [EHR]                                  | The EHR was affected by the transaction                                       | EHR and EHR Status: 1 x ParticipantObjectIdentification with ParticipantObjectTypeCode=1, ParticipantObjectIDTypeCode.originalText=URI, and ParticipantObjectID as the Patient Subject ID of the HER                                                                               |
 | ParticipantObjectID [Composition, Contribution, Directory] | Compositions, Contributions, or the Directory was affected by the transaction | "a) ParticipantObjectTypeCode=1, ParticipantObjectIDTypeCode.originalText=Patient Number, and ParticipantObjectID is the Patient Subject ID of the parent EHR; b) ParticipantObjectTypeCode=2, ParticipantObjectIDTypeCode.originalText=URI, and ParticipantObjectID in the form " |
-| ParticipantObjectID [Ad-hoc query execution]   | Ad-hoc queries are part of the transaction             | Ad-hoc query execution: 1 x ParticipantObjectIdentification with ParticipantObjectTypeCode=2, ParticipantObjectIDTypeCode.originalText=Search Criteria, and ParticipantObjectID set to UNKNOWN                         |
-| ParticipantObjectID [Stored queries]           | Creation and execution of stored queries are part of the transaction | "a) ParticipantObjectTypeCode=2, ParticipantObjectIDTypeCode.originalText=URI, and ParticipantObjectID in the form  b) ParticipantObjectTypeCode=2, ParticipantObjectIDTypeCode.originalText=Search Criteria, and ParticipantObjectID as the qualified name of the query" |
-| NetworkAccessPointID                           | Identification of the user device that creates the audit record | The IP address of the requesting client                                                                                                                        |
+| ParticipantObjectID [Ad-hoc query execution]               | Ad-hoc queries are part of the transaction                                    | Ad-hoc query execution: 1 x ParticipantObjectIdentification with ParticipantObjectTypeCode=2, ParticipantObjectIDTypeCode.originalText=Search Criteria, and ParticipantObjectID set to UNKNOWN                                                                                     |
+| ParticipantObjectID [Stored queries]                       | Creation and execution of stored queries are part of the transaction          | "a) ParticipantObjectTypeCode=2, ParticipantObjectIDTypeCode.originalText=URI, and ParticipantObjectID in the form  b) ParticipantObjectTypeCode=2, ParticipantObjectIDTypeCode.originalText=Search Criteria, and ParticipantObjectID as the qualified name of the query"          |
+| NetworkAccessPointID                                       | Identification of the user device that creates the audit record               | The IP address of the requesting client                                                                                                                                                                                                                                            |
 
 
 ## Setup an Audit Repository

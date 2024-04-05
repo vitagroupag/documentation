@@ -1,8 +1,3 @@
----
-sidebar_position: 3
----
-
-
 # Context Information
 
 To simplify the input, the flat format offers the option to set context values which set default values in the RM-tree.

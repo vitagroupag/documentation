@@ -1,7 +1,3 @@
----
-sidebar_position: 2
----
-
 # AQL SELECT
 
 The SELECT statement allows retrieving single values or objects defined in the CONTAINS clause. The syntax always starts with the keyword SELECT, optionally followed by DISTINCT, and then one or more column expressions.

@@ -1,8 +1,3 @@
----
-sidebar_position: 2
-title: openEHR REST API
----
-
 # openEHR REST API
 
 HIP EHRbase implements version 1.0.2 of the official openEHR REST API.

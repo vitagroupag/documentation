@@ -1,7 +1,3 @@
----
-sidebar_position: 5
----
-
 # Terminology Validation
 
 This section provides information about external terminology validation using remote terminology services.

@@ -1,7 +1,3 @@
----
-sidebar_position: 1
----
-
 # Introduction
 
 The Archetype Query Language (AQL) is an essential part of the openEHR specifications. It allows to retrieve data from any compliant openEHR system while abstracting from the underlying database model. This means that only Archetypes need to be known in order to create and execute queries.

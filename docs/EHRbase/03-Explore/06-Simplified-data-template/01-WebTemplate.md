@@ -1,7 +1,6 @@
 ---
-sidebar_position: 1
+title: WebTemplate
 ---
-
 
 # Introduction
 
@@ -211,7 +210,7 @@ Some attributes are not defined by the template but by the Reference Model. If t
 }
 ```
 
-See [Data Types](02_flat_reference.md) for details.
+See [Data Types](02-Flat-Reference.md) for details.
 
 ## Context
 
@@ -226,5 +225,5 @@ To simplify the input, the flat format offers the option to set context values, 
 }
 ```
 
-See [Context](03_context.md) for details.
+See [Context](03-Context.md) for details.
 ```

@@ -1,7 +1,3 @@
----
-sidebar_position: 4
----
-
 # Security
 
 This page describes how to set up different security mechanisms in EHRbase and also provides some basic information

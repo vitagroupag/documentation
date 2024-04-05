@@ -1,6 +1,6 @@
 ---
-sidebar_position: 5
 title: Multi-Tenancy
+description: HIP CDR is designed as Software as a Service (SaaS) and provides multi-tenancy capabilities across its services. The Multi-Tenancy Plugin allows the HIP CDR Tenant Management to create, update, and delete tenants in EHRbase.
 ---
 
 # Multi-Tenancy

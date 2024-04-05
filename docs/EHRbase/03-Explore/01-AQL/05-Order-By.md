@@ -1,7 +1,3 @@
----
-sidebar_position: 5
----
-
 # ORDER BY
 
 The ORDER BY clause is used to sort the returned results.

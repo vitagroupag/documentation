@@ -1,7 +1,3 @@
----
-sidebar_position: 6
----
-
 # (UN)COMMON QUERIES
 
 This page provides a collection of very common or very specific queries to quickly provide some reference for building your queries.
