@@ -24,7 +24,7 @@ docker run --network ehrbase-net --name ehrbase-postgres \
 -e EHRBASE_USER_ADMIN=ehrbase \
 -e EHRBASE_PASSWORD_ADMIN=ehrbase \
 -d -p 5432:5432 \
-ehrbase/ehrbase-postgres:16.2
+ehrbase/ehrbase-v2-postgres:16.2
 ```
 
 ### Start EHRbase
