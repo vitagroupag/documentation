@@ -146,7 +146,7 @@ const config: Config = {
     },
     footer: {
       style: "dark",
-      links: [
+      /*links: [
         /*    {
           title: "Docs",
           items: [
@@ -155,7 +155,7 @@ const config: Config = {
               to: "/docs/intro",
             },
           ],
-        },*/
+        },
         {
           title: "Community",
           items: [
@@ -167,10 +167,6 @@ const config: Config = {
               label: "HIP CDR Website",
               href: "https://hip.vitagroup.ag",
             },
-            {
-              label: "X / Twitter",
-              href: "https://twitter.com/vitagroup_ag",
-            },
           ],
         },
         {
@@ -180,9 +176,13 @@ const config: Config = {
               label: "GitHub",
               href: "https://github.com/vitagroupag",
             },
+            {
+              label: "X / Twitter",
+              href: "https://twitter.com/vitagroup_ag",
+            },
           ],
         },
-      ],
+      ],*/
       copyright: `Copyright © ${new Date().getFullYear()} vitagroup.`,
     },
     // See available themes on prismThemes object

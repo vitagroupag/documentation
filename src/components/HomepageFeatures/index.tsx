@@ -56,7 +56,7 @@ export default function HomepageFeatures(): JSX.Element {
     <section className={styles.features}>
       <div className="container">
         <div className="text--center">
-          <img width='80%' src="/img/Logo_EHRBASE_open_source.png" alt="HIP CDR Logo" className="logo" />
+          <img width='70%' src="/img/Logo_EHRBASE_open_source.png" alt="HIP CDR Logo" className="logo" />
         </div>
       </div>
     </section>

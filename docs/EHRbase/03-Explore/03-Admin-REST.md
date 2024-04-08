@@ -1,11 +1,11 @@
-# Admin REST API
+---
+sidebar_position: 3
+title: Admin API
+---
 
-HIP EHRbase implements version 1.0.2 of the official openEHR REST API.
+# EHRbase Admin API
 
-Please see the respective resources for details on the REST API specification:
+EHRbase provides some specific administration functions which are not (yet) covered by the official
+openEHR REST API. As the Admin API provides some capabilities which might not be desired for production systems, the API can be (de-)activated using an environment variable / system parameter.
 
-* [QUERY API](/api/hip-ehrbase/query): Execution of queries using the Archetype Query Language (AQL)
-* [EHR API](/api/hip-ehrbase/ehr): Managing the electronic health record of a patient by operating on compositions, folders and contributions
-* [DEFINITION API](/api/hip-ehrbase/definition): Uploading templates and defining stored queries
-
-HIP EHRbase supports all endpoints with the exception of ADL2 Templates. CDR Base currently supports version 1.1.0 of the openEHR Reference Model.
+Please see the respective resources for details on the [EHRbase Admin API](/api/hip-ehrbase/admin).
