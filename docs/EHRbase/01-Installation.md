@@ -13,7 +13,7 @@ The easiest way to get started with it is by spinning up an ehrbase-postgres dat
 
 ### Start PostgresDB
 
-A preconfigured Postgres DB can be spun up using the https://hub.docker.com/r/ehrbase/ehrbase-postgres image.
+A preconfigured Postgres DB can be spun up using the https://hub.docker.com/r/ehrbase/ehrbase-v2-postgres/tags image.
 
 ```bash
 docker run --network ehrbase-net --name ehrbase-postgres \
