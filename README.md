@@ -1,4 +1,4 @@
-# HIP Documentation
+# EHRbase Documentation
 
 This website is built using [Docusaurus](https://docusaurus.io/). It will serve as the integrated documentation, shipped together with HIP CDR and HIP EHRbase for customers and integration partners.
 
