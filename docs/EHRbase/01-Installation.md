@@ -11,10 +11,6 @@ EHRbase by default is built against Postgres.
 
 The easiest way to get started with it is by spinning up an ehrbase-postgres database and an ehrbase instance using Docker.
 
-:::tip
-For a highly scalable, distributed approach, check out [HIP EHRbase with Yugabyte](04-Enterprise-Features/02-Yugabyte.md).
-:::
-
 ### Start PostgresDB
 
 A preconfigured Postgres DB can be spun up using the https://hub.docker.com/r/ehrbase/ehrbase-postgres image.

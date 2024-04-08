@@ -3,11 +3,7 @@ title: Yugabyte
 description: Yugabyte provides a PostgreSQL-compatible highly scalable, distributed SQL database that delivers strong consistency and resilience for mission-critical applications across global deployments.
 ---
 
-# HIP EHRbase with Yugabyte
-
-Typically, HIP EHRbase will be packed along with HIP CDR and should be installed as part of the overall installation process. For the case that HIP EHRbase should be operated as a stand-alone application, you can follow the instructions below.
-
-HIP EHRbase is provided as a Docker container or via HELM chart configuration.
+# HIP EHRbase with YugabyteDB
 
 ## Setup YugabyteDB
 
