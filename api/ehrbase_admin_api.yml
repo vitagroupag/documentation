@@ -202,12 +202,12 @@ paths:
         schema:
           type: string
           example: 1.0.0
-  /ehrbase/rest/status:
+  /status:
     get:
       tags:
         - Status & Management
       summary: Admin API status
-      description: Get the admin base url without endpoint to test authentication
+      description: Get the admin api status
       operationId: adminApiStatus
       responses:
         '200':
