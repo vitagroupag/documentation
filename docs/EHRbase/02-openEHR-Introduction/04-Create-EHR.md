@@ -16,7 +16,7 @@ In this tutorial, we assume that we have a new patient coming to our organizatio
 Please note that in HIP CDR, you need to use ADT messages or the FHIR API to create a new patient. In this case, the EHR object will be automatically created in EHRbase.
 :::
 
-```javascript
+```json
 {
   "system_id": {
     "value": "d60e2348-b083-48ce-93b9-916cef1d3a5a"
@@ -48,7 +48,7 @@ Please note that in HIP CDR, you need to use ADT messages or the FHIR API to cre
 
 In the result, you should find the EHR ID. This ID will be needed for further operations.
 
-```javascript
+```json
 "ehr_id": {
   "value": "7d44b88c-4199-4bad-97dc-d78268e01398"
 }
@@ -58,7 +58,7 @@ In the result, you should find the EHR ID. This ID will be needed for further op
 
 In the EHRbase Client Library, creating a new EHR object is straightforward:
 
-```Java
+```java
 openEhrClient = DefaultRestClientTestHelper.setupDefaultRestClient();
 EhrEndpoint ehrEndpoint = openEhrClient.ehrEndpoint();
 UUID ehr = ehrEndpoint.createEhr();

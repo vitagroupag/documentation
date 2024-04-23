@@ -10,8 +10,9 @@ Copy the content of the OPT file into the body of the REST call. Make sure that 
 
 As an alternative to directly using the REST API, the EHRbase Client Library provides functionality to upload a Template.
 
-```Java
+```java
 OPERATIONALTEMPLATE template = TemplateDocument.Factory.parse(OperationalTemplateTestData.BLOOD_PRESSURE_SIMPLE.getStream()).getTemplate();
 String templateId = "ehrbase_blood_pressure_simple.de.v" + RandomStringUtils.randomNumeric(10);
 template.getTemplateId().setValue(templateId);
 String actual = new DefaultRestTemplateEndpoint(cut).upload(template);
+```

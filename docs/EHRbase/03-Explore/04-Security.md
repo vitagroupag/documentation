@@ -31,13 +31,13 @@ The basic auth mechanism uses a predefined set of users and roles that will be c
 start of EHRbase by setting the data inside the environment variables or inside the .yml file as
 follows:
 
-| ENV                        | .yml                       | Value to set        | Default                |
-| -------------------------- | -------------------------- | ------------------- | ---------------------- |
-| SECURITY_AUTHTYPE          | security.authType          | BASIC               | NONE                   |
-| SECURITY_AUTHUSER          | security.authUser          | your username       | ehrbase-user           |
-| SECURITY_AUTHPASSWORD      | security.authPassword      | Your password       | SuperSecretPassword    |
-| SECURITY_AUTHADMINUSER     | security.authAdminUser     | Your admin username | ehrbase-admin          |
-| SECURITY_AUTHADMINPASSWORD | security.authAdminPassword | Your admin password | EvenMoreSecretPassword |
+| ENV                          | .yml                         | Value to set        | Default                  |
+|------------------------------|------------------------------|---------------------|--------------------------|
+| `SECURITY_AUTHTYPE`          | `security.authType`          | BASIC               | `NONE`                   |
+| `SECURITY_AUTHUSER`          | `security.authUser`          | your username       | `ehrbase-user`           |
+| `SECURITY_AUTHPASSWORD`      | `security.authPassword`      | Your password       | `SuperSecretPassword`    |
+| `SECURITY_AUTHADMINUSER`     | `security.authAdminUser`     | Your admin username | `ehrbase-admin`          |
+| `SECURITY_AUTHADMINPASSWORD` | `security.authAdminPassword` | Your admin password | `EvenMoreSecretPassword` |
 
 To access a resource from a client generate the Base64 encoded string of `{username}:{password}` 
 and add it in the Authorization header with `Basic {Base64 encoded string}`.
@@ -52,12 +52,12 @@ information about the role of each user.
 To start EHRbase with OAuth2 support and configure the external server use one of the following
 configuration methods:
 
-| ENV                                                 | .yml                                                 | Value to set            | Default                                   |
-| --------------------------------------------------- | ---------------------------------------------------- | ----------------------- | ----------------------------------------- |
-| SECURITY_AUTHTYPE                                   | security.authType                                    | OAUTH                   | NONE                                      |
-| SECURITY_OAUTH2USERROLE                             | security.oauth2UserRole                              | Desired user role name  | USER                                      |
-| SECURITY_OAUTH2ADMINROLE                            | security.oauth2AdminRole                             | Desired admin role name | ADMIN                                     |
-| SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUERURI | spring.security.oauth2.resourceserver.jwt.issuer-uri | Your realm base url     | http://localhost:8081/auth/realms/ehrbase |
+| ENV                                                   | .yml                                                   | Value to set            | Default                                     |
+|-------------------------------------------------------|--------------------------------------------------------|-------------------------|---------------------------------------------|
+| `SECURITY_AUTHTYPE`                                   | `security.authType`                                    | OAUTH                   | `NONE`                                      |
+| `SECURITY_OAUTH2USERROLE`                             | `security.oauth2UserRole`                              | Desired user role name  | `USER`                                      |
+| `SECURITY_OAUTH2ADMINROLE`                            | `security.oauth2AdminRole`                             | Desired admin role name | `ADMIN`                                     |
+| `SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUERURI` | `spring.security.oauth2.resourceserver.jwt.issuer-uri` | Your realm base url     | `http://localhost:8081/auth/realms/ehrbase` |
 
 The realm, client and all other settings must be done inside the corresponding authentication
 server.

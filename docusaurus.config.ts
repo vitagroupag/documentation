@@ -82,7 +82,7 @@ const config: Config = {
         ],
         theme: {
           // Change with your site colors
-          primaryColor: "#720035",
+          primaryColor: "#E62249"
         },
       },
     ],
@@ -136,6 +136,7 @@ const config: Config = {
           href: "https://github.com/ehrbase/ehrbase",
           label: "GitHub",
           position: "right",
+          className: "header-github-link",
         },
       ],
     },
@@ -188,7 +189,7 @@ const config: Config = {
     // See available themes on prismThemes object
     prism: {
       darkTheme: prismThemes.dracula,
-      additionalLanguages: ["bash", "json", "yaml"],
+      additionalLanguages: ["bash", "json", "yaml", "java"],
     },
   } satisfies Preset.ThemeConfig,
 };

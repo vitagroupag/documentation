@@ -9,7 +9,7 @@ tags:
 
 EHRbase by default is built against Postgres.
 
-The easiest way to get started with it is by spinning up an ehrbase-postgres database and an ehrbase instance using Docker.
+The easiest way to get started with it is by spinning up an EHRbase Postgres database and an ehrbase instance using Docker.
 
 ### Start PostgresDB
 
