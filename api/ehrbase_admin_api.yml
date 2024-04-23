@@ -20,10 +20,15 @@ info:
 
 
 servers:
-  - url: '{{ehrbase-url}}'
-  - url: '{{admin_api_uri}}'
+  - url: https://{ehrbaseUrl}/{adminApiUrl}
+    description: An example EHRbase Admin API URL.
+    variables:
+      baseUrl:
+        default: ehrbase.org
+      adminApiUrl:
+        default: rest/admin
 paths:
-  /ehrbase/rest/admin/ehr/{ehr_id}/composition/{composition_id}:
+  /ehr/{ehr_id}/composition/{composition_id}:
     delete:
       tags:
         - Composition
@@ -47,7 +52,7 @@ paths:
         schema:
           type: string
           example: '{{last_composition_id_short}}'
-  /ehrbase/rest/admin/ehr/{ehr_id}:
+  /ehr/{ehr_id}:
     put:
       tags:
         - EHR
@@ -107,30 +112,7 @@ paths:
       responses:
         '200':
           description: ''
-    delete:
-      tags:
-        - Contribution
-      summary: Delete Contribution
-      description: >-
-        Deletes the Contribution physically from the database including all
-        related items and history entries
-      operationId: deleteContribution
-      responses:
-        '200':
-          description: ''
-    parameters:
-      - name: ehr_id
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: contribution_id
-        in: path
-        required: true
-        schema:
-          type: string
-          example: 071f647d-b00f-44cc-9448-0fac34bb434b
-  /ehrbase/rest/admin/ehr/{ehr_id}/directory/{directory_id}:
+  /ehr/{ehr_id}/directory/{directory_id}:
     delete:
       tags:
         - Directory
@@ -166,14 +148,6 @@ paths:
       responses:
         '200':
           description: ''
-    parameters:
-      - name: template_id
-        in: path
-        required: true
-        schema:
-          type: string
-          example: International Patient Summary
-  /ehrbase/rest/admin/template/{template_id}:
     delete:
       tags:
         - Template
@@ -204,6 +178,30 @@ paths:
       responses:
         '200':
           description: ''
+  /query/{qualified_query_name}/{version}:
+    delete:
+      tags:
+        - Query
+      summary: Delete Stored Query Version
+      description: >-
+        Deletes a stored query version
+      operationId: deleteStoredQuery
+      responses:
+        '200':
+          description: ''
+    parameters:
+      - name: qualified_query_name
+        in: path
+        required: true
+        schema:
+          type: string
+          example: org.ehrbase::compositions_with_high_blood_pressure
+      - name: version
+        in: path
+        required: true
+        schema:
+          type: string
+          example: 1.0.0
   /ehrbase/rest/status:
     get:
       tags:
@@ -221,4 +219,6 @@ tags:
   - name: Contribution
   - name: Directory
   - name: Template
+  - name: Query
   - name: Status & Management
+
