@@ -10,7 +10,13 @@ info:
   version: 1.0.0
   contact: {}
 servers:
-  - url: '{{ehrbaseBaseUrl}}'
+  - url: https://{ehrbaseUrl}
+    description: An example EHRbase Admin API URL.
+    variables:
+      baseUrl:
+        default: ehrbase.org
+      adminApiUrl:
+        default: rest/admin
 paths:
   /plugin/event-trigger/service/:
     get:
@@ -476,6 +482,23 @@ paths:
       responses:
         '200':
           description: ''
+  /plugin/multi-tenant/service/{tenant_id}:
+    delete:
+      tags:
+        - Multi tenant
+      summary: Delete Tenant
+      description: Get tenants
+      operationId: getTenants
+      responses:
+        '200':
+          description: ''
+    parameters:
+      - name: tenant_id
+        in: path
+        required: true
+        schema:
+          type: string
+          example: '{{$guid}}'
   /plugin/transaction-management/ehr/{ehr_id}/contribution/{contribution_id}/rollback:
     post:
       tags:

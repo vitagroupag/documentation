@@ -20,7 +20,7 @@ info:
 
 
 servers:
-  - url: https://{ehrbaseUrl}/{adminApiUrl}
+  - url: https://{ehrbaseUrl}/{adminApiUrlPath}
     description: An example EHRbase Admin API URL.
     variables:
       baseUrl:
