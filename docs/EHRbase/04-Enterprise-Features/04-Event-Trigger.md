@@ -33,64 +33,8 @@ In combination with [multi-tenancy](06-Multi-Tenancy.md), the event triggers are
 | `spring.kafka.bootstrap-servers` | `SPRING_KAFKA_BOOTSTRAPSERVERS` | Define Kafka Bootstrap Server                                                                                                                                      | `localhost:9092` |
 | `eventtrigger.workers`           | `EVENTTRIGGER_WORKERS`          | The number of executor pool workers to use when create / update events happen. Increasing the workers number means multiple triggers can be evaluated in parallel. | `8`              |
 
-## Event Trigger REST API
+## REST API
 
-A REST API allows managing Triggers using Create, Update, and Delete operations.
+For managing event triggers through the REST API checkout the [Event Trigger API Definition](/api/hip-ehrbase/enterprise#tag/Event-Trigger)
 
-### Create Event Trigger
 
-```http
-POST {{ehrbase-url}}/ehrbase/plugin/event-trigger/service HTTP/1.1
-Host: localhost:8080
-Accept: application/json, text/javascript
-Content-Type: application/json
-
-{
-    "id": "simple_test_trigger_bp.v1",
-    "state": "active",
-    ...
-}
-
-HTTP/1.1 200 OK
-Vary: Accept
-```
-
-### Retrieve Event Trigger
-
-```http
-GET {{ehrbase-url}}/ehrbase/plugin/event-trigger/service/{{event_trigger_id}} HTTP/1.1
-Host: localhost:8080
-
-HTTP/1.1 200 OK
-Vary: Accept
-```
-
-### Retrieve all Event Triggers
-
-```http
-GET {{ehrbase-url}}/ehrbase/plugin/event-trigger/service/ HTTP/1.1
-Host: localhost:8080
-
-HTTP/1.1 200 OK
-Vary: Accept
-```
-
-### Update Event Trigger
-
-```http
-PUT {{ehrbase-url}}/ehrbase/plugin/event-trigger/service/{{event_trigger_id}}?activate=false HTTP/1.1
-Host: localhost:8080
-
-HTTP/1.1 200 OK
-Vary: Accept
-```
-
-### Delete Event Trigger
-
-```http
-DELETE {{ehrbase-url}}/ehrbase/plugin/event-trigger/service/{{event_trigger_id}} HTTP/1.1
-Host: localhost:8080
-
-HTTP/1.1 200 OK
-Vary: Accept
-```

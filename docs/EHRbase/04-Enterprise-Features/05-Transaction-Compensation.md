@@ -21,19 +21,7 @@ The Transaction Compensation feature does not need any parameters to be provided
 
 ## REST API
 
-### Execute Rollback
-
-```http
-GET {{ehrbase-url}}/ehrbase/rest/admin/ehr/{ehr_id}/contribution/{contribution_id}/rollback HTTP/1.1
-Host: localhost:8080
-
-HTTP/1.1 200 OK
-Vary: Accept
-```
-
-**Status Codes:**
-- `200`: Contribution was successfully rolled back
-- `500`: Internal system error. The whole compensation transaction is rolled back
+For rolling back transactions through the REST API checkout the [Compensation API Definition](/api/hip-ehrbase/enterprise#tag/Compensation)
 
 ## Dealing with Parallel Access
 
