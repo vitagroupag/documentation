@@ -12,7 +12,7 @@ unauthenticated access.
 A basic role system also defines permissions on different resources, e.g. the additional admin
 endpoints are only accessible by users with the role `admin` configured.
 
-By default EHRbase is started without security enabled (`NONE`) which will be reported by a message during
+By default, EHRbase is started without security enabled (`NONE`) which will be reported by a message during
 boot.
 
 To enable authentication start the EHRbase application with environment variable `AUTH_TYPE` set
@@ -33,7 +33,7 @@ follows:
 
 | ENV                          | .yml                         | Value to set        | Default                  |
 |------------------------------|------------------------------|---------------------|--------------------------|
-| `SECURITY_AUTHTYPE`          | `security.authType`          | BASIC               | `NONE`                   |
+| `SECURITY_AUTHTYPE`          | `security.authType`          | `BASIC`             | `NONE`                   |
 | `SECURITY_AUTHUSER`          | `security.authUser`          | your username       | `ehrbase-user`           |
 | `SECURITY_AUTHPASSWORD`      | `security.authPassword`      | Your password       | `SuperSecretPassword`    |
 | `SECURITY_AUTHADMINUSER`     | `security.authAdminUser`     | Your admin username | `ehrbase-admin`          |
@@ -41,8 +41,6 @@ follows:
 
 To access a resource from a client generate the Base64 encoded string of `{username}:{password}` 
 and add it in the Authorization header with `Basic {Base64 encoded string}`.
-
-Additionally, access to the management endpoints can be configured trough the `management.endpoints.web.access` property (supported values: `ADMIN_ONLY`, `PRIVATE`, `PUBLIC`, default: `ADMIN_ONLY`).
 
 ## OAuth2
 
@@ -54,7 +52,7 @@ configuration methods:
 
 | ENV                                                   | .yml                                                   | Value to set            | Default                                     |
 |-------------------------------------------------------|--------------------------------------------------------|-------------------------|---------------------------------------------|
-| `SECURITY_AUTHTYPE`                                   | `security.authType`                                    | OAUTH                   | `NONE`                                      |
+| `SECURITY_AUTHTYPE`                                   | `security.authType`                                    | `OAUTH`                 | `NONE`                                      |
 | `SECURITY_OAUTH2USERROLE`                             | `security.oauth2UserRole`                              | Desired user role name  | `USER`                                      |
 | `SECURITY_OAUTH2ADMINROLE`                            | `security.oauth2AdminRole`                             | Desired admin role name | `ADMIN`                                     |
 | `SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_ISSUERURI` | `spring.security.oauth2.resourceserver.jwt.issuer-uri` | Your realm base url     | `http://localhost:8081/auth/realms/ehrbase` |
@@ -67,3 +65,18 @@ on the names of custom OAuth roles or scopes. EHRBase will look for the admin/us
 
 The clients must be implemented / configured to use the external authentication server as well.
 There are multiple libraries for many frameworks available that can be used for this.
+
+## Management
+
+Access to the management(actuator) endpoints can be configured through the `management.endpoints.web.access` property
+(supported values: `ADMIN_ONLY`, `PRIVATE`, `PUBLIC`, default: `ADMIN_ONLY`).
+
+In addition, write-access to all management endpoints is protected against CSRF by default. This protection can be
+disabled using `ehrbase.security.management.endpoints.web.csrf-validation-enabled=false`.
+
+All EHRbase management configurations:
+
+| ENV                                                               | .yml                                                                | Default      |
+|-------------------------------------------------------------------|---------------------------------------------------------------------|--------------|
+| `MANAGEMENT_ENDPOINT_WEB_ACCESS`                                  | `management.endpoints.web.access`                                   | `ADMIN_ONLY` |
+| `EHRBASE_SECURITY_MANAGEMENT_ENDPOINTS_WEB_CSRFVALIDATIONENABLED` | `ehrbase.security.management.endpoints.web.csrf-validation-enabled` | `true`       |
