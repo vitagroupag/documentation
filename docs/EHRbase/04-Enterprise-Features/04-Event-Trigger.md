@@ -23,7 +23,7 @@ In combination with [multi-tenancy](06-Multi-Tenancy.md), the event triggers are
 
 | Parameter                        | Env Variable                    | Usage                                                                                                                                                              | Example          |
 |----------------------------------|---------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------|
-| `eventtrigger.enabled`           | `EVENTTRIGGER_ENABLED`          | Enables the event trigger feature                                                                                                                                  | `true`           |
+| `eventTrigger.enabled`           | `EVENTTRIGGER_ENABLED`          | Enables the event trigger feature                                                                                                                                  | `true`           |
 | `spring.rabbitmq.host`           | `SPRING_RABBITMQ_HOST`          | RabbitMQ host address                                                                                                                                              | `127.0.0.01`     |
 | `spring.rabbitmq.port`           | `SPRING_RABBITMQ_PORT`          | RabbitMQ host port                                                                                                                                                 | `5672`           |
 | `spring.rabbitmq.username`       | `SPRING_RABBITMQ_USERNAME`      | RabbitMQ Username                                                                                                                                                  | `guest`          |
@@ -31,7 +31,7 @@ In combination with [multi-tenancy](06-Multi-Tenancy.md), the event triggers are
 | `spring.rabbitmq.virtual-host`   | `SPRING_RABBITMQ_VIRTUALHOST`   | RabbitMQ Virtual Host to use                                                                                                                                       | `/`              |
 | `eventTrigger.kafka.activate`    | `EVENTTRIGGER_KAFKA_ACTIVATE`   | Activate Support for Kafka                                                                                                                                         | `true`           |
 | `spring.kafka.bootstrap-servers` | `SPRING_KAFKA_BOOTSTRAPSERVERS` | Define Kafka Bootstrap Server                                                                                                                                      | `localhost:9092` |
-| `eventtrigger.workers`           | `EVENTTRIGGER_WORKERS`          | The number of executor pool workers to use when create / update events happen. Increasing the workers number means multiple triggers can be evaluated in parallel. | `8`              |
+| `eventTrigger.workers`           | `EVENTTRIGGER_WORKERS`          | The number of executor pool workers to use when create / update events happen. Increasing the workers number means multiple triggers can be evaluated in parallel. | `8`              |
 
 ## REST API
 
