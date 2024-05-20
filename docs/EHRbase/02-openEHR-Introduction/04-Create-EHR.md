@@ -10,11 +10,32 @@ The REST API can be found here: [openEHR REST API specifications](https://specif
 
 ## REST
 
-In this tutorial, we assume that we have a new patient coming to our organization. We simply make a REST call with an empty body.
+In this tutorial, we assume that we have a new patient coming to our organization. We simply make a REST call with an empty EHR_STATUS body.
+
+```json
+{
+  "archetype_node_id": "openEHR-EHR-EHR_STATUS.generic.v1",
+  "name": {
+    "value": "EHR status"
+  },
+  "uid": {
+    "_type": "OBJECT_VERSION_ID",
+    "value": "8849182c-82ad-4088-a07f-48ead4180515::openEHRSys.example.com::1"
+  },
+  "subject": {
+    "_type": "PARTY_SELF"
+  },
+  "is_queryable": true,
+  "is_modifiable": true,
+  "_type": "EHR_STATUS"
+}
+```
 
 :::warning
 Please note that in HIP CDR, you need to use ADT messages or the FHIR API to create a new patient. In this case, the EHR object will be automatically created in EHRbase.
 :::
+
+You will receive the following response result (assuming you are using the `Prefer: return=representation` header):
 
 ```json
 {
@@ -46,13 +67,19 @@ Please note that in HIP CDR, you need to use ADT messages or the FHIR API to cre
 }
 ```
 
-In the result, you should find the EHR ID. This ID will be needed for further operations.
+In the response payload, you should find the EHR ID. This ID will be needed for further operations.
 
 ```json
-"ehr_id": {
-  "value": "7d44b88c-4199-4bad-97dc-d78268e01398"
+{
+  ...
+  "ehr_id": {
+    "value": "7d44b88c-4199-4bad-97dc-d78268e01398"
+  },
+  ...
 }
 ```
+
+If the request did not specify the `Prefer` header or you used `return=minimal`, the `ehr_id` can be retrieved from the `etag` response header.
 
 ## openEHR SDK
 
