@@ -110,6 +110,18 @@ paths:
                                         command:
                                           type: string
                                           example: notify
+                                    kafkaNotify:
+                                      type: object
+                                      properties:
+                                        command:
+                                          type: string
+                                          example: publish
+                                        channel:
+                                          type: string
+                                          example: kafka
+                                        topic:
+                                          type: string
+                                          example: myTopic
                                 example:
                                   - logEvent:
                                       channel: logger
@@ -123,6 +135,10 @@ paths:
                                       channel: http
                                       command: notify
                                       url: http://localhost:1080/demo
+                                  - kafkaNotify:
+                                      command: publish
+                                      channel: kafka
+                                      topic: myTopic
                               when:
                                 type: object
                                 properties:
@@ -153,6 +169,10 @@ paths:
                                   channel: http
                                   command: notify
                                   url: http://localhost:1080/demo
+                              - kafkaNotify:
+                                  command: publish
+                                  channel: kafka
+                                  topic: myTopic
                             when:
                               aql: >-
                                 select e/ehr_id/value as ehr_id, c/uid/value as
@@ -194,6 +214,10 @@ paths:
                                 channel: http
                                 command: notify
                                 url: http://localhost:1080/demo
+                            - kafkaNotify:
+                                command: publish
+                                channel: kafka
+                                topic: myTopic
                           when:
                             aql: >-
                               select e/ehr_id/value as ehr_id, c/uid/value as
@@ -298,6 +322,18 @@ paths:
                                         command:
                                           type: string
                                           example: notify
+                                    kafkaNotify:
+                                      type: object
+                                      properties:
+                                        command:
+                                          type: string
+                                          example: publish
+                                        channel:
+                                          type: string
+                                          example: kafka
+                                        topic:
+                                          type: string
+                                          example: myTopic
                                 example:
                                   - logEvent:
                                       channel: logger
@@ -311,6 +347,10 @@ paths:
                                       channel: http
                                       command: notify
                                       url: http://localhost:1080/demo
+                                  - kafkaNotify:
+                                      command: publish
+                                      channel: kafka
+                                      topic: myTopic
                               when:
                                 type: object
                                 properties:
@@ -341,6 +381,10 @@ paths:
                                   channel: http
                                   command: notify
                                   url: http://localhost:1080/demo
+                              - kafkaNotify:
+                                  command: publish
+                                  channel: kafka
+                                  topic: myTopic
                             when:
                               aql: >-
                                 select e/ehr_id/value as ehr_id, c/uid/value as
@@ -382,6 +426,10 @@ paths:
                                 channel: http
                                 command: notify
                                 url: http://localhost:1080/demo
+                            - kafkaNotify:
+                                command: publish
+                                channel: kafka
+                                topic: myTopic
                           when:
                             aql: >-
                               select e/ehr_id/value as ehr_id, c/uid/value as
