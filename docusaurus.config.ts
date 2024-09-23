@@ -56,27 +56,27 @@ const config: Config = {
         specs: [
           {
             id: "hip-ehrbase-definition",
-            spec: "api/definition-validation.openapi.yaml",
+            spec: "api/ehrbase-openehr-definition.yaml",
             route: "/api/hip-ehrbase/definition",
           },
           {
             id: "hip-ehrbase-admin",
-            spec: "api/ehrbase_admin_api.yml",
+            spec: "api/ehrbase-admin.yml",
             route: "/api/hip-ehrbase/admin",
           },
           {
             id: "hip-ehrbase-query",
-            spec: "api/query-codegen.openapi.yaml",
+            spec: "api/ehrbase-openehr-query.yaml",
             route: "/api/hip-ehrbase/query",
           },
           {
             id: "hip-ehrbase-enterprise",
-            spec: "api/enterprise_api.yml",
+            spec: "api/hip-ehrbase-enterprise.yml",
             route: "/api/hip-ehrbase/enterprise",
           },
           {
             id: "hip-ehrbase-ehr",
-            spec: "api/ehr-codegen.openapi.yaml",
+            spec: "api/ehrbase-openehr-ehr.yaml",
             route: "/api/hip-ehrbase/ehr",
           },
         ],

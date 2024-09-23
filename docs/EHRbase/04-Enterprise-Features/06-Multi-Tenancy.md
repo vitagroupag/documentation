@@ -11,11 +11,11 @@ Please note that the Multi-Tenancy feature has been developed with the integrati
 
 For the case you want to use multi-tenancy in EHRbase outside the context of HIP CDR, please be aware of these dependencies.
 
-## Parameters / Environment Variables
+## Configuration
 
-| Parameter                         | Env Variable                    | Usage                         | Example          |
-|-----------------------------------|---------------------------------|-------------------------------|------------------|
-| `multitenancy.enabled`            | `MULTITENANCY_ENABLED`          | Enables multi-tenancy         | `true`           |
+| Property               | Env Variable                    | Use                   | Example          |
+|------------------------|---------------------------------|-----------------------|------------------|
+| `multitenancy.enabled` | `MULTITENANCY_ENABLED`          | Enables multi-tenancy | `true`           |
 
 > **Attention:** Enabling multi-tenancy will create additional schemas for each new tenant. Enabling it for an already running system should be done after carefuly considering migrating of the existing data.
 

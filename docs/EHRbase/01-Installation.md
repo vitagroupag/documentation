@@ -44,7 +44,9 @@ docker run --network ehrbase-net --name ehrbase \
 ehrbase/ehrbase
 ```
 
-This will start ehrbase without any Authentication mechanism configured. See the [Security](03-Explore/04-Security.md) section for details on how to configure security.
+This will start EHRbase without any Authentication mechanism configured. See the [Security](03-Explore/04-Security.md) section for details on how to configure security.
+
+To check that EHRbase has started, open a browser and access http://localhost:8080/ehrbase and you should see the welcome page.
 
 #### Parameters
 

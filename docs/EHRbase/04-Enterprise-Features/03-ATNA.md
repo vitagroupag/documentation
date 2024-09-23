@@ -64,18 +64,17 @@ The following services are covered by ATNA Logging:
   - **Query**
     - Delete query
 
-| Parameter                           | Env Variable                     | Use                                                  | Example                                   |
-|-------------------------------------|----------------------------------|------------------------------------------------------|-------------------------------------------|
-| `ipf.atna.audit-enabled`            | `IPF_ATNA_AUDITENABLED`          | Whether to enable ATNA audit feature                 | `"true"`                                  |
-| `ipf.atna.audit-enterprise-site-id` | `IPF_ATNA_AUDITENTERPRISESITEID` | Enterprise Site ID (CDR Base Tenant ID is used)      | `1f332a66-0e57-11ed-861d-0242ac120002`    |
-| `ipf.atna.audit-repository-host`    | `IPF_ATNA_AUDITREPOSITORYHOST`   | Audit repository host                                | `localhost `                              |
-| `ipf.atna.audit-repository-port`    | `IPF_ATNA_AUDITREPOSITORYPORT`   | Audit repository port                                | `514 `                                    |
-| `ipf.atna.audit-source-id`          | `IPF_ATNA_AUDITSOURCEID`         | Audit source ID                                      |                                           |
-| `ipf.atna.audit-value-if-missing`   | `IPF_ATNA_AUDITVALUEIFMISSING`   | Value used for mandatory elements that are empty.    | `UNKNOWN`                                 |
+## Configuration
 
-
-
-
+| Property                            | ENV                               | Use                                                                                          | Example                                |
+|-------------------------------------|-----------------------------------|----------------------------------------------------------------------------------------------|----------------------------------------|
+| `ipf.atna.audit-enabled`            | `IPF_ATNA_AUDITENABLED`           | Whether to enable ATNA audit feature                                                         | `"true"`                               |
+| `ipf.atna.audit-enterprise-site-id` | `IPF_ATNA_AUDITENTERPRISESITEID`  | Enterprise Site ID (CDR Base Tenant ID is used)                                              | `1f332a66-0e57-11ed-861d-0242ac120002` |
+| `ipf.atna.audit-repository-host`    | `IPF_ATNA_AUDITREPOSITORYHOST`    | Audit repository host                                                                        | `localhost `                           |
+| `ipf.atna.audit-repository-port`    | `IPF_ATNA_AUDITREPOSITORYPORT`    | Audit repository port                                                                        | `514 `                                 |
+| `ipf.atna.audit-source-id`          | `IPF_ATNA_AUDITSOURCEID`          | Audit source ID                                                                              |                                        |
+| `ipf.atna.audit-value-if-missing`   | `IPF_ATNA_AUDITVALUEIFMISSING`    | Value used for mandatory elements that are empty.                                            | `UNKNOWN`                              |
+| `ehrbase.atna.supressLoginEvents`   | `EHRBASE_ATNA_SUPRESSLOGINEVENTS` | Disables auditing of the login events by ATNA logs. Events are only present for `BASIC` auth | `true`                                 |
 ## ATNA Message Example and Mapping
 
 The code listing shows an example ATNA message that is created whenever a user creates an electronic health record object (EHR) in EHRbase. The user information is either extracted from the Basic Auth credentials or from the OAuth2 JWT Token.
