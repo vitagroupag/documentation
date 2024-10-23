@@ -5,11 +5,11 @@ This page provides a collection of very common or very specific queries to quick
 ## Retrieve EHR-ID (and external subject ID) of a patient
 Use the paths `e/ehr_id/value`to retrieve the electronic health record ID of a patient. If an external ID is stored as part of the EHR object in EHRbase, it can be retrieved through `e/ehr_status/subject/external_ref/id/value`
 
-```
+```sql
 SELECT
    e/ehr_id/value,
    e/ehr_status/subject/external_ref/id/value
-   EHR e
+FROM EHR e
 ```
 
 ## Retrieve Feeder Audit Information
@@ -36,7 +36,7 @@ The following example shows an example how an AQL query can address multiple com
 In such scenarios, the result set will be relatively large as the carthesian product will be produced. This is mathematically correct but might make handling of result sets a bit more challenging.
 :::
 
-```
+```sql
 SELECT
     e/ehr_id/value,
     a_b/data[at0001]/events[at0006]/data[at0003]/items[at0004]/value/magnitude,

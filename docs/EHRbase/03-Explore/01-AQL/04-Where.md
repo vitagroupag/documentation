@@ -4,12 +4,12 @@ A `WHERE` clause is used to represent further criteria applied to the data items
 
 The WHERE clause syntax has the following parts (in order): keyword WHERE and one or more identified expressions. Logical operators `AND`, `OR`, `NOT` and parenthesis () can be used to combine multiple identified expressions. Examples:
 
-```
+```sql
 WHERE
    c/name/value=$nameValue AND c/archetype_details/template_id/value=$templateId
 ```
 
-```
+```sql
 WHERE
    (c/name/value = $nameValue OR c/archetype_details/template_id/value = $templateId) AND
    o/data[at0001]/events[at0006]/data[at0003]/items[at0004]/value/value >= 140
@@ -25,7 +25,7 @@ The `LIKE` binary operator is used to compare a value of type string (or dates a
 
 Below is an example using a simple pattern matching:
 
-```
+```sql
 SELECT
    e/ehr_id/value, c/context/start_time
 FROM
@@ -40,7 +40,7 @@ WHERE
 
 The matches binary operator is used in the `WHERE` clause. The left-hand operand is an AQL identified path. The right-hand operand is enclosed within curly braces ({}), and may take the following forms:
 
-```
+```sql
 SELECT
    o/data[at0002]/events[at0003]/data/items[at0015]/items[at0018]/name
 FROM

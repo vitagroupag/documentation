@@ -10,7 +10,7 @@ This feature is based on constraints defined in the openEHR Templates and allows
 
 The following example demonstrates how to define the constraint in order to validate a coded element based on the standard value set `http://hl7.org/fhir/ValueSet/surface` defined in HL7 FHIR.
 
-```
+```xml
 <attributes xsi:type="C_SINGLE_ATTRIBUTE">
     <rm_attribute_name>defining_code</rm_attribute_name>
     <existence>
@@ -39,7 +39,7 @@ The following example demonstrates how to define the constraint in order to vali
 
 According to the constraint defined above, a valid composition should look like (using a valid code coming from http://hl7.org/fhir/ValueSet/surface):
 
-```
+```json
 "value": {
     "_type": "DV_CODED_TEXT",
     "value": "Buccal",
@@ -54,7 +54,7 @@ According to the constraint defined above, a valid composition should look like 
 }
 ```
 
-Otherwise the submitted composition will be rejected by EHRbase indicating the error.
+Otherwise, the submitted composition will be rejected by EHRbase indicating the error.
 
 :::info
 The current implementation only supports FHIR Terminology Server (R4).
@@ -132,7 +132,7 @@ client:
 
 
 Configure Authentication Provider for the FHIR terminology server:
-```
+```yaml
 spring:
   security:
     oauth2:
@@ -159,10 +159,10 @@ validation:
         oauth2-client: 'fhir-terminology-client'
         type: FHIR
         url: http://fhir.localtest.me/fhir/
-````
+```
 
 Same configuration as environment variables:
-```
+```properties
 SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_FHIRTERMINOLOGYCLIENT_CLIENTID=EHRBase-Test
 SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_FHIRTERMINOLOGYCLIENT_CLIENTSECRET=b2F1dGgyLXByb3h5LWNsaWVudC1zZWNyZXQK
 SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_FHIRTERMINOLOGYCLIENT_AUTHORIZATIONGRANTTYPE=client_credentials

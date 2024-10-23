@@ -16,7 +16,7 @@ java -jar client-library-0.2.0.jar -opt "C:\Users\MyUser\Desktop\HiGHmed_Cardio_
 
 You should find a file named *HiGHmed_Cardio_Monitoring_v1.java* inside your project structure that should look like this:
 
-```
+```java
 ...
 @Entity
 @Archetype("openEHR-EHR-COMPOSITION.self_monitoring.v0")
@@ -39,7 +39,7 @@ public class HighmedCardioMonitoringV1 {
 
 Next, we can create a new test function like this:
 
-```Java
+```java
 public static HighmedCardioMonitoringV1 buildCardioExample(){
 
  //Create the composition instance and add metadata
@@ -77,7 +77,7 @@ public static HighmedCardioMonitoringV1 buildCardioExample(){
 
 Finally, the composition can be sent to the openEHR server:
 
-```Java
+```java
 CompositionEndpoint compositionEndpoint = openEhrClient.compositionEndpoint(ehr);
 UUID compositionId = compositionEndpoint.saveCompositionEntity(highmedCardioMonitoringV1);
 ```

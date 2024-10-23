@@ -8,4 +8,4 @@ Please see the respective resources for details on the REST API specification:
 * [EHR API](/api/hip-ehrbase/ehr): Managing the electronic health record of a patient by operating on compositions, folders and contributions
 * [DEFINITION API](/api/hip-ehrbase/definition): Uploading templates and defining stored queries
 
-HIP EHRbase supports all endpoints with the exception of ADL2 Templates. CDR Base currently supports version 1.1.0 of the openEHR Reference Model.
+HIP EHRbase supports all endpoints except ADL2 Templates. CDR Base currently supports version 1.1.0 of the openEHR Reference Model.

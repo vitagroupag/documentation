@@ -4,11 +4,11 @@ title: FROM ... CONTAINS
 
 # AQL FROM ... CONTAINS
 
-The CONTAINS operator allows filtering compositions based on the openEHR Reference Model objects (and archetype_IDs) present inside the particular data instance.
+The `CONTAINS` operator allows filtering compositions based on the openEHR Reference Model objects (and archetype_IDs) present inside the particular data instance.
 
 ## List of available RM classes
 
-The following openEHR RM classes can be used in CONTAINS. Note that HIP EHRbase also supports the use of abstract classes from the openEHR RM.
+The following openEHR RM classes can be used in `CONTAINS`. Note that HIP EHRbase also supports the use of abstract classes from the openEHR RM.
 
 - `ENTRY_CLASS`
   - `EVALUATION`
@@ -50,13 +50,13 @@ SELECT
      c,
 FROM EHR e CONTAINS
     COMPOSITION c CONTAINS
-    OBSERVATION k[openEHR-EHR-OBSERVATION.body_weight.v2]
+    OBSERVATION o[openEHR-EHR-OBSERVATION.body_weight.v2]
 WHERE e/ehr_id/value = 'd50c939a-7661-4ef1-a67b-5a57661263db'
 ```
 
 ### Example 2: Complex CONTAINS
 
-This example shows a more complex combination of CONTAINS statements, using the AND and OR operators along with parentheses. This ensures that only data following a certain structure or having entries for specific data, like the specimen used for laboratory tests, is queried.
+This example shows a more complex combination of CONTAINS statements, using the `AND` and `OR` operators along with parentheses. This ensures that only data following a certain structure or having entries for specific data, like the specimen used for laboratory tests, is queried.
 
 ```sql
 SELECT

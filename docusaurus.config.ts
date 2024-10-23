@@ -79,6 +79,11 @@ const config: Config = {
             spec: "api/ehrbase-openehr-ehr.yaml",
             route: "/api/hip-ehrbase/ehr",
           },
+          {
+            id: "hip-ehrbase-tags",
+            spec: "api/ehrbase-tags-experimental.json",
+            route: "/api/hip-ehrbase/tags",
+          }
         ],
         theme: {
           // Change with your site colors
@@ -124,6 +129,10 @@ const config: Config = {
             {
               label: "Admin API",
               to: "/api/hip-ehrbase/admin",
+            },
+            {
+              label: "Item Tag API",
+              to: "/api/hip-ehrbase/tags",
             },
             {
               label: "Enterprise APIs",

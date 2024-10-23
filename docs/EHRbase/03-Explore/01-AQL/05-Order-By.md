@@ -8,9 +8,9 @@ If no ORDER BY clause is specified, then the query result doesn’t have any def
 
 The syntax starts with keyword ORDER BY followed by one or more sorting expressions. A sorting expression consists of an identified path, optionally followed by one of the DESC, DESCENDING, ASC, or ASCENDING keyword, indicating the sorting type (descending or ascending), e.g.
 
-````
+```sql
 ORDER BY c/name/value DESC
-````
+```
 
 Sorting rows assumes that data identified by the path (from the sorting expression) are comparable. It implies the use of a specific operators like equal, less-than and greater-than (all available to primitives and Ordered types) on data identified by path.
 
@@ -20,13 +20,14 @@ Multiple sorting expressions are separated using a comma. If two rows are equal 
 
 Example
 
-```
+```sql
 SELECT
    obs/data[at0001]/events[at0006]/data[at0003]/items[at0004]/value/magnitude AS systolic,
    obs/data[at0001]/events[at0006]/data[at0003]/items[at0005]/value/magnitude AS diastlic,
    c/context/start_time AS date_time
 FROM
-   EHR [ehr_id/value=$ehrUid] CONTAINS COMPOSITION c [openEHR-EHR-COMPOSITION.encounter.v1]
+   EHR e[ehr_id/value=$ehrUid] CONTAINS 
+    COMPOSITION c [openEHR-EHR-COMPOSITION.encounter.v1]
       CONTAINS OBSERVATION obs [openEHR-EHR-OBSERVATION.blood_pressure.v1]
 WHERE
    obs/data[at0001]/events[at0006]/data[at0003]/items[at0004]/value/magnitude >= 140 OR
@@ -45,9 +46,9 @@ Where DISTINCT modifier is used the LIMIT and OFFSET applies to remaining rows, 
 
 The syntax was borrowed from SQL language, similar to PostgreSQL and MySQL implementation. It consists of two parts: keyword LIMIT followed by number, optionally followed by OFFSET followed by a number:
 
-````
+```sql
 LIMIT row_count [OFFSET offset]
-````
+```
 
 Both row_count and offset are integer numbers, row_count minimal value is 1, while minimal value for offset is 0.
 
@@ -57,7 +58,7 @@ The LIMIT row_count OFFSET offset is used to get results in a paginated way. For
 
 The following example will return 10 rows, representing the second page of result set, ordered by event start time:
 
-````
+```sql
 SELECT
    c/name/value AS Name, c/context/start_time AS date_time, c/composer/name AS Composer
 FROM
@@ -65,4 +66,4 @@ FROM
       CONTAINS COMPOSITION c
 ORDER BY c/context/start_time
 LIMIT 10 OFFSET 10
-````
+```

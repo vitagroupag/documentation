@@ -10,77 +10,87 @@ Each column expression may have a name alias renaming the associated data. When 
 
 AQL uses elements from SQL and XPath for flexible querying of single elements and objects, depending on the provided archetype path.
 
-```
+```sql
 SELECT
      o/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value/magnitude AS Body_Weight_Value
 FROM EHR e CONTAINS
     COMPOSITION c CONTAINS
-    OBSERVATION o[openEHR-EHR-OBSERVATION.body_weight.v2]
+        OBSERVATION o[openEHR-EHR-OBSERVATION.body_weight.v2]
 WHERE e/ehr_id/value = 'd50c939a-7661-4ef1-a67b-5a57661263db'
 ```
 
 This retrieves a column containing the body weight measurement as a double. The result set appears as follows:
 
-```
+```json
 {
-"q": "SELECT k/data[at0002]/events[at0003]/data[at0001]/items[at0004] AS body_weight_magnitude
-        FROM EHR e CONTAINS COMPOSITION c CONTAINS OBSERVATION k[openEHR-EHR-OBSERVATION.body_weight.v2]
-        WHERE e/ehr_id/value = '9b896d07-950f-4d69-833e-a22fde13b24b' LIMIT 1",
-    "columns": [
-        {
-            "path": "k/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value/magnitude",
-            "name": "body_weight_magnitude"
-        }
-    ],
-    "rows": [
-        [
-            50.0
-        ]
+  "meta": {
+    "_type": "RESULTSET",
+    "_schema_version": "1.0.3",
+    "_created": "2024-09-26T08:45:34.180874516Z",
+    "_executed_aql": "SELECT o/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value/magnitude AS Body_Weight_Value FROM EHR e CONTAINS COMPOSITION c CONTAINS OBSERVATION o[openEHR-EHR-OBSERVATION.body_weight.v2] WHERE e/ehr_id/value = 'd50c939a-7661-4ef1-a67b-5a57661263db'",
+    "resultsize": 1
+  },
+  "q": "SELECT o/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value/magnitude AS Body_Weight_Value FROM EHR e CONTAINS COMPOSITION c CONTAINS OBSERVATION o[openEHR-EHR-OBSERVATION.body_weight.v2] WHERE e/ehr_id/value = 'd50c939a-7661-4ef1-a67b-5a57661263db'",
+  "columns": [
+    {
+      "path": "o/data[at0002]/events[at0003]/data[at0001]/items[at0004]",
+      "name": "body_Weight_Element"
+    }
+  ],
+  "rows": [
+    [
+      50.0
     ]
+  ]
 }
 ```
 
 Shortening the path fetches the object at the hierarchy level the path represents, fetching complete element objects.
 
-```
+```sql
 SELECT
      o/data[at0002]/events[at0003]/data[at0001]/items[at0004] AS Body_Weight_Element
 FROM EHR e CONTAINS
     COMPOSITION c CONTAINS
-    OBSERVATION o[openEHR-EHR-OBSERVATION.body_weight.v2]
+        OBSERVATION o[openEHR-EHR-OBSERVATION.body_weight.v2]
 WHERE e/ehr_id/value = 'd50c939a-7661-4ef1-a67b-5a57661263db'
 ```
 
 Resulting in:
 
-```
+```json
 {
-    "q": "SELECT k/data[at0002]/events[at0003]/data[at0001]/items[at0004] AS body_weight_magnitude FROM EHR e CONTAINS
-            COMPOSITION c CONTAINS OBSERVATION k[openEHR-EHR-OBSERVATION.body_weight.v2]
-            WHERE e/ehr_id/value = '9b896d07-950f-4d69-833e-a22fde13b24b'",
-    "columns": [
-        {
-            "path": "k/data[at0002]/events[at0003]/data[at0001]/items[at0004]",
-            "name": "body_weight_magnitude"
-        }
-    ],
-    "rows": [
-        [
-            {
-                "_type": "ELEMENT",
-                "name": {
-                    "_type": "DV_TEXT",
-                    "value": "Body Weight"
-                },
-                "value": {
-                    "_type": "DV_QUANTITY",
-                    "units": "kg",
-                    "magnitude": 50.0
-                },
-                "archetype_node_id": "at0004"
-            }
-        ]
+  "meta": {
+    "_type": "RESULTSET",
+    "_schema_version": "1.0.3",
+    "_created": "2024-09-26T08:45:34.180874516Z",
+    "_executed_aql": "SELECT o/data[at0002]/events[at0003]/data[at0001]/items[at0004] AS Body_Weight_Element FROM EHR e CONTAINS COMPOSITION c CONTAINS OBSERVATION o[openEHR-EHR-OBSERVATION.body_weight.v2] WHERE e/ehr_id/value = 'd50c939a-7661-4ef1-a67b-5a57661263db'",
+    "resultsize": 1
+  },
+  "q": "SELECT o/data[at0002]/events[at0003]/data[at0001]/items[at0004] AS Body_Weight_Element FROM EHR e CONTAINS COMPOSITION c CONTAINS OBSERVATION o[openEHR-EHR-OBSERVATION.body_weight.v2] WHERE e/ehr_id/value = 'd50c939a-7661-4ef1-a67b-5a57661263db'",
+  "columns": [
+    {
+      "path": "o/data[at0002]/events[at0003]/data[at0001]/items[at0004]",
+      "name": "body_Weight_Element"
+    }
+  ],
+  "rows": [
+    [
+      {
+        "_type": "ELEMENT",
+        "name": {
+          "_type": "DV_TEXT",
+          "value": "Body Weight"
+        },
+        "value": {
+          "_type": "DV_QUANTITY",
+          "units": "kg",
+          "magnitude": 50.0
+        },
+        "archetype_node_id": "at0004"
+      }
     ]
+  ]
 }
 ```
 
@@ -88,7 +98,7 @@ Resulting in:
 
 The openEHR specification supports repeating paths based on the archetype path ID, useful for distinguishing between different analytes in a lab test, for example.
 
-```
+```sql
 SELECT
     l/data[at0001]/events[at0002]/data[at0003]/items[openEHR-EHR-CLUSTER.laboratory_test_analyte.v1, 'carbon dioxide partial pressure']/items[at0001]
 FROM EHR e CONTAINS
@@ -112,7 +122,7 @@ Currently, only predefined predicates including 'name/value', 'ehr_id/value', an
 
 As in SQL, AQL supports the use of a name alias for the retrieved data. This is done with the keyword AS, followed by the name which conforms to the syntax rule of AQL variable.
 
-```
+```sql
 SELECT
      o/data[at0002]/events[at0003]/data[at0001]/items[at0004] AS Body_Weight_Element
      ...
@@ -126,13 +136,13 @@ By default, an AQL query returns all data items selected by the FROM and WHERE c
 
 Below is an example using DISTINCT modifier to filter out duplicate rows:
 
-````
+```sql
 SELECT DISTINCT
    c/name/value AS Name, c/composer/name AS Composer
 FROM
    EHR e[ehr_id/value=$ehrUid]
       CONTAINS COMPOSITION c
-````
+```
 
 ## Aggregation Functions
 
@@ -146,7 +156,7 @@ The following Aggregate functions are supported for any path that leads to a pri
 * `MAX` (also for DV_ORDERED)
 * `AVG`
 
-```
+```sql
 SELECT
     MAX(o/data[at0001]/events[at0006]/data[at0003]/items[at0004]/value/magnitude) AS maxValue,
     MIN(o/data[at0001]/events[at0006]/data[at0003]/items[at0004]/value/magnitude) AS minValue,
