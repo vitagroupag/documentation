@@ -1,6 +1,8 @@
 .features {
-  display: flex;
-  align-items: center;
+  display: flex; /* Use Flexbox */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 80vh; /* Make it at least the height of the viewport */
   padding: 2rem 0;
   width: 100%;
 }

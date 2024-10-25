@@ -55,16 +55,8 @@ export default function HomepageFeatures(): JSX.Element {
   return (
     <section className={styles.features}>
       <div className="container">
-        <div className="text--center margin-bottom--lg">
-          <img src="/img/HIP_CDR_Logo_no_claim.png" alt="HIP CDR Logo" className="logo" />
-        </div>
-        <div className="text--center margin-bottom--lg">
-          <p className="features__subtitle">The open SaaS platform for your healthcare data</p>
-        </div>
-        <div className="row">
-          {FeatureList.map((props, idx) => (
-            <Feature key={idx} {...props} />
-          ))}
+        <div className="text--center">
+          <img width='70%' src="/img/Logo_EHRBASE_open_source.png" alt="HIP CDR Logo" className="logo" />
         </div>
       </div>
     </section>

@@ -1,6 +1,0 @@
-apiVersion: v2
-name: hip-cdr-docs
-description: A Helm chart for Kubernetes for the HIP CDR Documentation
-type: application
-version: 0.0.2
-appVersion: 0.0.2

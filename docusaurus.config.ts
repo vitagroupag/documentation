@@ -3,12 +3,12 @@ import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
 
 const config: Config = {
-  title: "HIP Documentation",
-  tagline: "HIP EHRbase and HIP CDR Documentation",
+  title: "EHRbase Docs",
+  tagline: "EHRbase Open-source and HIP EHRbase",
   favicon: "img/favicon.ico",
 
   // Set the production url of your site here
-  url: "https://your-docusaurus-site.example.com",
+  url: "https://docs.ehrbase.org",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: "/",
@@ -16,7 +16,7 @@ const config: Config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: "vitagroup", // Usually your GitHub org/user name.
-  projectName: "HIP CDRs", // Usually your repo name.
+  projectName: "EHRbase", // Usually your repo name.
 
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
@@ -37,7 +37,6 @@ const config: Config = {
           sidebarPath: "./sidebars.ts",
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
         },
         blog: {
           path: "releases",
@@ -45,7 +44,6 @@ const config: Config = {
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
         },
         theme: {
           customCss: "./src/css/custom.css",
@@ -58,43 +56,38 @@ const config: Config = {
         specs: [
           {
             id: "hip-ehrbase-definition",
-            spec: "api/definition-validation.openapi.yaml",
+            spec: "api/ehrbase-openehr-definition.yaml",
             route: "/api/hip-ehrbase/definition",
           },
           {
             id: "hip-ehrbase-admin",
-            spec: "api/ehrbase_admin_api.yml",
+            spec: "api/ehrbase-admin.yml",
             route: "/api/hip-ehrbase/admin",
           },
           {
             id: "hip-ehrbase-query",
-            spec: "api/query-codegen.openapi.yaml",
+            spec: "api/ehrbase-openehr-query.yaml",
             route: "/api/hip-ehrbase/query",
           },
           {
             id: "hip-ehrbase-enterprise",
-            spec: "api/enterprise_api.yml",
+            spec: "api/hip-ehrbase-enterprise.yml",
             route: "/api/hip-ehrbase/enterprise",
           },
           {
             id: "hip-ehrbase-ehr",
-            spec: "api/ehr-codegen.openapi.yaml",
+            spec: "api/ehrbase-openehr-ehr.yaml",
             route: "/api/hip-ehrbase/ehr",
           },
           {
-            id: "cdr-bridge",
-            spec: "api/mapping.json",
-            route: "/api/cdr-bridge/mappings",
-          },
-          {
-            id: "cdr-bridge-demographics",
-            spec: "api/demographics.yml",
-            route: "/api/cdr-bridge/demographics",
-          },
+            id: "hip-ehrbase-tags",
+            spec: "api/ehrbase-tags-experimental.json",
+            route: "/api/hip-ehrbase/tags",
+          }
         ],
         theme: {
           // Change with your site colors
-          primaryColor: "#720035",
+          primaryColor: "#E62249"
         },
       },
     ],
@@ -104,7 +97,7 @@ const config: Config = {
     // Replace with your project's social card
     image: "img/docusaurus-social-card.jpg",
     navbar: {
-      title: "HIP CDR",
+      title: "EHRbase",
       logo: {
         alt: "My Site Logo",
         src: "img/signet.png",
@@ -138,38 +131,33 @@ const config: Config = {
               to: "/api/hip-ehrbase/admin",
             },
             {
+              label: "Item Tag API",
+              to: "/api/hip-ehrbase/tags",
+            },
+            {
               label: "Enterprise APIs",
               to: "/api/hip-ehrbase/enterprise",
-            }
-          ],
-        },
-        {
-          type: "dropdown",
-          label: "CDR Bridge API",
-          position: "left",
-          items: [
-            {
-              label: "CDR Bridge",
-              to: "/api/cdr-bridge/mappings",
-            },
-            {
-              label: "Demographics",
-              to: "/api/cdr-bridge/demographics",
             },
           ],
         },
-       /* { to: "/releases", label: "Releases", position: "left" }, Excluded until ready*/
+        /* { to: "/releases", label: "Releases", position: "left" }, Excluded until ready*/
         {
           href: "https://github.com/ehrbase/ehrbase",
           label: "GitHub",
           position: "right",
+          className: "header-github-link",
         },
       ],
     },
+    colorMode: {
+      defaultMode: "dark",
+      disableSwitch: true,
+      respectPrefersColorScheme: false,
+    },
     footer: {
       style: "dark",
-      links: [
-    /*    {
+      /*links: [
+        /*    {
           title: "Docs",
           items: [
             {
@@ -177,7 +165,7 @@ const config: Config = {
               to: "/docs/intro",
             },
           ],
-        },*/
+        },
         {
           title: "Community",
           items: [
@@ -189,10 +177,6 @@ const config: Config = {
               label: "HIP CDR Website",
               href: "https://hip.vitagroup.ag",
             },
-            {
-              label: "X / Twitter",
-              href: "https://twitter.com/vitagroup_ag",
-            },
           ],
         },
         {
@@ -202,16 +186,19 @@ const config: Config = {
               label: "GitHub",
               href: "https://github.com/vitagroupag",
             },
+            {
+              label: "X / Twitter",
+              href: "https://twitter.com/vitagroup_ag",
+            },
           ],
         },
-      ],
+      ],*/
       copyright: `Copyright © ${new Date().getFullYear()} vitagroup.`,
     },
     // See available themes on prismThemes object
     prism: {
-      theme: prismThemes.nightOwlLight,
       darkTheme: prismThemes.dracula,
-      additionalLanguages: ["bash", "json", "yaml"],
+      additionalLanguages: ["bash", "json", "yaml", "java"],
     },
   } satisfies Preset.ThemeConfig,
 };
