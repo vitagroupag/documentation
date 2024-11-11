@@ -5,11 +5,15 @@ tags:
   - quick-start
 ---
 
+:::tip
+The fastest way to get started with EHRbase and openEHR is the **EHRbase Sandbox** available at https://sandkiste.ehrbase.org/.
+:::
+
 # EHRbase Installation
 
 EHRbase by default is built against Postgres.
 
-The easiest way to get started with it is by spinning up an EHRbase Postgres database and an ehrbase instance using Docker.
+The easiest way to get started with it locally is by spinning up an EHRbase Postgres database and an EHRbase instance using Docker.
 
 ### Start PostgresDB
 
