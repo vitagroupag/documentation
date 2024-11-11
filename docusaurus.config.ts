@@ -140,6 +140,11 @@ const config: Config = {
             },
           ],
         },
+        {
+          href: "https://sandkiste.ehrbase.org",
+          label: "Sandbox",
+          position: "left"
+        },
         /* { to: "/releases", label: "Releases", position: "left" }, Excluded until ready*/
         {
           href: "https://github.com/ehrbase/ehrbase",
