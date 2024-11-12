@@ -4,12 +4,12 @@ EHRbase comes with some options to customize how the AQL engine behaves.
 
 ## Pagination parameters conflict
 
-Configure how EHRbase reacts when there is a conflict of AQL query `LIMIT/OFFSET` clauses and `fetch/offset` query parameters 
+Configure how EHRbase reacts when there is a conflict of AQL query `LIMIT/OFFSET` clauses and `fetch/offset` query parameters
 during an AQL query execute request by choosing one of the following strategies:
-1. `REJECT` - EHRbase rejects the query execution if the AQL query contains a `LIMIT` or `OFFSET` and 
+1. `REJECT` - EHRbase rejects the query execution if the AQL query contains a `LIMIT` or `OFFSET` and
    the `fetch` or `offset` query parameters are also present on the request
 2. `MIN_FETCH` - EHRbase will take the minimum value of `LIMIT` and `fetch` and use that one during the query execution;
-    If the query AQL also contains the `OFFSET` clause, then the request is rejected.
+   If the query AQL also contains the `OFFSET` clause, then the request is rejected.
 
 Strategy the execute AQL query requests use when `LIMIT/OFFSET` are used in combination with `fetch/offset` query params
 
@@ -32,3 +32,12 @@ To set up data query safeguards EHRbase can be configured with the following lim
 | `ehrbase.rest.aql.default-limit` | `EHRBASE_REST_AQL_DEFAULTLIMIT` | none          | any positive number |
 | `ehrbase.rest.aql.max-limit`     | `EHRBASE_REST_AQL_MAXLIMIT`     | none          | any positive number |
 | `ehrbase.rest.aql.max-fetch`     | `EHRBASE_REST_AQL_MAXFETCH`     | none          | any positive number |
+
+## Experimental features
+
+Some supported AQL features are not yet standardized. In order to use such features, a flag must be activated.
+* `ehrbase.aql.experimental.aql-on-folder.enabled` - Support for AQL on FOLDER
+
+| Property                                          | ENV                                             | Default value | Supported values |
+|---------------------------------------------------|-------------------------------------------------|---------------|------------------|
+| `ehrbase.aql.experimental.aql-on-folder.enabled`  | `EHRBASE_AQL_EXPERIMENTAL_AQLONFOLDER_ENABLED`  | `false`       | `true`/`false`   |

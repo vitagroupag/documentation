@@ -19,6 +19,8 @@ The following openEHR RM classes can be used in `CONTAINS`. Note that HIP EHRbas
 - `FEEDER_AUDIT`
 - `ELEMENT`
 - `EHR_STATUS`
+- `COMPOSITION`
+- `FOLDER` ([experimental](07-Configuration.md#experimental-features))
 - `HISTORY`
 - `EVENT`
   - `POINT_EVENT`
@@ -35,7 +37,7 @@ The following openEHR RM classes can be used in `CONTAINS`. Note that HIP EHRbas
 
 ## CONTAINS operators
 
-CONTAINS statements can be chained and nested using parenthesis and operators AND and OR. You can also use parentheses to control the order of bindings. 
+CONTAINS statements can be chained and nested using parenthesis and operators AND and OR. You can also use parentheses to control the order of bindings.
 
 The NOT operator is currently not supported.
 
@@ -47,7 +49,7 @@ The query retrieves all compositions for a specific electronic health record obj
 
 ```sql
 SELECT
-     c,
+    c,
 FROM EHR e CONTAINS
     COMPOSITION c CONTAINS
     OBSERVATION o[openEHR-EHR-OBSERVATION.body_weight.v2]
@@ -60,9 +62,9 @@ This example shows a more complex combination of CONTAINS statements, using the 
 
 ```sql
 SELECT
-     c/uid/value,
-     l as Test_Result,
-     s as Specimen
+    c/uid/value,
+    l as Test_Result,
+    s as Specimen
 FROM EHR e CONTAINS
     COMPOSITION c[openEHR-EHR-COMPOSITION.report-result.v1] CONTAINS
         (CLUSTER y[openEHR-EHR-CLUSTER.case_identification.v0] and OBSERVATION l[openEHR-EHR-OBSERVATION.laboratory_test_result.v1] CONTAINS
@@ -73,11 +75,11 @@ WHERE e/ehr_id/value = 'd50c939a-7661-4ef1-a67b-5a57661263db'
 
 ### Example 3: CONTAINS on ELEMENT
 
-In some scenarios, directly searching for elements inside the electronic health record is required or convenient, especially when these are annotated by a value from a terminology like SNOMED CT or LOINC for unambiguous semantic annotation. The COMPOSTITION is needed within the CONTAINS statement as elements could also be part of objects like the EHR_STATUS. 
+In some scenarios, directly searching for elements inside the electronic health record is required or convenient, especially when these are annotated by a value from a terminology like SNOMED CT or LOINC for unambiguous semantic annotation. The COMPOSTITION is needed within the CONTAINS statement as elements could also be part of objects like the EHR_STATUS.
 
 ```sql
 SELECT
-     f
+    f
 FROM EHR e CONTAINS
     COMPOSITION c CONTAINS
         ELEMENT f
@@ -93,7 +95,7 @@ This example demonstrates the use of abstract classes within the CONTAINS statem
 
 ```sql
 SELECT
-     entry
+    entry
 FROM EHR e CONTAINS
     ENTRY entry
 ```
