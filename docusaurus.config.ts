@@ -147,6 +147,12 @@ const config: Config = {
         },
         /* { to: "/releases", label: "Releases", position: "left" }, Excluded until ready*/
         {
+          type: "html",
+          position: "right",
+          value: "<iframe src=\"https://ghbtns.com/github-btn.html?user=ehrbase&repo=ehrbase&type=star&count=true\" frameborder=\"0\" scrolling=\"0\" width=\"100\" height=\"20\" title=\"GitHub\"></iframe>",
+          className: "header-github-stars"
+        },
+        {
           href: "https://github.com/ehrbase/ehrbase",
           label: "GitHub",
           position: "right",

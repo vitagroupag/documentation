@@ -27,3 +27,11 @@
   --ifm-background-color: #333338;
   --ifm-table-head-background: #333338;
 }
+
+.header-github-stars {
+  display: contents;
+}
+
+.menu__list-item.header-github-stars {
+  display: none;
+}
