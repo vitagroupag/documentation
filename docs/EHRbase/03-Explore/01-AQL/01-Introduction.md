@@ -33,4 +33,6 @@ The root of the path is the archetype-id which is typically being used to in the
 
 As the paths in AQL rely on the abstraction of the openEHR Reference Model, they are difficult to handle. For this reasons, it is recommended to use an editor that provides a visual representation of openEHR Archetypes and/or Templates. Such tooling allows to select paths from a user-friendly tree view, making the building of AQL queries easy.
 
-See the HIP CDR's documentation for a description of the AQL Editor it provides.
+See the HIP's documentation for a description of the AQL Editor it provides.
+
+

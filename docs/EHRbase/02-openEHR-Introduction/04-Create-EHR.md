@@ -32,7 +32,7 @@ In this tutorial, we assume that we have a new patient coming to our organizatio
 ```
 
 :::warning
-Please note that in HIP CDR, you need to use ADT messages or the FHIR API to create a new patient. In this case, the EHR object will be automatically created in EHRbase.
+Please note that in HIP, you need to use ADT messages or the FHIR API to create a new patient. In this case, the EHR object will be automatically created in EHRbase.
 :::
 
 You will receive the following response result (assuming you are using the `Prefer: return=representation` header):

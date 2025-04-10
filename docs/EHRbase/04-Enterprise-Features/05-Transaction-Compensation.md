@@ -1,11 +1,11 @@
 ---
 title: Transaction Compensation
-description: Within HIP CDR, EHRbase is one among over 40 services. To ensure data integrity across the various services, HIP CDR implements the Saga Pattern for distributed transactions. The Transaction Compensation Plugin (based on Rabbit MQ) allows to orchestrate transactions (e.g., rollbacks) across the services.
+description: Within HIP, EHRbase is one among over 40 services. To ensure data integrity across the various services, HIP implements the Saga Pattern for distributed transactions. The Transaction Compensation Plugin (based on Rabbit MQ) allows to orchestrate transactions (e.g., rollbacks) across the services.
 ---
 
 # Transaction Compensation
 
-As HIP CDR follows a service-oriented architecture, distributed transactions across services are required. The Transaction Compensation feature allows rolling back transactions in accordance with the Saga Pattern.
+As HIP follows a service-oriented architecture, distributed transactions across services are required. The Transaction Compensation feature allows rolling back transactions in accordance with the Saga Pattern.
 
 For this purpose, a REST API can be used by external services to invoke the transaction compensation functions.
 

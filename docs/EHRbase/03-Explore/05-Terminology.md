@@ -68,11 +68,11 @@ The following subsections provide information on the configuration of the extern
 
 EHRbase supports the following properties in order to properly configure the feature:
 
-| Key                                             | Default Value | Description                                                      |
-| ------------------------------------------------|---------------|------------------------------------------------------------------|
-| `validation.external-terminology.enabled`       | `false`       | Whether to enable external terminology validation feature.       |
-| `validation.external-terminology.fail-on-error` | `false`       | Indicates if validation should pass in case of connection error. |
-| `validation.external-terminology.provider.*`    |               | External terminology provider details.                           |
+| Key                                              | Default Value | Description                                                      |
+|--------------------------------------------------|---------------|------------------------------------------------------------------|
+| `validation.external-terminology.enabled`        | `false`       | Whether to enable external terminology validation feature.       |
+| `validation.external-terminology.fail-on-error`  | `false`       | Indicates if validation should pass in case of connection error. |
+| `validation.external-terminology.provider.*`     |               | External terminology provider details.                           |
 
 The following `application.yml` illustrates how to configure the provider details:
 
@@ -83,9 +83,9 @@ validation:
     enabled: true
     fail-on-error: true
     provider:
-     fhir-server-1:
-       type: fhir
-       url: https://r4.ontoserver.csiro.au/fhir
+      fhir-server-1:
+        type: fhir
+        url: https://r4.ontoserver.csiro.au/fhir
 #     fhir-server-2:
 #       type: fhir
 #       url: https://localhost:9876/fhir
@@ -100,14 +100,12 @@ validation:
 If the remote terminology server requires to establish a communication channel using Two-Way SSL (Mutual Authentication), EHRBase can setup the SSL context used by HTTP client with the following configuration properties:
 
 | Key                               | Default Value | Description                                           |
-| ----------------------------------|---------------|-------------------------------------------------------|
+|-----------------------------------|---------------|-------------------------------------------------------|
 | `client.ssl.enabled`              | `false`       | Whether to enable SSL support.                        |
 | `client.ssl.key-password`         |               | Password used to access the key in the key store.     |
 | `client.ssl.key-store`            |               | Path to the key store.                                |
 | `client.ssl.key-store-password`   |               | Password used to access the key store.                |
-|
-
- `client.ssl.key-store-type`       |               | Type of the key store.                                |
+| `client.ssl.key-store-type`       |               | Type of the key store.                                |
 | `client.ssl.trust-store`          |               | Path to the trust store.                              |
 | `client.ssl.trust-store-password` |               | Password used to access the trust store.              |
 | `client.ssl.trust-store-type`     |               | Type of the trust store.                              |
@@ -148,7 +146,7 @@ spring:
         provider:
           fhir-terminology-provider:
             token-uri: http://identity.localtest.me/auth/realms/test-issuer/protocol/openid-connect/token
- 
+
 # Configure FHIR Terminology Validation Server
 validation:
   external-terminology:
@@ -170,7 +168,7 @@ SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_FHIRTERMINOLOGYCLIENT_SCOPE=openid
 # used identity provider must match spring.security.oauth2.provider.[provider_name]
 SPRING_SECURITY_OAUTH2_CLIENT_REGISTRATION_FHIRTERMINOLOGYCLIENT_PROVIDER=fhir-terminology-provider
 SPRING_SECURITY_OAUTH2_CLIENT_PROVIDER_FHIRTERMINOLOGYPROVIDER_TOKENURI=http://identity.localtest.me/auth/realms/test-issuer/protocol/openid-connect/token
- 
+
 # Configure FHIR Terminology Validation Server
 VALIDATION_EXTERNALTERMINOLOGY_ENABLED=true
 # If set it must match a spring.security.oauth2.client.registration.[client_name] that needs to be configured

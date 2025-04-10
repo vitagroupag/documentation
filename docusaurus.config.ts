@@ -55,19 +55,9 @@ const config: Config = {
       {
         specs: [
           {
-            id: "hip-ehrbase-definition",
-            spec: "api/ehrbase-openehr-definition.yaml",
-            route: "/api/hip-ehrbase/definition",
-          },
-          {
             id: "hip-ehrbase-admin",
-            spec: "api/ehrbase-admin.yml",
+            spec: "api/ehrbase-admin.json",
             route: "/api/hip-ehrbase/admin",
-          },
-          {
-            id: "hip-ehrbase-query",
-            spec: "api/ehrbase-openehr-query.yaml",
-            route: "/api/hip-ehrbase/query",
           },
           {
             id: "hip-ehrbase-enterprise",
@@ -76,8 +66,8 @@ const config: Config = {
           },
           {
             id: "hip-ehrbase-ehr",
-            spec: "api/ehrbase-openehr-ehr.yaml",
-            route: "/api/hip-ehrbase/ehr",
+            spec: "api/ehrbase-openehr.json",
+            route: "/api/hip-ehrbase/openehr",
           },
           {
             id: "hip-ehrbase-tags",
@@ -115,16 +105,8 @@ const config: Config = {
           position: "left",
           items: [
             {
-              label: "Query API",
-              to: "/api/hip-ehrbase/query",
-            },
-            {
-              label: "EHR APIs",
-              to: "/api/hip-ehrbase/ehr",
-            },
-            {
-              label: "Definition API",
-              to: "/api/hip-ehrbase/definition",
+              label: "openEHR APIs",
+              to: "/api/hip-ehrbase/openehr",
             },
             {
               label: "Admin API",
@@ -179,7 +161,7 @@ const config: Config = {
               href: "https://discourse.openehr.org/tag/ehrbase",
             },
             {
-              label: "HIP CDR Website",
+              label: "HIP Website",
               href: "https://hip.vitagroup.ag",
             },
           ],

@@ -23,7 +23,7 @@ const FeatureList: FeatureItem[] = [
     Svg: require("@site/static/img/server.svg").default,
     description: (
       <>
-        Scale your e-health infrastructure effortlessly with HIP CDR. Experience unparalleled scalability from applications to extensive e-health systems, powered
+        Scale your e-health infrastructure effortlessly with HIP. Experience unparalleled scalability from applications to extensive e-health systems, powered
         by next-generation databases.
       </>
     ),

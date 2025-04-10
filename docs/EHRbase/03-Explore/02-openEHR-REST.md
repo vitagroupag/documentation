@@ -4,8 +4,10 @@ HIP EHRbase implements version 1.0.2 of the official openEHR REST API.
 
 Please see the respective resources for details on the REST API specification:
 
-* [QUERY API](/api/hip-ehrbase/query): Execution of queries using the Archetype Query Language (AQL)
-* [EHR API](/api/hip-ehrbase/ehr): Managing the electronic health record of a patient by operating on compositions, folders and contributions
-* [DEFINITION API](/api/hip-ehrbase/definition): Uploading templates and defining stored queries
+* **DEFINITION API**: Uploading [Templates](/api/hip-ehrbase/openehr#tag/ADL-1.4-TEMPLATE) and defining [Stored Queries](/api/hip-ehrbase/openehr#tag/STORED_QUERY)
+* **EHR API**: Managing the [Electronic Health Record](/api/hip-ehrbase/openehr#tag/EHR) of a patient by operating on [Compositions](/api/hip-ehrbase/openehr#tag/COMPOSITION), [Folders](/api/hip-ehrbase/openehr#tag/DIRECTORY) and [Contributions](/api/hip-ehrbase/openehr#tag/CONTRIBUTION)
+* **QUERY API**: Execution of [Queries](/api/hip-ehrbase/openehr#tag/Query) using the Archetype Query Language (AQL)
 
-HIP EHRbase supports all endpoints except ADL2 Templates. CDR Base currently supports version 1.1.0 of the openEHR Reference Model.
+:::note
+HIP EHRbase supports all endpoints except ADL2 Templates, and it supports version 1.1.0 of the openEHR Reference Model.
+:::

@@ -3,7 +3,7 @@
 This page provides a collection of very common or very specific queries to quickly provide some reference for building your queries.
 
 ## Retrieve EHR-ID (and external subject ID) of a patient
-Use the paths `e/ehr_id/value`to retrieve the electronic health record ID of a patient. If an external ID is stored as part of the EHR object in EHRbase, it can be retrieved through `e/ehr_status/subject/external_ref/id/value`
+Use the paths `e/ehr_id/value` to retrieve the electronic health record ID of a patient. If an external ID is stored as part of the EHR object in EHRbase, it can be retrieved through `e/ehr_status/subject/external_ref/id/value`
 
 ```sql
 SELECT
@@ -14,7 +14,7 @@ FROM EHR e
 
 ## Retrieve Feeder Audit Information
 
-For data integration scenarios, the Feeder_Audit object can be used to store metadata about the provenance of a reference model object. This example retrieves a composition based only on the identifier of the message that was received by HIP CDR, mapped to an openEHR Templates and stored in HIP EHRbase.
+For data integration scenarios, the Feeder_Audit object can be used to store metadata about the provenance of a reference model object. This example retrieves a composition based only on the identifier of the message that was received by HIP, mapped to an openEHR Templates and stored in HIP EHRbase.
 
 ```sql
 SELECT
@@ -47,4 +47,16 @@ FROM EHR e CONTAINS
      AND
      COMPOSITION c2
          CONTAINS OBSERVATION a_b[openEHR-EHR-OBSERVATION.blood_pressure.v1])
+```
+
+## Obtain all Composition IDs in Folders of an EHR
+
+Query for all Composition identifier of any (sub)folder with archetype `episode_of_care.v1` for a specific `ehr_id/value`.
+
+```sql
+SELECT 
+  c/uid/value
+FROM EHR e[ehr_id/value='118194d5-1efe-42fc-8ee8-2e11b74782a2'] 
+  CONTAINS FOLDER f[openEHR-EHR-FOLDER.episode_of_care.v1] 
+    CONTAINS COMPOSITION c
 ```
