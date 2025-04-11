@@ -32,4 +32,4 @@ The Merge EHR operation is available by default as an admin operation. The only 
 
 ## REST API
 
-For merging 2 EHRs and checking on the status checkout the [Merge EHR Admin API](/api/hip-ehrbase/admin#tag/EHR-Merge).
+For merging 2 EHRs and checking on the status checkout the [Merge EHR Admin API](/api/hip-ehrbase/admin#tag/Admin-EHR-Merge).
