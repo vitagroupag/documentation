@@ -34,14 +34,14 @@ The above access can be configured for both Basic and Oauth2 security types, onl
 
 By default, all status and metric endpoints are disabled in EHRbase. To opt-in endpoints you should start the EHRbase with an environment variable per endpoint you want to enable.
 
-| ENV                                      | Usage                                                 | Value to set   |
-|------------------------------------------|-------------------------------------------------------|----------------|
-| `MANAGEMENT_ENDPOINT_ENV_ENABLED`        | Enable /management/env endpoint from actuator.        | `true`/`false` |
-| `MANAGEMENT_ENDPOINT_HEALTH_ENABLED`     | Enable /management/health endpoint from actuator.     | `true`/`false` |
-| `MANAGEMENT_HEALTH_DB_ENABLED`           | Enables the DB health indicator.                      | `true`/`false` |
-| `MANAGEMENT_ENDPOINT_INFO_ENABLED`       | Enable /management/info endpoint from actuator.       | `true`/`false` |
-| `MANAGEMENT_ENDPOINT_METRICS_ENABLED`    | Enable /management/metrics endpoint from actuator.    | `true`/`false` |
-| `MANAGEMENT_ENDPOINT_PROMETHEUS_ENABLED` | Enable /management/prometheus endpoint from actuator. | `true`/`false` |
+| ENV                                     | Usage                                                 | Value to set       |
+|-----------------------------------------|-------------------------------------------------------|--------------------|
+| `MANAGEMENT_ENDPOINT_ENV_ACCESS`        | Enable /management/env endpoint from actuator.        | `none`/`read_only` |
+| `MANAGEMENT_ENDPOINT_HEALTH_ACCESS`     | Enable /management/health endpoint from actuator.     | `none`/`read_only` |
+| `MANAGEMENT_HEALTH_DB_ACCESS`           | Enables the DB health indicator.                      | `none`/`read_only` |
+| `MANAGEMENT_ENDPOINT_INFO_ACCESS`       | Enable /management/info endpoint from actuator.       | `none`/`read_only` |
+| `MANAGEMENT_ENDPOINT_METRICS_ACCESS`    | Enable /management/metrics endpoint from actuator.    | `none`/`read_only` |
+| `MANAGEMENT_ENDPOINT_PROMETHEUS_ACCESS` | Enable /management/prometheus endpoint from actuator. | `none`/`read_only` |
 
 
 Additionally, you can configure the following actuator settings if required:
